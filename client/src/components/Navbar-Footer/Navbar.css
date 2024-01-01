@@ -1,0 +1,33 @@
+.navbar-con{
+    height: 5rem;
+    background-color: white;
+    color: #955108;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
+    border-bottom: 3px solid #955108;
+}
+.route{
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+.route,.routesignin:hover{
+   cursor: pointer;
+}
+.routesignin{
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
