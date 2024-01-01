@@ -1,14 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
 import Aboutus from "./components/Aboutus/Aboutus";
 import Support from "./components/Support/Support";
 import Listmyproperty from "./components/Listmyproperty/Listmyproperty";
 import Valuemyhome from "./components/Valuemyhome/Valuemyhome.js"
+
+import Navbar from "./components/Navbar-Footer/Navbar";
+import Home from "./components/Home/Home";
 function App() {
   return (
     <>
              <BrowserRouter>
+             <Navbar/>
                 <Routes>
                    <Route path="/" element={<Home/>}/>
                    <Route path="/profile" element={<Profile/>}/>
