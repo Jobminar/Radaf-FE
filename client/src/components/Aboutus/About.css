@@ -1,0 +1,57 @@
+.maincont{
+    margin: 30px;
+}
+.imag{
+    height: 50vh;
+    width: 90%;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+.aboutpara{
+    margin-left: 20px;
+    margin-right: 50px;
+    padding: 20px;
+}
+.dd{
+    display: flex;
+    /* flex-direction: column; */
+}
+.simage{
+    height: 30vh;
+    width: 50%;
+    border-radius: 15px;
+    padding-right: 20px;
+}
+@media screen and (max-width: 768px) {
+    .dd{
+        display: flex;
+        flex-direction: column;
+    }
+    .simage{
+        width: 100%;
+        padding-right: 1px;
+    }
+    .maincont{
+        margin: auto;
+    }
+}
+/* .simage{
+    height: 30vh;
+    width: 50%;
+    border-radius: 15px;
+    padding-right: 20px;
+} */
+.minpara{
+    display: flex;
+    align-items: center;
+}
+.b1para{
+    background-color: orange;
+    border-radius: 10px;
+    font-family:'Times New Roman';
+    padding: 10px;
+}
+.sp{
+    color: orange;
+    font-size:50px
+}

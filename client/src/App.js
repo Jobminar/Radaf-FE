@@ -4,6 +4,7 @@ import Profile from "./components/Profile/Profile";
 import Aboutus from "./components/Aboutus/Aboutus";
 import Support from "./components/Support/Support";
 import Listmyproperty from "./components/Listmyproperty/Listmyproperty";
+import Valuemyhome from "./components/Valuemyhome/Valuemyhome.js"
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
                    <Route path="/aboutus" element={<Aboutus/>}/>
                    <Route path="/support" element={<Support/>}/>
                    <Route path="/listmyproperty" element={<Listmyproperty/>}/>
+                   <Route path="/valuemyhome" element={<Valuemyhome/>}/>
                 </Routes>
              </BrowserRouter> 
     </>
