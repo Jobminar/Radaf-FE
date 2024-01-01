@@ -7,9 +7,10 @@ import Valuemyhome from "./components/Valuemyhome/Valuemyhome.js"
 
 import Navbar from "./components/Navbar-Footer/Navbar";
 import Home from "./components/Home/Home";
+import Signup from "./components/Profile/Signup";
 function App() {
   return (
-    <>
+    <div>
              <BrowserRouter>
              <Navbar/>
                 <Routes>
@@ -19,9 +20,11 @@ function App() {
                    <Route path="/support" element={<Support/>}/>
                    <Route path="/listmyproperty" element={<Listmyproperty/>}/>
                    <Route path="/valuemyhome" element={<Valuemyhome/>}/>
+                   <Route path="/signup" element={<Signup />} />
+                   
                 </Routes>
              </BrowserRouter> 
-    </>
+    </div>
   );
 }
 
