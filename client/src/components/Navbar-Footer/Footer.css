@@ -5,9 +5,7 @@
     grid-template-columns: 20% 20% 20% 20% 20%;
 
 }
-.footer-con div{
-    /* border: 1px solid black; */
-}
+
 .footer-con div h1{
     font-family: Roboto;
 font-size: 24px;
