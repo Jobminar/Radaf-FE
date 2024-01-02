@@ -6,6 +6,7 @@ import Listmyproperty from "./components/Listmyproperty/Listmyproperty";
 
 import Navbar from "./components/Navbar-Footer/Navbar";
 import Home from "./components/Home/Home";
+import Footer from "./components/Navbar-Footer/Footer";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
                    <Route path="/support" element={<Support/>}/>
                    <Route path="/listmyproperty" element={<Listmyproperty/>}/>
                 </Routes>
+              <Footer/>
              </BrowserRouter> 
     </>
   );
