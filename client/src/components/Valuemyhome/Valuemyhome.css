@@ -7,6 +7,7 @@
 }
 .maincoos{
     margin: 80px;
+    font-family:"Roboto";
 }
 
 .inp{
@@ -18,18 +19,18 @@
     border-radius: 10px;
     border-color: rgb(215, 200, 200);
 }
-.inp2{
+/* .inp2{
     width: 70%;
     height:50px;
     margin-top: 20px;
     border: 2px;
     border-style: solid;
     /* border-radius: 10px; */
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-color: rgb(215, 200, 200);
-}
-.inp2b{
+    /* border-top-left-radius: 10px; */
+    /* border-bottom-left-radius: 10px; */
+    /* border-color: rgb(215, 200, 200); */
+/* } */ */
+/* .inp2b{
     width: 10%;
     height: 55px;
     border-top-right-radius: 10px;
@@ -39,36 +40,44 @@
 .inp2d{
     display: flex;
     flex-direction: row;
-}
-.bbut{
-    margin-top: 30px;
-    height: 50px;
-    width: 10%;
-    border-radius: 15px;
-    background-color: orange;
-}
-button {
+} */
+.bun{
     padding: 10px;
     cursor: pointer;
     border: none;
     background: none;
+    margin: 30px;
+    font-size: 16px;
+    outline: none;
+}
+.bb2{
+    margin-top: 30px;
+    height: 50px;
+    width: 15%;
+    border-radius: 15px;
+    border: none;
+    background-color: #9E4D00;
+}
+.bb1 {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    margin: 30px;
     font-size: 16px;
     outline: none;
   }
   
-  .active-tab {
-    border-bottom: 2px solid rgb(222, 70, 39);
-  }
   
 @media screen and (max-width:768px) {
-    .bbut{
+    .bb{
         margin:5px;
         width: 30%;
     }
-    .inp2b{
-        width: 25%;
-    }
+    /* .inp2b{
+        width: 20%;
+    } */
     .maincoos{
-        margin: 10px;
+        margin: 2px;
     }
 }

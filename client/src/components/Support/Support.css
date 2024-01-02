@@ -1,6 +1,7 @@
 .cont{
     margin: 20px;
     margin-top: 30px;
+    font-family: "Roboto";
 }
 .mai{
     display: flex;
@@ -11,9 +12,9 @@
     border: 3px;
     border-style:solid;
     padding: 40px;
-    border-color: red;
+    border-color: #955108;
     border-radius: 10px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 .sma{
     display: flex;
@@ -21,12 +22,14 @@
     align-items: center;
 }
 .ico{
-    width: 50px;
-    height: 50px;
-    background-color: rgb(230, 141, 141);
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    background-color:#955108;
+    border-radius: 10px;
 }
 .sm{
-    padding: 10px;
+    padding: 20px;
 }
 .head{
     font-size: 20px;
@@ -36,6 +39,10 @@
     .mai{
         /* display: flex; */
         flex-direction: column;
+        margin: 3px;
+        padding: 2px;
+    }
+    .cont{
         margin: 3px;
     }
 }
