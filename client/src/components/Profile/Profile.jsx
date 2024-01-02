@@ -29,16 +29,14 @@ const Login = () => {
   };
 
   return (
-    <div className="main">
+    <div className="main-div">
      
-      <div className="form-container">
+    
         <div className="form-in">
-
+  
        <div className="img-logo"> <img src={Logo} alt="img" width="100%" height="100%"/>  </div>
-         
         <p>  Sign in to save properties and much more</p>
           
-
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 10, width: "70%" }}>
             <TextField sx={{width:"100%"}}
               value={formData.email}
@@ -86,13 +84,10 @@ const Login = () => {
             </FormControl>
 
             <div>
-              <p style={{ fontSize: "75%", cursor: "pointer",marginLeft:"-100px" }}>Forget Password</p>
+              <p style={{ fontSize: "79%", cursor: "pointer",marginLeft:"-100px" }}>Forget Password</p>
                <p style={{ fontSize: "85%", cursor: "pointer" }}> <input type="checkbox" />Keep me in signed in for 7 days</p>
-            </div>
-
-            <button className="button" >
-              Sign In
-            </button>
+            </div>  
+            <button className="button2">Sign In</button>        
           </form>
           <div style={{color:"#919191",fontFamily:"Roboto",fontSize:"10px"}}>By signing in you accept our Terms of use and Privacy Policy</div>
 
@@ -103,10 +98,12 @@ const Login = () => {
             <FacebookIcon sx={{ color: "blue" }} />
            
           </div>
-          <p>No account? Register Now</p>
+          <p style={{cursor:"pointer"}}>No account?  &nbsp; Register Now</p>
+          
         </div>
+        
       </div>
-    </div>
+  
   );
 };
 
