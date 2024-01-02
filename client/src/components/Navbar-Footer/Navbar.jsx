@@ -14,10 +14,10 @@ const Navbar = () => {
         <div className='route' onClick={()=>{navigate('/')}}>
             Home
         </div> 
-        <div className='route'>
+        <div className='route'  onClick={()=>{navigate('/aboutus')}}>
             About us
         </div>
-        <div className='route'>
+        <div className='route' onClick={()=>{navigate('/valuemyhome')}}>
             Value my Home
         </div>
         <div className='route'>
@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className='route'>
             My-Property
         </div>
-        <div className='route'>
+        <div className='route' onClick={()=>{navigate('/support')}}>
             Support
         </div>
         <div className='routesignin'>
