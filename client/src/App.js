@@ -7,7 +7,11 @@ import Valuemyhome from "./components/Valuemyhome/Valuemyhome.js"
 
 import Navbar from "./components/Navbar-Footer/Navbar";
 import Home from "./components/Home/Home";
+
+import Footer from "./components/Navbar-Footer/Footer";
+
 import Signup from "./components/Profile/Signup";
+
 function App() {
   return (
     <div>
@@ -23,6 +27,7 @@ function App() {
                    <Route path="/signup" element={<Signup />} />
                    
                 </Routes>
+              <Footer/>
              </BrowserRouter> 
     </div>
   );

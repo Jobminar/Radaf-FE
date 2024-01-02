@@ -1,0 +1,61 @@
+.footer-con{
+    height: 15rem;
+    background-color: #BE6B2E;
+    display:grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+
+}
+
+.footer-con div h1{
+    font-family: Roboto;
+font-size: 24px;
+font-weight: 600;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: left;
+color: white;
+padding-left: 1.5rem;
+padding-top: 1rem;
+}
+.footer-con div p{
+font-family: Roboto;
+font-size: 20px;
+font-weight: 400;
+line-height: 25px;
+letter-spacing: 0em;
+text-align: left;
+padding: 0px;
+margin: 10px;
+color: white;
+padding-left: 1rem;
+}
+.logo-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo-footer img{
+    width: 15rem;
+    height: 7rem;
+}
+.socialmedia{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    
+    padding-left: 1rem;
+}
+.socialmedia img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+@media screen and (min-width: 360px) and (max-width: 600px){
+    .footer-con{
+        height: auto;
+        background-color: #BE6B2E;
+        display:grid;
+        grid-template-columns: 100%;
+    
+    }
+}

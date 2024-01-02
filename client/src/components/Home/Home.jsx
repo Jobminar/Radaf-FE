@@ -23,6 +23,7 @@ import sale3 from './Images/sale3.png'
 import rent1 from './Images/rent1.png'
 import rent2 from './Images/rent2.png'
 import rent3 from './Images/rent3.png'
+import toiletlogo from './Images/toilet-logo.png'
 
 const Home =(()=>{
     const navigate = useNavigate()
@@ -92,6 +93,9 @@ const Home =(()=>{
                                 <Typography>2</Typography>
                                 <BathtubIcon/>
                                 <Typography>2</Typography>
+                                <img src={toiletlogo} alt='toiletlogo'/>
+                                <Typography>2</Typography>
+
                             </div>
                             </CardContent>
                         </CardActionArea>
@@ -122,6 +126,8 @@ const Home =(()=>{
                                 <Typography>2</Typography>
                                 <BathtubIcon/>
                                 <Typography>2</Typography>
+                                <img src={toiletlogo} alt='toiletlogo'/>
+                                <Typography>2</Typography>
                             </div>
                             </CardContent>
                         </CardActionArea>
@@ -151,6 +157,8 @@ const Home =(()=>{
                                 <SingleBedIcon/>
                                 <Typography>2</Typography>
                                 <BathtubIcon/>
+                                <Typography>2</Typography>
+                                <img src={toiletlogo} alt='toiletlogo'/>
                                 <Typography>2</Typography>
                             </div>
                             </CardContent>
@@ -193,6 +201,8 @@ const Home =(()=>{
                                 <Typography>2</Typography>
                                 <BathtubIcon/>
                                 <Typography>2</Typography>
+                                <img src={toiletlogo} alt='toiletlogo'/>
+                                <Typography>2</Typography>
                             </div>
                             </CardContent>
                         </CardActionArea>
@@ -223,6 +233,8 @@ const Home =(()=>{
                                 <Typography>2</Typography>
                                 <BathtubIcon/>
                                 <Typography>2</Typography>
+                                <img src={toiletlogo} alt='toiletlogo'/>
+                                <Typography>2</Typography>
                             </div>
                             </CardContent>
                         </CardActionArea>
@@ -252,6 +264,8 @@ const Home =(()=>{
                                 <SingleBedIcon/>
                                 <Typography>2</Typography>
                                 <BathtubIcon/>
+                                <Typography>2</Typography>
+                                <img src={toiletlogo} alt='toiletlogo'/>
                                 <Typography>2</Typography>
                             </div>
                             </CardContent>

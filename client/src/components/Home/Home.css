@@ -43,6 +43,9 @@
     text-align: left;
    
 }
+.serch-routes:hover{
+    cursor: pointer;
+}
 .search-field-home{
     margin: 0px;
     padding: 0rem 4rem;
@@ -97,5 +100,9 @@
     letter-spacing: 0em;
     text-align: right;
     color: #994E04;
+    margin: 1rem;
 
+}
+.showmoreproperty:hover{
+    cursor: pointer;
 }
