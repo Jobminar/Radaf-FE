@@ -17,7 +17,7 @@ import logo from '../listing/logo.svg'
 
 const Viewpage = () => {
   const [age, setAge] = React.useState("");
-  const [color,setColor]=useState('white')
+  const [color,setColor]=useState('blue')
   const handleChange = (event) => {
     setAge(event.target.value);
   };
@@ -38,7 +38,7 @@ const Viewpage = () => {
               width: "55%",
               backgroundColor: "#9E5C08",
               borderRadius: "40px",
-              boxShadow: "none", // Remove all borders
+              boxShadow: "none", 
               height: "auto",
             }}
           >
@@ -55,7 +55,7 @@ const Viewpage = () => {
               onChange={handleChange}
               autoWidth
               displayEmpty
-              renderValue={(value) => (value ? value : "Sale")} // Render placeholder text
+              renderValue={(value) => (value ? value : "Sale")} 
               sx={{
                 border: "#BE6B2E",
                 background: "#BE6B2E",
@@ -82,7 +82,7 @@ const Viewpage = () => {
                   src={ele.img}
                   alt={ele.title}
                 />
-                <Icon onClick={handleClick}><FavoriteIcon  sx={{position:'absolute',left:587,top:187,fontSize:55,color: color,cursor:"pointer"}}/></Icon>
+                <Icon onClick={handleClick}><FavoriteIcon  sx={{position:'relative',top:"20px",fontSize:55,color: color,cursor:"pointer"}}/></Icon>
               </div>
             ))}
           </div>
@@ -95,7 +95,7 @@ const Viewpage = () => {
           </div>
         </div>
 
-        <div className="content-section">
+        <div className="content-section1">
           {data.map((ele,ind) => (
             <div className="content-inside" key={ind}>
                <h1><b>{ele.month}PCM(~190PW)</b></h1>

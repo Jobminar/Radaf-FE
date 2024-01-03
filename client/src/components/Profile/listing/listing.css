@@ -2,9 +2,12 @@
     /* border: 4px solid red; */
     height: auto;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 40% 40%;
     min-width: 400px;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 h1{
@@ -57,13 +60,17 @@ h1{
     width: 90%;
     /* height: 100%; */
 }
-.content-section{
+.content-section1{
     /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: top;
+    align-items: flex-start;
     text-align: center;
+    height: 100%;
+    padding-top: 5rem ;
+    padding-left: 2rem;
+
 }
 
 .icons{
@@ -74,6 +81,7 @@ h1{
     cursor: pointer;
 }
 .button1{
+    width: 100%;
     background-color: #BE6B2E;
    border-radius: 10px;
    color: aliceblue;
@@ -94,9 +102,6 @@ h1{
 }
 .content-inside{
     /* border: 2px solid red; */
-    position:relative;
-    top: -110px;
-    right: 90px;
     width: 80%;
     height: 30%;
     
