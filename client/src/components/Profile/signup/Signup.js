@@ -96,7 +96,7 @@ const Signup = () => {
             value={formData.title}
             onChange={handleInputChange}
           />
-          <Button variant='contained' className='buttons1' type="button" onClick={handleSignup}>
+          <Button variant='contained' className='buttons12' type="button" onClick={handleSignup}>
             Save
           </Button>
         </form>
