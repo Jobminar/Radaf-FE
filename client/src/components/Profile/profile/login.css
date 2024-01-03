@@ -1,0 +1,81 @@
+.main-div {
+  margin-top: 8px;
+  border: 4px sold green;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  }
+  .first-div{
+    /* border: 2px solid red; */
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+   align-content: center;
+    justify-content: center;
+  }
+
+  .last-div{
+    width: 50%;
+    height: 100%;
+    /* border: 2px solid red; */
+    /* background-image: url("./imgs.jpg"); */
+    /* margin-top: -10px; */
+  }
+
+  .img-logo{
+    width: 72%;
+    height: 35%;
+  }
+  
+
+  .form-in1 {
+    /* border: 1px solid black; */
+    background-color: whitesmoke;
+    border-radius: 5px;
+    min-width: 350px;
+    width: 30%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-items: center;
+    
+  }
+  
+  .button2{
+    background-color: #9E5C08;
+    width:auto;
+    height: 30px;
+    color: #ffffff; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;   
+  }
+   
+    
+
+    .form-in{
+      width: 100%;
+      height: 100%;
+    }
+
+  
+
+  @media screen and (max-width: 650px) {
+    .last-div {
+      display: none;
+    }
+    .first-div{
+      width: 100%;
+      height: 100%;
+      align-items: center;
+    }
+  }
