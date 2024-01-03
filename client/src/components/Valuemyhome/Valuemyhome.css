@@ -55,6 +55,7 @@
     height: 50px;
     width: 15%;
     border-radius: 15px;
+    color: white;
     border: none;
     background-color: #9E4D00;
 }
@@ -66,13 +67,19 @@
     margin: 30px;
     font-size: 16px;
     outline: none;
+    border-bottom:gold;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
   
   
 @media screen and (max-width:768px) {
-    .bb{
+    .bb2{
         margin:5px;
-        width: 30%;
+        width: 40%;
+        color: white;
     }
     /* .inp2b{
         width: 20%;

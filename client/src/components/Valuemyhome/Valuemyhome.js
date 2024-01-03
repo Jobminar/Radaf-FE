@@ -28,6 +28,7 @@ const Valuemyhome = () => {
       const submitForm = async () => {
         try {
             console.log(formData)
+            
           // Replace 'http://your-api-endpoint' with your actual API endpoint
 
         //   const response = await axios.post('http://your-api-endpoint', formData);
@@ -102,8 +103,8 @@ const Valuemyhome = () => {
                     <option value="evening">EVENING</option>
                     <option value="anytime">ANY TIME</option>
                 </select>
-                <center className='bb1'>
-                    <button className='' onClick={submitForm}>SUMBIT</button>
+                <center className=''>
+                    <button className='bb2' onClick={submitForm}>SUMBIT</button>
                 </center>
             </div>
             
