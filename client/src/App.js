@@ -7,9 +7,13 @@ import Valuemyhome from "./components/Valuemyhome/Valuemyhome.js"
 import Viewpage from './components/Profile/MyViewing/index.js'
 import Navbar from "./components/Navbar-Footer/Navbar";
 import Home from "./components/Home/Home";
+
+import Footer from "./components/Navbar-Footer/Footer";
+
 import Signup from "./components/Profile/signup/Signup.js";
 import Listing from "./components/Profile/listing/Listing.js";
 import Error from "./components/Home/Error.js";
+
 function App() {
   return (
     <div>
@@ -28,6 +32,7 @@ function App() {
                    <Route path="/viewpage" element={<Viewpage />} />
                    
                 </Routes>
+              <Footer/>
              </BrowserRouter> 
     </div>
   );
