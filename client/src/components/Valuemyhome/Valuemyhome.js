@@ -6,6 +6,8 @@ import "./Valuemyhome.css"
 
 const Valuemyhome = () => {
     const [formData, setFormData]=useState({
+        userId:sessionStorage.getItem("key"),
+        username:sessionStorage.getItem("username"),
         firstname:"",
         lastname:"",
         emailaddress:"",
