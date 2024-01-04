@@ -83,11 +83,11 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
     cursor: pointer;
     
 }
-.button2{
+.buttonss{
     width: 80%;
     height: 100%;
     background-color: #BE6B2E;
@@ -96,7 +96,7 @@ h1{
 }
 
 .content-inside2{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 80%;
     height: 30%;
     display: flex;

@@ -16,6 +16,7 @@ import { FcGoogle } from "react-icons/fc";
 import Logo from "./logo.svg";
 import imgs from '../profile/imgs.jpg';
 import '../profile/login.css';
+import SocialAuth from "../SocialAuth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -51,24 +52,16 @@ const Login = () => {
         sessionStorage.setItem("token", data.token);
 
         if (data.user && data.user.email) {
-     
           sessionStorage.setItem("user", JSON.stringify(data.user));
-  
           alert(`Hi ${data.user.email}, Welcome!`);
-  
-         
           navigate("/");
-  }
-   else {
-          // Handle error or unexpected response data
+        } else {
           console.error("User data not available in the response:", data);
         }
       } else {
-        // Handle error response
         console.error("Error details:", data);
       }
     } catch (error) {
-      // Handle unexpected errors
       console.error("Error:", error);
     }
   };
@@ -157,19 +150,22 @@ const Login = () => {
               </p>
             </div>
             <button className="button2">Sign In</button>
+
+            <SocialAuth />
           </form>
+
           <div
             style={{ color: "#919191", fontFamily: "Roboto", fontSize: "10px" }}
           >
             By signing in you accept our Terms of use and Privacy Policy
           </div>
 
-          <div>or sign in with</div>
-
+         
           <div style={{ display: "flex", gap: 30, cursor: "pointer" }}>
             <FcGoogle style={{ fontSize: "25px" }} />
             <FacebookIcon sx={{ color: "blue" }} />
           </div>
+
           <p style={{ cursor: "pointer" }}>
             No account? &nbsp; <span onClick={() => navigate("/signup")}> Register Now</span>
           </p>
@@ -183,3 +179,4 @@ const Login = () => {
 };
 
 export default Login;
+

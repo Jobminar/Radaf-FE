@@ -175,7 +175,7 @@ const Listing = () => {
                   <img src={share} alt="share" />
                 </div>
               </div>
-              <button className="button1">Contact with agent</button>
+              <span className="button1">Contact with agent</span>
             </div>
           ))}
         </div>

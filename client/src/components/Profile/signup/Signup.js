@@ -41,7 +41,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className='total'>
       <center>
         <Avatar alt="Remy Sharp" src={chandra} sx={{ width: '9%', height: '115px' }} />
         <h2>Account</h2>
@@ -49,7 +49,6 @@ const Signup = () => {
       <div className="form-out">
         <form className="form">
           <TextField
-            // label="Username"
             type="text"
             name="username"
             className="inputs"
@@ -96,9 +95,10 @@ const Signup = () => {
             value={formData.title}
             onChange={handleInputChange}
           />
-          <Button variant='contained' className='buttons12' type="button" onClick={handleSignup}>
-            Save
-          </Button>
+        <center>  <div variant='contained' className='buttons12' type="button" onClick={handleSignup}>
+            Signup
+          </div>
+          </center>
         </form>
       </div>
     </div>

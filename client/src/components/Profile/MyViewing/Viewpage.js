@@ -67,7 +67,7 @@ const Viewpage = () => {
             <img src={car} alt="car"/>
             <img src={share} alt="share"/>        
          </div>
-         <button className="button2">Contact with agent</button>
+         <button className="buttonss">Contact with agent</button>
             </div>
           ))}
         </div>
