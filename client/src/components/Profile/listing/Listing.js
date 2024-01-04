@@ -6,27 +6,60 @@ import Select from "@mui/material/Select";
 import "../listing/listing.css";
 import { images } from "../listing/Data";
 import { data } from "../listing/Data";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Icon } from "@mui/material";
-import bed from '../listing/bed.jpg'
-import group from '../listing/Group.jpg'
-import vector from '../listing/Vector1.jpg'
-import car from '../listing/car.jpg'
-import share from '../listing/share.jpg'
-import logo from '../listing/logo.svg'
+import bed from "../listing/bed.jpg";
+import group from "../listing/Group.jpg";
+import vector from "../listing/Vector1.jpg";
+import car from "../listing/car.jpg";
+import share from "../listing/share.jpg";
+
 const Listing = () => {
   const [age, setAge] = React.useState("");
-  const [color,setColor]=useState('white')
+  const [color, setColor] = useState("white");
+
+  const [count, setCount] = useState(0);
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
+
   const handleChange = (event) => {
     setAge(event.target.value);
   };
   const handleClick = () => {
-    setColor((prevColor) => (prevColor === 'white' ? 'red' : 'white'));
+    setColor((prevColor) => (prevColor === "white" ? "red" : "white"));
+  };
+
+  const first = () => {
+    setCount(count - 1);
+  };
+  const second = () => {
+    setCount(count + 1);
+  };
+
+  const first1 = () => {
+    setCount1(count1 - 1);
+  };
+  const second1 = () => {
+    setCount1(count1 + 1);
+  };
+
+  const first2 = () => {
+    setCount2(count2 - 1);
+  };
+  const second2 = () => {
+    setCount2(count2 + 1);
+  };
+
+  const first3 = () => {
+    setCount3(count3 - 1);
+  };
+  const second3 = () => {
+    setCount3(count3 + 1);
   };
 
   return (
     <div>
-        
       <div className="h2">
         <h1>My listing request for</h1>
         <div>
@@ -37,7 +70,7 @@ const Listing = () => {
               width: "55%",
               backgroundColor: "#9E5C08",
               borderRadius: "40px",
-              boxShadow: "none", // Remove all borders
+              boxShadow: "none",
               height: "auto",
             }}
           >
@@ -54,7 +87,7 @@ const Listing = () => {
               onChange={handleChange}
               autoWidth
               displayEmpty
-              renderValue={(value) => (value ? value : "Sale")} // Render placeholder text
+              renderValue={(value) => (value ? value : "Sale")}
               sx={{
                 border: "#BE6B2E",
                 background: "#BE6B2E",
@@ -70,18 +103,28 @@ const Listing = () => {
         </div>
       </div>
 
-      <div className="main">
+      <div className="main1">
         <div className="image-section">
           <div className="main-image-section">
             {images.slice(0, 1).map((ele) => (
               <div key={ele.id} className="main-image">
-              
-                <img 
+                <img
                   className="main-image-large"
                   src={ele.img}
                   alt={ele.title}
                 />
-                <Icon onClick={handleClick}><FavoriteIcon  sx={{position:'absolute',left:587,top:187,fontSize:55,color: color,cursor:"pointer"}}/></Icon>
+                <Icon onClick={handleClick}>
+                  <FavoriteIcon
+                    sx={{
+                      position: "absolute",
+                      top: "191px",
+                      left: "572px",
+                      fontSize: 55,
+                      color: color,
+                      cursor: "pointer",
+                    }}
+                  />
+                </Icon>
               </div>
             ))}
           </div>
@@ -94,55 +137,49 @@ const Listing = () => {
           </div>
         </div>
 
-        <div className="content-section">
-          {data.map((ele,ind) => (
-            <div key={ind}>
-               <h1><b>{ele.month}PCM(~190PW)</b></h1>
-               <h2>{ele.sale}</h2>
-               <p>{ele.description}</p>
-         <div className="icons">
-             <span><img src={bed} alt="bed"/></span>
-             <span><img src={group} alt="group"/></span>
-             <span><img src={vector} alt="vector1" /></span>
-             <span><img src={car} alt="car"/></span>
-             <span><img src={share} alt="share"/></span>
-             <button className="button1">Contact with agent</button>
-         </div>
+        <div className="content-section1">
+          {data.map((ele, ind) => (
+            <div className="content-inside" key={ind}>
+              <h1>
+                <b>{ele.month}PCM(~190PW)</b>
+              </h1>
+              <h2>{ele.sale}</h2>
+              <p>{ele.description}</p>
+              <div className="icons">
+                <div>
+                  <img src={bed} alt="bed" />
+                  <button onClick={first}>-</button>
+                  {count}
+                  <button onClick={second}>+</button>
+                </div>
+                <div>
+                  <img src={group} alt="group" />
+                  <button onClick={first1}>-</button>
+                  {count1}
+                  <button onClick={second1}>+</button>
+                </div>
+                <div>
+                  <img src={vector} alt="vector1" />
+                  <button onClick={first2}>-</button>
+                  {count2}
+                  <button onClick={second2}>+</button>
+                </div>
+                <div>
+                  <img src={car} alt="car" />
+                  <button onClick={first3}>-</button>
+                  {count3}
+                  <button onClick={second3}>+</button>
+                </div>
+
+                <div>
+                  <img src={share} alt="share" />
+                </div>
+              </div>
+              <span className="button1">Contact with agent</span>
             </div>
           ))}
         </div>
       </div>
-      <footer className="footer">
-        <div style={{width:"30%",height:"40%",marginTop:"5%"}}>
-            <img width="100%" height="100%" src={logo} alt="logo"/></div>
-        <div>
-         <h2>Join us</h2>
-         <p>Become an Ajent</p>
-         <p>Get referrals </p>
-         <p>Careers</p>
-        </div>
-
-        <div>
-           <h2>Useful Links</h2>
-           <p>About Us</p>
-           <p>Property For Sale</p>
-           <p>Property to Rent</p>
-           <p>Register</p>
-           <p>Property Valuation</p>            
-            </div>
-
-        <div>
-            <h2>Find Us On</h2>
-            <p>Linked in</p>
-            <p>Facebook</p>
-            <p>Instagram</p>
-            </div>
-        <div>
-            <h2>Countries</h2>
-            <p>United States</p>
-            <p>Canada</p>
-            </div>
-      </footer>
     </div>
   );
 };
