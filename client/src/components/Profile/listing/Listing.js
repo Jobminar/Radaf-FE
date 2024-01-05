@@ -19,9 +19,9 @@ const Listing = () => {
   const [color, setColor] = useState("white");
 
   const [count, setCount] = useState(0);
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
-  const [count3, setCount3] = useState(0);
+  // const [count1, setCount1] = useState(0);
+  // const [count2, setCount2] = useState(0);
+  // const [count3, setCount3] = useState(0);
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -33,30 +33,30 @@ const Listing = () => {
   const first = () => {
     setCount(count - 1);
   };
-  const second = () => {
-    setCount(count + 1);
-  };
+  // const second = () => {
+  //   setCount(count + 1);
+  // };
 
-  const first1 = () => {
-    setCount1(count1 - 1);
-  };
-  const second1 = () => {
-    setCount1(count1 + 1);
-  };
+  // const first1 = () => {
+  //   setCount1(count1 - 1);
+  // };
+  // const second1 = () => {
+  //   setCount1(count1 + 1);
+  // };
 
-  const first2 = () => {
-    setCount2(count2 - 1);
-  };
-  const second2 = () => {
-    setCount2(count2 + 1);
-  };
+  // const first2 = () => {
+  //   setCount2(count2 - 1);
+  // };
+  // const second2 = () => {
+  //   setCount2(count2 + 1);
+  // };
 
-  const first3 = () => {
-    setCount3(count3 - 1);
-  };
-  const second3 = () => {
-    setCount3(count3 + 1);
-  };
+  // const first3 = () => {
+  //   setCount3(count3 - 1);
+  // };
+  // const second3 = () => {
+  //   setCount3(count3 + 1);
+  // };
 
   return (
     <div>
@@ -145,39 +145,34 @@ const Listing = () => {
               </h1>
               <h2>{ele.sale}</h2>
               <p>{ele.description}</p>
+
               <div className="icons">
                 <div>
                   <img src={bed} alt="bed" />
-                  <button onClick={first}>-</button>
-                  {count}
-                  <button onClick={second}>+</button>
+                   <span><b>{count}</b></span>
                 </div>
                 <div>
                   <img src={group} alt="group" />
-                  <button onClick={first1}>-</button>
-                  {count1}
-                  <button onClick={second1}>+</button>
+                  <span><b>{count}</b></span>
                 </div>
                 <div>
                   <img src={vector} alt="vector1" />
-                  <button onClick={first2}>-</button>
-                  {count2}
-                  <button onClick={second2}>+</button>
+                  <span><b>{count}</b></span>
                 </div>
                 <div>
                   <img src={car} alt="car" />
-                  <button onClick={first3}>-</button>
-                  {count3}
-                  <button onClick={second3}>+</button>
+                  <span><b>{count}</b></span>
                 </div>
 
                 <div>
                   <img src={share} alt="share" />
                 </div>
               </div>
-              <span className="button1">Contact with agent</span>
+            
             </div>
+            
           ))}
+            <button className="button1">Contact with agent</button>
         </div>
       </div>
     </div>

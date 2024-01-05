@@ -15,7 +15,9 @@ import Error from "./components/Home/Error.js";
 
 import Viewpage from "./components/Profile/MyViewing/Viewpage.js";
 import Listing from "./components/Profile/listing/Listing.js";
-import SocialAuth from "./Test.js";
+import Rentalpage from "./components/Profile/Rental/Rentalpage.js";
+import Myaccount from "./components/Profile/Myaccount/Myaccount.js";
+
 
 function App() {
   return (
@@ -33,9 +35,8 @@ function App() {
                    <Route path="/signup" element={<Signup />} />
                    <Route path="/listing" element={<Listing />} />
                    <Route path="/viewpage" element={<Viewpage />} />
-                   
-                 
-                   
+                   <Route path="/rentalpage" element={<Rentalpage />} />
+                   <Route path="/myaccount" element={<Myaccount />} />
                 </Routes>
               <Footer/>
              </BrowserRouter> 

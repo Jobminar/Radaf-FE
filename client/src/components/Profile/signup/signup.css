@@ -1,11 +1,19 @@
-.total{
+.total-div{
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+border: 3px solid black;
+margin-bottom: 10px;
+margin-top: 10px;
 }
-.form{
-  width: 100%;
+.form-field{
+  width: 30%;
   height: 100%;
-/* border: 2px solid red; */
+  border: 2px solid red;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -17,22 +25,17 @@
 
 
 .inputs{
-  /* border: 2px solid green; */
-    /* width: 20%;
-    height: 30px; */
-    border-radius: 10px;
-    align-items: center;
-    text-align: center;
+  
     
 }
 .buttons12{
   background-color: #9E5C08;
-  width: 17%;
+  width: 50%;
   height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+ margin-left: auto;
+ margin-right: auto;
+  color: aliceblue;
+  border: none;
   border-radius: 20px;
 }
 
@@ -46,8 +49,9 @@
 
 .form-out{
   width: 100%;
-  height: 90%;
+  height: 100%;
   margin-bottom: 6px;
-  /* border: 2px solid blue; */
+  border: 2px solid blue;
+  
 
 }
