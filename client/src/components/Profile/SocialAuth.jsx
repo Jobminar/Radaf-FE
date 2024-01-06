@@ -91,7 +91,7 @@ function SocialAuth({ onLogout, onBackendData }) {
   };
 
   return (
-    <GoogleOAuthProvider >
+    <GoogleOAuthProvider clientId="967489170200-vj0aa4q12aovbb3jt69dkb32cm8b0m1f.apps.googleusercontent.com">
       <div>
         {user ? (
           <>
@@ -100,7 +100,7 @@ function SocialAuth({ onLogout, onBackendData }) {
           </>
         ) : (
           <GoogleLogin
-            // clientId="967489170200-vj0aa4q12aovbb3jt69dkb32cm8b0m1f.apps.googleusercontent.com"
+            clientId="967489170200-vj0aa4q12aovbb3jt69dkb32cm8b0m1f.apps.googleusercontent.com"
             buttonText="Login with Google"
             onClick={() => googlelogin()}
             onSuccess={() => {}}

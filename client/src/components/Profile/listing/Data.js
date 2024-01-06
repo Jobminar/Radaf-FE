@@ -8,6 +8,11 @@ import imgs2 from '../MyViewing/Frame 2.jpg'
 import imgs3 from '../MyViewing/Frame 3.jpg'
 import imgs4 from '../MyViewing/Frame 4.jpg'
 
+import imgs11 from '../Rental/Frame1.jpg'
+import imgs22 from '../Rental/Frame 2.jpg'
+import imgs33 from '../Rental/Frame 3.jpg'
+import imgs44 from '../Rental/Frame 4.jpg'
+
 
 export const images = [
   {
@@ -26,6 +31,10 @@ export const images = [
     id: 4,
     img: img3,
   },
+  // {
+  //   id: 4,
+  //   img: main,
+  // },
 ];
 
 export const data = [
@@ -48,5 +57,24 @@ export const viewpage=[
   {
     id:4,
     img:imgs4
+  }
+]
+
+export const rental=[
+  {
+    id:1,
+    img:imgs11
+  },
+  {
+    id:2,
+    img:imgs22
+  },
+  {
+    id:3,
+    img:imgs33
+  },
+  {
+    id:4,
+    imgs44
   }
 ]
