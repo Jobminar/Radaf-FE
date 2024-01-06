@@ -19,6 +19,8 @@ import Rentalpage from "./components/Profile/Rental/Rentalpage.js";
 import Myaccount from "./components/Profile/Myaccount/Myaccount.js";
 import Forsale from "./components/Forsale/Forsale.jsx";
 import Tolet from "./components/To-let/Tolet.jsx";
+import Myproperty from "./components/Myproperty/Myproperty.js"
+import Propertydetails from "./components/Propertydetails/propertydetails.js"
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
                    <Route path="/myaccount" element={<Myaccount />} />
                    <Route path="/forsale" element={<Forsale/>}/>
                    <Route path="/tolet" element={<Tolet/>}/>
+                   <Route path="/myproperty" element={<Myproperty />} />
+                   <Route path="propertydetails" element={<Propertydetails/>}/>
                 </Routes>
               <Footer/>
              </BrowserRouter> 

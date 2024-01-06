@@ -1,0 +1,66 @@
+import imag from "../Profile/MyViewing/Frame1.jpg"
+
+const da = [
+    {
+        id:"1",
+        img:{imag},
+        address:"add1",
+        price:"234"
+    },
+    {
+        id:"2",
+        img:{imag},
+        address:"address2",
+        price:"234"
+    },
+    {
+        id:"3",
+        img:{imag},
+        address:"Hyd",
+        price:"234"
+    },
+    {
+        id:"4",
+        img:{imag},
+        address:"address4",
+        price:"234"
+    },
+    {
+        id:"4",
+        img:{imag},
+        address:"km",
+        price:"234"
+    },
+    {
+        id:"4",
+        img:{imag},
+        address:"km",
+        price:"234"
+    }
+    ,
+    {
+        id:"4",
+        img:{imag},
+        address:"km",
+        price:"234"
+    },
+    {
+        id:"4",
+        img:{imag},
+        address:"km",
+        price:"234"
+    },
+    {
+        id:"4",
+        img:{imag},
+        address:"km",
+        price:"234"
+    },
+    {
+        id:"4",
+        img:{imag},
+        address:"km",
+        price:"234"
+    }
+]
+export default da

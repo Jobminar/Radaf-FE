@@ -1,23 +1,28 @@
 import React, { useState } from 'react'
 import "./Valuemyhome.css"
-// import axios from "axios"
+import axios from "axios"
 
 
 
 const Valuemyhome = () => {
     const [formData, setFormData]=useState({
-        firstname:"",
-        lastname:"",
-        emailaddress:"",
-        constactnumber:"",
+        // need to change after login and sign up woked
+        // userId:"659070f6accfa64c36245731",
+        // username:"sameerg1810@gmail.com",
+        firstName:"",
+        lastName:"",
+        emailAddress:"",
+        contactNumber:"",
+        postCode:"",
         address:"",
-        todo:"",
-        sellproperty:"",
-        message:"",
-        contact:"",
-        besttime:""
-
+        propertyAction:"",
+        timing:"",
+        additionalMessage:"",
+        bestWayToContact:"",
+        bestTimeToContact:""
     })
+
+    const [showPopup, setShowPopup] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -31,19 +36,36 @@ const Valuemyhome = () => {
             
           // Replace 'http://your-api-endpoint' with your actual API endpoint
 
-        //   const response = await axios.post('http://your-api-endpoint', formData);
+          const response = await axios.post('https://raddaf-be.onrender.com/instantevals', formData);
+        //   setShowPopup(true);
+          if (response.status===201){
+            // window.alert("Thank you for submitting your details. A confirmation will be sent to your provided email address shortly. Rest assured; we value your privacy. In accordance with GDPR guidelines, only your name and contact number will be shared with our selected agents. They will reach out to you regarding your property valuation.Have a great day!")
+            setShowPopup(true);
+          }
+          else{
+            alert("add details on all fileds")
+          }
     
         //   if (response.status === 200) {
         //     console.log('Form data submitted successfully');
         //     // Optionally, you can reset the form after successful submission
         //     setFormData({
-        //       firstname: '',
-        //       lastname: '',
-        //       emailaddress: '',
-        //       contactnumber: '',
-        //       address: '',
-        //       todo: '', // reset the todo field
+        //         userId: "659070f6accfa64c36245731",
+        //         username: "john.doe@example.com",
+        //         firstName: "",
+        //         lastName: "",
+        //         emailAddress: "",
+        //         contactNumber: "",
+        //         postCode: "",
+        //         address: "",
+        //         propertyAction: "",
+        //         timing: "",
+        //         additionalMessage: "",
+        //         bestWayToContact: "",
+        //         bestTimeToContact: ""
+        //          // reset the todo field
         //     });
+        //     alert('Form data submitted successfully');
         //   } else {
         //     console.error('Failed to submit form data');
         //   }
@@ -66,42 +88,43 @@ const Valuemyhome = () => {
         <div className='cal'>
             <button className='bb1'>Agent Valuation</button>
             <div>
-                <input className='inp' onChange={handleInputChange} value={formData.firstname} name='firstname' type="text" placeholder="FIRST NAME" /><br/>
-                <input className='inp' onChange={handleInputChange} value={formData.lastname} name='lastname' type="text" placeholder="LAST NAME" /><br/>
-                <input className='inp' onChange={handleInputChange} value={formData.emailaddress} name='emailaddress' type="text" placeholder="EMAIL ADDRESS" /><br/>
-                <input className='inp'  onChange={handleInputChange} value={formData.constactnumber} name='constactnumber' type="text" placeholder="CONTACT NUMBER" /><br/>
+                <input className='inp' onChange={handleInputChange} value={formData.firstName} name='firstName' type="text" placeholder="FIRST NAME" /><br/>
+                <input className='inp' onChange={handleInputChange} value={formData.lastName} name='lastName' type="text" placeholder="LAST NAME" /><br/>
+                <input className='inp' onChange={handleInputChange} value={formData.emailAddress} name='emailAddress' type="text" placeholder="EMAIL ADDRESS" /><br/>
+                <input className='inp'  onChange={handleInputChange} value={formData.contactNumber} name='contactNumber' type="text" placeholder="CONTACT NUMBER" /><br/>
+                <input className='inp'  onChange={handleInputChange} value={formData.postCode} name='postCode' type="text" placeholder="POST CODE" /><br/>
                 <input className='inp' onChange={handleInputChange} value={formData.address} name='address' type="text" placeholder="ADDRESS" /><br/>
-                <select className='inp' value={formData.todo} name='todo' onChange={handleInputChange} >
+                <select className='inp' value={formData.propertyAction} name='propertyAction' onChange={handleInputChange} >
                 {/* // onChange={(e) => setFormData({ ...formData, todo: e.target.value })}> */}
                     <option value="" disabled>WHAT WOULD YOU LIKE TO DO</option>
-                    <option value="sellmyproperty">SELL MY PROPERTY</option>
-                    <option value="letmyproperty">LET MY PROPERTY</option>
-                    <option value="justcurious">JUST CURIOUS</option>
-                    <option value="remortgaging">REMORTGAGING / RENOVATION / PURCHASING</option>
+                    <option value="SELL">SELL MY PROPERTY</option>
+                    <option value="LET">LET MY PROPERTY</option>
+                    <option value="CURIOUS">JUST CURIOUS</option>
+                    <option value="REMORTGAGING">REMORTGAGING / RENOVATION / PURCHASING</option>
                 </select>
-                <select className='inp' name='sellproperty' onChange={handleInputChange} value={formData.sellproperty}  >
+                <select className='inp' name='timing' onChange={handleInputChange} value={formData.timing}  >
                 {/* // onChange={(e) => setFormData({ ...formData, sellproperty: e.target.value })}> */}
                     <option value="" disabled>WHEN WOULD YOU LIKE TO SELL PROPERTY</option>
-                    <option value="0-3months">0 - 3 MONTHS</option>
-                    <option value="3-6months">3 - 6 MONTHS</option>
-                    <option value="6+months">6+ MONTHS</option>
+                    <option value="0-3 MONTHS">0 - 3 MONTHS</option>
+                    <option value="3-6 MONTHS">3 - 6 MONTHS</option>
+                    <option value="6+ MONTHS">6+ MONTHS</option>
                 </select>
                 
-                <input className='inp' onChange={handleInputChange} value={formData.message} name='message' type="text" placeholder="MESSAGE (OPTIONAL)" /><br/>
-                <select className='inp' value={formData.contact} onChange={handleInputChange} name='contact' >
+                <input className='inp' onChange={handleInputChange} value={formData.additionalMessage} name='additionalMessage' type="text" placeholder="MESSAGE (OPTIONAL)" /><br/>
+                <select className='inp' value={formData.bestWayToContact} onChange={handleInputChange} name='bestWayToContact' >
                 {/* //  onChange={(e) => setFormData({ ...formData, contact: e.target.value })}> */}
                     <option value="" disabled>BEST WAY TO CONTACT YOU (OPTIONAL)</option>
-                    <option value="email">EMAIL</option>
-                    <option value="phone">PHONE</option>
-                    <option value="either">EITHER</option>
+                    <option value="EMAIL">EMAIL</option>
+                    <option value="PHONE">PHONE</option>
+                    <option value="EITHER">EITHER</option>
                 </select>
-                <select className='inp' name='besttime' onChange={handleInputChange} value={formData.besttime} >
+                <select className='inp' name='bestTimeToContact' onChange={handleInputChange} value={formData.bestTimeToContact} >
                 {/* //  onChange={(e) => setFormData({ ...formData, besttime: e.target.value })}> */}
                     <option value="" disabled>BEST TIME TO CONTACT YOU (OTIPNAL)</option>
-                    <option value="morning">MORNING</option>
-                    <option value="afternoon">AFTERNOON</option>
-                    <option value="evening">EVENING</option>
-                    <option value="anytime">ANY TIME</option>
+                    <option value="MORNING">MORNING</option>
+                    <option value="AFTERNOON">AFTERNOON</option>
+                    <option value="EVENING">EVENING</option>
+                    <option value="ANYTIME">ANY TIME</option>
                 </select>
                 <center className=''>
                     <button className='bb2' onClick={submitForm}>SUMBIT</button>
@@ -109,6 +132,17 @@ const Valuemyhome = () => {
             </div>
             
         </div>
+        {showPopup && (
+        <div className="custom-popup">
+          <p>
+            Thank you for submitting your details. A confirmation will be sent to your provided email address shortly.
+            Rest assured; we value your privacy. In accordance with GDPR guidelines, only your name and contact number
+            will be shared with our selected agents. They will reach out to you regarding your property valuation.
+            Have a great day!
+          </p>
+          <button onClick={() => setShowPopup(false)}>Close</button>
+        </div>
+      )}
         </center>
     </div>
   )
