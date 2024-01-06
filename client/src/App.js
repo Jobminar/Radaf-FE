@@ -17,6 +17,8 @@ import Viewpage from "./components/Profile/MyViewing/Viewpage.js";
 import Listing from "./components/Profile/listing/Listing.js";
 import Rentalpage from "./components/Profile/Rental/Rentalpage.js";
 import Myaccount from "./components/Profile/Myaccount/Myaccount.js";
+import Forsale from "./components/Forsale/Forsale.jsx";
+import Tolet from "./components/To-let/Tolet.jsx";
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
                    <Route path="/viewpage" element={<Viewpage />} />
                    <Route path="/rentalpage" element={<Rentalpage />} />
                    <Route path="/myaccount" element={<Myaccount />} />
+                   <Route path="/forsale" element={<Forsale/>}/>
+                   <Route path="/tolet" element={<Tolet/>}/>
                 </Routes>
               <Footer/>
              </BrowserRouter> 

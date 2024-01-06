@@ -66,9 +66,13 @@ const Navbar = () => {
       <div className='route' onClick={() => navigate('/valuemyhome')}>
         Value my Home
       </div>
-      <div className='route'>For Sale</div>
+      <div className='route' onClick={()=>navigate('/forsale')}>
+        For Sale
+        </div>
       <div className='route'>List my Property</div>
-      <div className='route'>To-let</div>
+      <div className='route'onClick={()=>navigate('/tolet')}>
+        To-let
+        </div>
       <div className='route'>My-Property</div>
       <div className='route' onClick={() => navigate('/support')}>
         Support
