@@ -1,0 +1,66 @@
+.mainco{
+    margin: 50px;
+}
+/* Myproperty.css */
+
+.mainco {
+    padding: 20px;
+  }
+  
+  .sample-image {
+    width: 100%; /* Adjust the width as needed */
+    height: 100%; /* Maintain aspect ratio */
+  }
+  
+  .mains {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    /* display: inline-block; */
+    width: 300px; /* Adjust the width as needed */
+    height: 380px;
+  }
+  
+  .profile-ent {
+    display: flex;
+    flex-direction: column;
+    /* margin: auto; */
+  }
+  
+  .incont {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .nn {
+    margin-bottom: 10px;
+  }
+  
+  .row-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .btnn{
+    background-color: #BE6B2E;
+    border: none;
+    /* width: 100%; */
+    border-radius: 15px;
+    color: white;
+    padding: 10px;
+  }
+  .icon{
+    /* border: 2px solid red; */
+    display: flex;
+    padding-top: 20px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    gap: 24px;
+    cursor: pointer;
+    /* text-align: center; */
+    
+}
+.hicon{
+    padding-top: 10px;
+}
