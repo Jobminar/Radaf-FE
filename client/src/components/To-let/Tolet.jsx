@@ -87,9 +87,13 @@ const Tolet = () => {
 
       {saleListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>
-            <div className='forsale-img-sub-con'>
+           <div className='forsale-img-sub-con'>
             <div className='main-img-con'>
-              <img src={mainImage} alt={`Main Image`} />
+            {mainImage ? (
+              <img src={mainImage} alt="Main" />
+            ) : (
+              data.images.length > 0 && <img src={data.images[0].Value} alt="First" />
+            )}
             </div>
             <div className='sub-img-con'>
               {data.images.map((image, index) => (
