@@ -5,6 +5,10 @@ import bed from "../Profile/listing/bed.jpg"
 import car from "../Profile/listing/car.jpg"
 import toilet from "../Profile/listing/Vector1.jpg"
 import shower from "../Profile/listing/Group.jpg"
+import bedroomlogo from '../Forsale/images/bedsymbol.png';
+// import toilet from '../Forsale/images/toilet.png';
+import washroom from '../Forsale/images/washroom.png';
+import parking from '../Forsale/images/car.png';
 // import 
 
 const propertydetails = () => {
@@ -51,20 +55,33 @@ const propertydetails = () => {
                             <p>3 Bedrooms Terraced For Rent</p>
                         </div>
                         <div>
-                            <div className="icon">
+                            {/* <div className="iconms">
                                 <div>
                                     <img src={bed} alt="bed" />
+                                    </div>
+                                    <div>
                                     <span><b>3</b></span>
                                 </div>
                                 <div>
                                     <img src={shower} alt="group" />
+                                    </div>
+                                    <div>
                                     <span><b>1</b></span>
                                 </div>
                                 <div>
                                     <img src={toilet} alt="vector1" />
+                                    </div>
+                                    <div>
                                     <span><b>3</b></span>
                                 </div>
-                            </div>
+                            </div> */}
+                            <div className='rooms-detai'>
+                <div className='noofbedrooms'><img src={bedroomlogo} alt='bedroomlogo'/>  {dimmentions[0].noofbedrooms}</div>
+                <div className='bathrooms'><img src={washroom} alt='washroom'/>  {dimmentions[0].noofbathrooms}</div>
+                <div className='toilets'><img src={toilet} alt='toilet'/>  {dimmentions[0].nooftoilets}</div>
+                {/* <div className='parking'><img src={parking} alt='parking'/>  {dimmentions[0].noofpraking}</div> */}
+              </div>
+                            <div>
                             <h1 style={{marginTop:"20px"}}>OIRO $550,00</h1>
                             <button className='stabut'>Status :
                                 <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor" class="checl bi bi-patch-check" viewBox="0 0 16 16">
@@ -72,6 +89,7 @@ const propertydetails = () => {
                                     <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"/>
                                 </svg> Verified
                             </button>
+                            </div>
                         </div>
                     </div>
                     <div style={{marginTop:"20px",width:"50%"}}>

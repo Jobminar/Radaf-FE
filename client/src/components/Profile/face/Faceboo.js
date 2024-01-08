@@ -25,19 +25,19 @@ const App = () => {
 //             // email: response.data.email,
 //             // Add other necessary fields based on your API requirements
 //           }
-//         //   const signupResponse = await axios.post('https://raddaf-be.onrender.com/auth/signup', userData);
-//         //   console.log('Signup response:', signupResponse);
+//           const signupResponse = await axios.post('https://raddaf-be.onrender.com/auth/signup', userData);
+//           console.log('Signup response:', signupResponse);
     
     
-//     // const navigate = useNavigate()
-//             console.log(profile.name);
-//             // console.log(userData)
-//     // const response = await axios.post('https://raddaf-be.onrender.com/auth/login', credentials);
-//             // setProfile(response.data);
-//     // navigate('/');
-//     // history.push('/');
-//             navigate('/');
-//             sessionStorage.setItem('profile', JSON.stringify(response.data));
+// //     // const navigate = useNavigate()
+// //             console.log(profile.name);
+// //             // console.log(userData)
+// //     // const response = await axios.post('https://raddaf-be.onrender.com/auth/login', credentials);
+// //             // setProfile(response.data);
+// //     // navigate('/');
+// //     // history.push('/');
+// //             navigate('/');
+// //             sessionStorage.setItem('profile', JSON.stringify(response.data));
 //         }
 //     catch(error){
 //         console.log("error",error)
@@ -66,19 +66,20 @@ const App = () => {
 // };
 const handleLogin = async (response) => {
   try {
-    // const userData = {
-    //   name: response.name,
-    //   email: response.email,
-    //   password: response.first_name,
-    //   title: response.last_name,
-    //   fullname: response.graphDomain,
-    //   avatar: response.short_name,
-    // };
-    // // console.log(data)
+    const userData = {
+      // avatar: "response.short_name",
+      username: response.name,
+      email: response.email,
+      password: response.first_name,
+      // title: response.last_name,
+      // fullname: response.graphDomain,
+      // avatar: "response.short_name",
+    };
+    console.log(response)
 
-    // // Send user data to the API
-    // const apiResponse = await axios.post('https://raddaf-be.onrender.com/auth/signup', userData,);
-    // console.log('API response:', apiResponse);
+    // Send user data to the API
+    const apiResponse = await axios.post('https://raddaf-be.onrender.com/auth/signup', userData,);
+    console.log('API response:', apiResponse);
 
     // Update state and sessionStorage
     navigate('/');
