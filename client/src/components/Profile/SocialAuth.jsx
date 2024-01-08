@@ -20,6 +20,7 @@ function SocialAuth({ onLogout, onBackendData }) {
       const idToken = tokenResponse.id_token;
       setUser(tokenResponse);
       await fetchUserProfile(idToken);
+      
 
       // Set idToken as 'Token' in sessionStorage
       sessionStorage.setItem("Token", idToken);
@@ -81,7 +82,7 @@ function SocialAuth({ onLogout, onBackendData }) {
         // Log the success message
         console.log("User data sent to the backend:", response.data);
         // Navigate to /home
-        navigate("/home");
+        navigate("/");
       } else {
         console.error("Backend returned an unexpected response:", response);
       }

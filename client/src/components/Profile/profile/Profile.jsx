@@ -17,6 +17,7 @@ import Logo from "./logo.svg";
 import imgs from '../profile/imgs.jpg';
 import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
+import Facebook from "../face/Faceboo.js"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -152,6 +153,7 @@ const Login = () => {
             <button className="button2">Sign In</button>
 
             <SocialAuth />
+            <Facebook/>
           </form>
 
           <div

@@ -117,6 +117,10 @@ import shower from "../Profile/listing/Group.jpg"
 import da from './da.js'; // Make sure to import your data file
 import imag from "../Profile/MyViewing/Frame1.jpg"
 import { Link } from 'react-router-dom';
+import bedroomlogo from '../Forsale/images/bedsymbol.png';
+// import toilet from '../Forsale/images/toilet.png';
+import washroom from '../Forsale/images/washroom.png';
+import parking from '../Forsale/images/car.png';
 
 const SampleComponent = ({ data }) => {
   return (
@@ -126,7 +130,7 @@ const SampleComponent = ({ data }) => {
         <div className='incont'>
           <div className='nn'>
             {/* <h1 className='headi'>ID</h1> */}
-            <h3>{data.id}</h3>
+            <h3>{data.id}</h3> 
           </div>
           <div className='nn'>
             {/* <h1>Address</h1> */}
@@ -139,23 +143,39 @@ const SampleComponent = ({ data }) => {
                 <car/>
             </div> */}
 
-                <div className="icon">
-                <div>
-                  <img src={bed} alt="bed" />
+                <div className="iconm"  style={{display:"flex"}}>
+                  {/* <div style={{display:"flex",marginRight:"20px"}}>
+                  <div>
+                      <img src={bed} alt="bed" />
+                  </div>
+                  <div>
                    <span><b>3</b></span>
                 </div>
                 <div>
                   <img src={shower} alt="group" />
+                  </div>
+                  <div>
                   <span><b>1</b></span>
                 </div>
                 <div>
                   <img src={toilet} alt="vector1" />
+                  </div>
+                  <div>
                   <span><b>3</b></span>
                 </div>
                 <div>
                   <img src={car} alt="car" />
+                  </div>
+                  <div>
                   <span><b>2</b></span>
                 </div>
+                  </div> */}
+                  <div className='rooms-detai'>
+                <div className='noofbedrooms'><img src={bedroomlogo} alt='bedroomlogo'/>  {data.noofbedrooms}</div>
+                <div className='bahrooms'><img src={washroom} alt='washroom'/>  {data.noofbathrooms}</div>
+                <div className='toilets'><img src={toilet} alt='toilet'/>  {data.nooftoilets}</div>
+                <div className='parking'><img src={parking} alt='parking'/>  {data.noofpraking}</div>
+              </div>
 
                 {/* <div> */}
                   {/* <img src={share} alt="share" /> */}

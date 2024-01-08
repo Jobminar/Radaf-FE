@@ -16,7 +16,7 @@
     border: 1px solid #ccc;
     margin: 10px;
     padding: 10px;
-    /* display: inline-block; */
+    display: inline-block;
     width: 300px; /* Adjust the width as needed */
     height: 380px;
   }
@@ -50,12 +50,12 @@
     color: white;
     padding: 10px;
   }
-  .icon{
+  .iconm{
     /* border: 2px solid red; */
     display: flex;
     padding-top: 20px;
     /* justify-content: center; */
-    /* align-items: center; */
+    align-items: center;
     gap: 24px;
     cursor: pointer;
     /* text-align: center; */
@@ -64,3 +64,26 @@
 .hicon{
     padding-top: 10px;
 }
+.rooms-detai{
+  display: flex;
+  /* justify-content: flex-end; */
+    column-gap: 2rem;
+    align-items: baseline;
+    
+}
+.rooms-detai div img{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* .rooms-detai div{
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: baseline;
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+} */
