@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import './Navbar.css';
+import axios from 'axios';
 import logo from '../Home/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
@@ -69,11 +70,15 @@ const Navbar = () => {
       <div className='route' onClick={()=>navigate('/forsale')}>
         For Sale
         </div>
-      <div className='route'>List my Property</div>
+      <div className='route'  onClick={()=>navigate('/listaproperty')}>
+        List my Property
+        </div>
       <div className='route'onClick={()=>navigate('/tolet')}>
         To-let
         </div>
-      <div className='route'>My-Property</div>
+      <div className='route' onClick={()=>navigate('/myproperty')}>
+        My-Property
+        </div>
       <div className='route' onClick={() => navigate('/support')}>
         Support
       </div>
