@@ -6,18 +6,13 @@ import Listmyproperty from "./components/Listmyproperty/Listmyproperty";
 import Valuemyhome from "./components/Valuemyhome/Valuemyhome.js"
 import Navbar from "./components/Navbar-Footer/Navbar";
 import Home from "./components/Home/Home";
-
 import Footer from "./components/Navbar-Footer/Footer";
-
 import Signup from "./components/Profile/signup/Signup.js";
-
 import Error from "./components/Home/Error.js";
-
 import Viewpage from "./components/Profile/MyViewing/Viewpage.js";
 import Listing from "./components/Profile/listing/Listing.js";
 import Rentalpage from "./components/Profile/Rental/Rentalpage.js";
 import Myaccount from "./components/Profile/Myaccount/Myaccount.js";
-
 
 function App() {
   return (

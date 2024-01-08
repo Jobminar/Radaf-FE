@@ -1,107 +1,145 @@
-// import React, { useState } from 'react';
-// import { Avatar, TextField, Button, IconButton } from '@mui/material';
-// import EditCalendarIcon from '@mui/icons-material/EditCalendar';
-// import '../Myaccount/myaccount.css';
+import React, { useState, useEffect } from 'react';
+import { Avatar, TextField, Button, IconButton } from '@mui/material';
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+import '../Myaccount/myaccount.css';
 
-// const Myaccount = () => {
-//   const [formData, setFormData] = useState({
-//     username: '',
-//     email: '',
-//     password: '',
-//     title: '',
-//     fullname: '',
-//     avatar: '',
-//   });
+const Myaccount = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    title: '',
+    fullname: '',
+    avatar: '',
+  });
 
-//   const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
-//   const convertBase64 = (e) => {
-//     let reader = new FileReader();
-//     reader.readAsDataURL(e.target.files[0]);
-//     reader.onload = () => {
-//       setImage(reader.result);
-//     };
-//     reader.onerror = (error) => {
-//       console.log('Error ', error);
-//     };
-//   };
+  useEffect(() => {
+    const userString = sessionStorage.getItem('user');
+    console.log('userString:', userString);
 
-//   const handleInputChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
+    try {
+      const user = userString ? JSON.parse(userString) : {};
+      console.log('user:', user);
 
-//   const editHandler = () => {
-//     sessionStorage.getItem('email', email.current.value);
-//     sessionStorage.getItem('fullname', fullname.current.value);
-//     sessionStorage.getItem('title', title.current.value);
-  
-//   };
+      setFormData({
+        username: user.username || '',
+        email: user.email || '',
+        password: user.password || '',
+        title: user.title || '',
+        fullname: user.fullname || '',
+        avatar: user.profileImage || '',
+      });
 
-//   return (
-//     <div className='total-div'>
-//       <Avatar alt="Remy Sharp" sx={{ width: '8%', height: '90px', borderRadius: '50%' }}>
-//         {image !== '' && image !== null ? <img style={{ width: '100%', height: '100%', borderRadius: '50px' }} src={image} alt="avatar" /> : null}
-//       </Avatar>
+      setImage(user.profileImage || null);
+    } catch (error) {
+      console.error('Error parsing user data:', error);
+    }
+  }, []); // Empty dependency array ensures useEffect runs only once, similar to componentDidMount
 
-//       <h2>My Account</h2>
+  const convertBase64 = (e) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.error('Error reading image:', error);
+    };
+  };
 
-//       <form className="form-field">
-//         <TextField
-//           type="text"
-//           name="username"
-//           className="inputs"
-//           placeholder="Username"
-//           value={formData.username}
-//           onChange={handleInputChange}
-//         />
+  const handleInputChange = (e) => {
+    setFormData((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
+  };
 
-//         <TextField
-//           type="email"
-//           name="email"
-//           className="inputs"
-//           placeholder="Email"
-//           value={formData.email}
-//           onChange={handleInputChange}
-//         />
+  const handleUpdate = () => {
+    console.log('Update clicked', formData);
+    // Add logic to update user information on the server
+  };
 
-//         <TextField
-//           type="password"
-//           name="password"
-//           className="inputs"
-//           placeholder="Password"
-//           value={formData.password}
-//           onChange={handleInputChange}
-//         />
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
 
-//         <TextField
-//           type="text"
-//           name="title"
-//           className="inputs"
-//           placeholder="Title"
-//           value={formData.title}
-//           onChange={handleInputChange}
-//         />
+  return (
+    <div className='total-divs'>
+      <Avatar alt="Remy Sharp" sx={{ width: '8%', height: '90px', borderRadius: '50%' }}>
+        {image ? <img style={{ width: '100%', height: '100%', borderRadius: '50px' }} src={image} alt="avatar" /> : null}
+      </Avatar>
 
-//         <TextField
-//           type="text"
-//           name="fullname"
-//           className="inputs"
-//           placeholder="Fullname"
-//           value={formData.fullname}
-//           onChange={handleInputChange}
-//         />
+      <h2>My Account</h2>
 
-//         <TextField type="file" className="inputs" onChange={convertBase64} accept="image/*" />
+      <form className="form-fieldss">
+        <div className='forminside'>
+          <TextField
+            type="text"
+            name="username"
+            className="inputs"
+            placeholder="username"
+            value={formData.username}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
 
-//         <center className='center'>
-//           <Button className='buttonsmy'>Update</Button>
-//           <IconButton onClick={editHandler}>
-//             <EditCalendarIcon />
-//           </IconButton>
-//         </center>
-//       </form>
-//     </div>
-//   );
-// };
+          <TextField
+            type="email"
+            name="email"
+            className="inputs"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
 
-// export default Myaccount;
+          <TextField
+            type="password"
+            name="password"
+            className="inputs"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
+
+          <TextField
+            type="text"
+            name="title"
+            className="inputs"
+            placeholder="Title"
+            value={formData.title}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
+
+          <TextField
+            type="text"
+            name="fullname"
+            className="inputs"
+            placeholder="Fullname"
+            value={formData.fullname}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
+
+          <TextField type="file" className="inputs" onChange={convertBase64} accept="image/*" disabled={!isEditing} />
+
+          <center className='center'>
+            {isEditing ? (
+              <Button variant="contained" className='buttonsmy' onClick={handleUpdate}>
+                Update
+              </Button>
+            ) : (
+              <IconButton onClick={handleEditClick}>
+                Edit: <EditCalendarIcon />
+              </IconButton>
+            )}
+          </center>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Myaccount;
