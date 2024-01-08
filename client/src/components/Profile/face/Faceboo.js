@@ -75,7 +75,7 @@ const handleLogin = async (response) => {
       // fullname: response.graphDomain,
       // avatar: "response.short_name",
     };
-    console.log(response)
+    console.log(userData)
 
     // Send user data to the API
     const apiResponse = await axios.post('https://raddaf-be.onrender.com/auth/signup', userData,);
