@@ -1,6 +1,5 @@
 import React, { useState ,useEffect} from 'react';
 import './Navbar.css';
-import axios from 'axios';
 import logo from '../Home/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
@@ -46,10 +45,7 @@ const Navbar = () => {
         case 'Myaccount':
         navigate('/myaccount');
         break;
-        case 'logout':
-        navigate('/logout')
-        break
-
+       
       default:
         break;
     }

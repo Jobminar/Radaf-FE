@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-image: url("https://i.insider.com/568a9f93c08a8081028b693f?width=1000&format=jpeg&auto=webp");
   }
   .first-div{
     /* border: 2px solid red; */
@@ -33,8 +34,10 @@
   
 
   .form-in1 {
+    background-image: url("https://img.freepik.com/premium-photo/white-wall-clean-cement-background-textured-blank-copy-space_24076-674.jpg");
     /* border: 1px solid black; */
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    /* background-color: #ffffff; */
     border-radius: 5px;
     min-width: 350px;
     width: 30%;
@@ -46,6 +49,7 @@
     align-items: center;
     text-align: center;
     align-items: center;
+    padding-bottom: 5%;
     
   }
   

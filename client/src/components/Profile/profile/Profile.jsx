@@ -11,9 +11,9 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import { FcGoogle } from "react-icons/fc";
-import Logo from "./logo.svg";
+// import FacebookIcon from "@mui/icons-material/Facebook";
+// import { FcGoogle } from "react-icons/fc";
+import Logo from '../profile/logo.png'
 import imgs from '../profile/imgs.jpg';
 import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
@@ -168,7 +168,7 @@ const Login = () => {
         </div>
       </div>
       <div className="last-div">
-        <img src={imgs} alt="img" width="100%" height="100%" />
+        {/* <img src={imgs} alt="img" width="100%" height="100%" /> */}
       </div>
     </div>
   );
