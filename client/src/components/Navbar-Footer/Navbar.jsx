@@ -8,7 +8,6 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Button,
   Popover,
 } from '@mui/material';
 
@@ -43,7 +42,7 @@ const Navbar = () => {
         case 'signup':
           navigate('/signup')
         break;
-        case 'Logout':
+        case 'Myaccount':
         navigate('/myaccount');
         break;
 
@@ -121,7 +120,7 @@ const Navbar = () => {
             <MenuItem value='My listing request'>My listing request</MenuItem>
             <MenuItem value='My viewing'> My viewing</MenuItem>
             <MenuItem value='My rental request'>My rental request</MenuItem>
-            <MenuItem value='Logout'>Logout</MenuItem>
+            <MenuItem value='Myaccount'>My account</MenuItem>
           </Select>
         </FormControl>
       </Popover>

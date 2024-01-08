@@ -54,9 +54,27 @@ const Myaccount = () => {
     setFormData((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
   };
 
-  const handleUpdate = () => {
-    console.log('Update clicked', formData);
-    // Add logic to update user information on the server
+  const handleUpdate = async () => {
+    try {
+      const response = await fetch('https://raddaf-be.onrender.com/auth/update-profile', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Update successful:', data);
+        setIsEditing(false);
+      } else {
+        console.error('Update failed:', data.error);
+      }
+    } catch (error) {
+      console.error('Error during update:', error);
+    }
   };
 
   const handleEditClick = () => {
@@ -77,7 +95,7 @@ const Myaccount = () => {
             type="text"
             name="username"
             className="inputs"
-            placeholder="username"
+            placeholder="Username"
             value={formData.username}
             onChange={handleInputChange}
             disabled={!isEditing}
@@ -123,7 +141,14 @@ const Myaccount = () => {
             disabled={!isEditing}
           />
 
-          <TextField type="file" className="inputs" onChange={convertBase64} accept="image/*" disabled={!isEditing} />
+          <TextField
+            type="file"
+            name="avatar"
+            className="inputs"
+            onChange={convertBase64}
+            accept="image/*"
+            disabled={!isEditing}
+          />
 
           <center className='center'>
             {isEditing ? (
