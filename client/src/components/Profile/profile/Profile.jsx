@@ -14,7 +14,6 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 // import FacebookIcon from "@mui/icons-material/Facebook";
 // import { FcGoogle } from "react-icons/fc";
 import Logo from '../profile/logo.png'
-import imgs from '../profile/imgs.jpg';
 import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
 import Facebook from "./Facebook";
