@@ -20,13 +20,11 @@ const Viewpage = () => {
 
   return (
     <div>
-        
       <div className="headr">
         <p className="p1">My rental request</p>
         <p>Request :<span style={{color:"green"}}>Approved</span></p>
         <div>
-      
-        </div>
+       </div>
       </div>
 
       <div className="mainr">
@@ -41,14 +39,14 @@ const Viewpage = () => {
                   src={ele.img}
                   alt={ele.title}
                 />
-                <Icon onClick={handleClick}><FavoriteIcon  sx={{position:'absolute',top:"170px",left:"570px",fontSize:55,color: color,cursor:"pointer"}}/></Icon>
+                <Icon onClick={handleClick}><FavoriteIcon  sx={{position:'absolute',top:"165px",left:"556px",fontSize:55,color: color,cursor:"pointer"}}/></Icon>
               </div>
             ))}
           </div>
           <div className="sub-imagesr">
             {viewpage.slice(1).map((ele) => (
-              <div className="grid2" key={ele.id}>
-                <img src={ele.img} alt={ele.title} className="grid-img2" />
+              <div  key={ele.id}>
+                <img src={ele.img} alt={ele.title} className="sub-images" />
               </div>
             ))}
           </div>
@@ -67,12 +65,14 @@ const Viewpage = () => {
            <HotTubIcon /><span>{count}</span>  
            <AirportShuttleOutlinedIcon /><span>{count}</span>
          </div>
-         <Button variant="contained" sx={{background:"#9E5C08",color:'white'}}>Contact with agent</Button>
+         <button  style={{background:"#9E5C08",color:'white',width:"70%",height:"15%",border:"none",borderRadius:"10px"}}>Contact with agent</button>
             </div>
           ))}
         </div>
         
       </div>
+      
+  
     </div>
   );
 };

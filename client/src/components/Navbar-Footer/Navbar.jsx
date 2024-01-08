@@ -8,7 +8,6 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Button,
   Popover,
 } from '@mui/material';
 
@@ -29,7 +28,7 @@ const Navbar = () => {
   const handleChange = (event) => {
     switch (event.target.value) {
       case 'Manage my profile':
-        navigate('/signup');
+        navigate('/profile');
         break;
       case 'My listing request':
         navigate('/listing');
@@ -38,11 +37,13 @@ const Navbar = () => {
         navigate('/viewpage');
         break;
       case 'My rental request':
-        navigate('/signup');
+        navigate('/rentalpage');
         break;
-
-        case 'Logout':
-        navigate('/viewpage');
+        case 'signup':
+          navigate('/signup')
+        break;
+        case 'Myaccount':
+        navigate('/myaccount');
         break;
 
       default:
@@ -119,10 +120,11 @@ const Navbar = () => {
             }}
           >
             <MenuItem value='Manage my profile'>Manage my profile</MenuItem>
+            <MenuItem value='signup'>Signup</MenuItem>
             <MenuItem value='My listing request'>My listing request</MenuItem>
             <MenuItem value='My viewing'> My viewing</MenuItem>
             <MenuItem value='My rental request'>My rental request</MenuItem>
-            <MenuItem value='Logout'>Logout</MenuItem>
+            <MenuItem value='Myaccount'>My account</MenuItem>
           </Select>
         </FormControl>
       </Popover>
