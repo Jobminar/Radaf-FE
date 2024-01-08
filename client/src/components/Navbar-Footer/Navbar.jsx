@@ -102,7 +102,7 @@ const Navbar = () => {
             id='demo-simple-select-autowidth-label'
             sx={{ display: 'none' }}
           >
-            Sale
+            Profile
           </InputLabel>
           <Select
             labelId='demo-simple-select-autowidth-label'
@@ -110,7 +110,7 @@ const Navbar = () => {
             onChange={handleChange}
             autoWidth
             displayEmpty
-            renderValue={(value) => (value ? value : 'Sale')}
+            renderValue={(value) => (value ? value : 'Profile')}
             sx={{
               border: '#BE6B2E',
               background: '#BE6B2E',
