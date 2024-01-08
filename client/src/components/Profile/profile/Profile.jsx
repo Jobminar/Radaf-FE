@@ -17,6 +17,7 @@ import Logo from "./logo.svg";
 import imgs from '../profile/imgs.jpg';
 import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
+import Facebook from "./Facebook";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ const Login = () => {
             <img src={Logo} alt="img" width="100%" height="100%" />
           </div>
 
-          <p>Sign in to save properties and much more</p>
+          {/* <p>Sign in to save properties and much more</p> */}
 
           <form
             onSubmit={handleSubmit}
@@ -150,8 +151,10 @@ const Login = () => {
               </p>
             </div>
             <button className="button2">Sign In</button>
-
+           <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
             <SocialAuth />
+            <Facebook />
+            </div>
           </form>
 
           <div
@@ -159,13 +162,6 @@ const Login = () => {
           >
             By signing in you accept our Terms of use and Privacy Policy
           </div>
-
-         
-          <div style={{ display: "flex", gap: 30, cursor: "pointer" }}>
-            <FcGoogle style={{ fontSize: "25px" }} />
-            <FacebookIcon sx={{ color: "blue" }} />
-          </div>
-
           <p style={{ cursor: "pointer" }}>
             No account? &nbsp; <span onClick={() => navigate("/signup")}> Register Now</span>
           </p>

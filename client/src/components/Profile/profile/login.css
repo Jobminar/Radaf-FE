@@ -52,12 +52,13 @@
   .button2{
     background-color: #9E5C08;
     width:auto;
-    height: 30px;
+    height: 34px;
     color: #ffffff; 
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;   
+    border: none;
   }
    
     

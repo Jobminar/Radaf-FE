@@ -16,7 +16,7 @@ import Forsale from "./components/Forsale/Forsale.jsx";
 import Tolet from "./components/To-let/Tolet.jsx";
 import Myproperty from "./components/Myproperty/Myproperty.js"
 import Propertydetails from "./components/Propertydetails/propertydetails.js"
-import Facebook from "./components/Profile/profile/Facebook.js";
+import Logout from "./components/Profile/profile/Logout.js";
 import Listaproperty from "./components/Lista-property/Lista-property.jsx";
 
 
@@ -42,7 +42,7 @@ function App() {
                    <Route path="/listaproperty" element={<Listaproperty/>}/>
                    <Route path="/myproperty" element={<Myproperty />} />
                    <Route path="propertydetails" element={<Propertydetails/>}/>
-                   <Route path="/facebook" element={<Facebook />} />
+                   <Route path="/logout" element={<Logout />} />
                    <Route path="/propertydetails" element={<Propertydetails/>}/>
                    
 
