@@ -45,6 +45,9 @@ const Navbar = () => {
         case 'Myaccount':
         navigate('/myaccount');
         break;
+        case 'logout':
+        navigate('/logout')
+        break
 
       default:
         break;
@@ -121,6 +124,8 @@ const Navbar = () => {
             <MenuItem value='My viewing'> My viewing</MenuItem>
             <MenuItem value='My rental request'>My rental request</MenuItem>
             <MenuItem value='Myaccount'>My account</MenuItem>
+            <MenuItem value='Logout'>Logout</MenuItem>
+            
           </Select>
         </FormControl>
       </Popover>

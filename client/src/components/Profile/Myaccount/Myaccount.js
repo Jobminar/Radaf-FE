@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Avatar, TextField, Button, IconButton } from '@mui/material';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import '../Myaccount/myaccount.css';
+import Logout from '../profile/Logout';
 
 const Myaccount = () => {
   const [formData, setFormData] = useState({
@@ -163,6 +164,7 @@ const Myaccount = () => {
           </center>
         </div>
       </form>
+      <Logout />
     </div>
   );
 };
