@@ -13,6 +13,7 @@ import Viewpage from "./components/Profile/MyViewing/Viewpage.js";
 import Listing from "./components/Profile/listing/Listing.js";
 import Rentalpage from "./components/Profile/Rental/Rentalpage.js";
 import Myaccount from "./components/Profile/Myaccount/Myaccount.js";
+import Facebook from "./components/Profile/profile/Facebook.js";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                    <Route path="/viewpage" element={<Viewpage />} />
                    <Route path="/rentalpage" element={<Rentalpage />} />
                    <Route path="/myaccount" element={<Myaccount />} />
+                   <Route path="/facebook" element={<Facebook />} />
                 </Routes>
               <Footer/>
              </BrowserRouter> 
