@@ -73,7 +73,7 @@ function SocialAuth({ onLogout, onBackendData }) {
     try {
       // Send data to the backend
       const response = await axios.post(
-        "http://localhost:3000/auth/signup", // Update with your backend endpoint
+        "https://raddaf-be.onrender.com/auth/signup", // Update with your backend endpoint
         backendData
       );
       if (response.status === 200) {
@@ -81,7 +81,7 @@ function SocialAuth({ onLogout, onBackendData }) {
         // Log the success message
         console.log("User data sent to the backend:", response.data);
         // Navigate to /home
-        navigate("/home");
+        navigate("/");
       } else {
         console.error("Backend returned an unexpected response:", response);
       }
