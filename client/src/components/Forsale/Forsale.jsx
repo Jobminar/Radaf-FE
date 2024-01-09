@@ -1,8 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import './Forsale.css';
-
-import Forsaledata from './forsaledata';
 import bedroomlogo from './images/bedsymbol.png';
 import toilet from './images/toilet.png';
 import washroom from './images/washroom.png';
@@ -19,15 +17,17 @@ const Forsale = () => {
   const [saleListings, setSaleListings] = useState([]);
   const fetchListings = async () => {
     try {
-      const url = `https://raddaf-be.onrender.com/listing-property/get-listings?purpose=Sale`;
+      const url = 'https://raddaf-be.onrender.com/listing-property/get-listings';
       const response = await axios.get(url);
       const { data } = response;
-      setSaleListings(data);
-      console.log(saleListings);
+      const filteredToletListings = data.filter(data => data.purpose === 'Sale');
+      console.log(filteredToletListings);
+      setSaleListings(filteredToletListings); 
     } catch (error) {
       console.error('Error:', error);
     }
   };
+  
 
   useEffect(() => {
     fetchListings();

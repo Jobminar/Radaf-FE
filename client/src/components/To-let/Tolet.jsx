@@ -2,7 +2,8 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import '../Forsale/Forsale.css';
-import Forsaledata from '../Forsale/forsaledata';
+import { useNavigate } from 'react-router-dom';
+
 import bedroomlogo from '../Forsale/images/bedsymbol.png';
 import toilet from '../Forsale/images/toilet.png';
 import washroom from '../Forsale/images/washroom.png';
@@ -12,18 +13,30 @@ import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlin
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
 
 const Tolet = () => {
+   
+   const navigate = useNavigate()
+
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
   };
-  
-  const [saleListings, setSaleListings] = useState([]);
+
+  const [selectedBedroom, setSelectedBedroom] = useState('');
+
+  const handleBedroomChange = (event) => {
+    setSelectedBedroom(event.target.value);
+  };
+   
+   console.log(selectedBedroom)
+
+  const [toletListings, setToletListings] = useState([]);
   const fetchListings = async () => {
     try {
-      const url = `https://raddaf-be.onrender.com/listing-property/get-listings?purpose=Tolet`;
+      const url = 'https://raddaf-be.onrender.com/listing-property/get-listings';
       const response = await axios.get(url);
       const { data } = response;
-      setSaleListings(data);
-      console.log(saleListings);
+      const filteredToletListings = data.filter(data => data.purpose === 'Tolet');
+      console.log(filteredToletListings);
+      setToletListings(filteredToletListings); 
     } catch (error) {
       console.error('Error:', error);
     }
@@ -38,8 +51,14 @@ const Tolet = () => {
   const clicktop = (imageSrc) => {
     setMainImage(imageSrc);
   };
+// send data
+  const [property,setproperty]=useState('')
 
-
+  const handleProperty = (item) => {
+    setproperty(item);
+    navigate('/propertydetails', { state: { property: item } });
+    console.log(item,'data')
+  };
 
   return (
     <div className='Forsale-con'>
@@ -57,14 +76,14 @@ const Tolet = () => {
           </select>
         </div>
         <div className='bedroom-filter'>
-        <img src={bedroomlogo} alt='bedroomimg'/>
-          <select className="mySelect">
-            <option className='option' disabled selected hidden style={{ display: "none", textAlign: "center" }} value="">Bedroom</option>
-            <option className='option' value="option1">1</option>
-            <option className='option' value="option2">2</option>
-            <option className='option' value="option1">3</option>
-            <option className='option' value="option2">4</option>
-            <option className='option' value="option2">4+</option>
+          <img src={bedroomlogo} alt='bedroomimg' />
+          <select className="mySelect" onChange={handleBedroomChange} value={selectedBedroom}>
+            <option className='option' disabled value="">Bedroom</option>
+            <option className='option' value="1">1</option>
+            <option className='option' value="2">2</option>
+            <option className='option' value="3">3</option>
+            <option className='option' value="4">4</option>
+            <option className='option' value="4+">4+</option>
           </select>
         </div>
         <div className='toilet-filter'>
@@ -85,10 +104,10 @@ const Tolet = () => {
         </div>
       </div>
 
-      {saleListings.map((data, index) => (
+      {toletListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>
            <div className='forsale-img-sub-con'>
-            <div className='main-img-con'>
+            <div className='main-img-con' onClick={() => handleProperty(data)} >
             {mainImage ? (
               <img src={mainImage} alt="Main" />
             ) : (
