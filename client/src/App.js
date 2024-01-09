@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./components/Profile/profile/Profile.jsx";
 import Aboutus from "./components/Aboutus/Aboutus";
 import Support from "./components/Support/Support";
-import Listmyproperty from "./components/Listmyproperty/Listmyproperty";
 import Valuemyhome from "./components/Valuemyhome/Valuemyhome.js"
 import Navbar from "./components/Navbar-Footer/Navbar";
 import Home from "./components/Home/Home";
@@ -16,8 +15,10 @@ import Myaccount from "./components/Profile/Myaccount/Myaccount.js";
 import Forsale from "./components/Forsale/Forsale.jsx";
 import Tolet from "./components/To-let/Tolet.jsx";
 import Myproperty from "./components/Myproperty/Myproperty.js"
-import Propertydetails from "./components/Propertydetails/propertydetails.js"
-import Facebook from "./components/Profile/profile/Facebook.js";
+import Logout from "./components/Profile/profile/Logout.js";
+// import Listaproperty from "./components/Lista-property/Lista-property.jsx";
+import Propertydetails from "./components/To-let/propertydetails.js";
+
 
 function App() {
   return (
@@ -30,7 +31,6 @@ function App() {
                    <Route path="/profile" element={<Profile/>}/>
                    <Route path="/aboutus" element={<Aboutus/>}/>
                    <Route path="/support" element={<Support/>}/>
-                   <Route path="/listmyproperty" element={<Listmyproperty/>}/>
                    <Route path="/valuemyhome" element={<Valuemyhome/>}/>
                    <Route path="/signup" element={<Signup />} />
                    <Route path="/listing" element={<Listing />} />
@@ -39,9 +39,13 @@ function App() {
                    <Route path="/myaccount" element={<Myaccount />} />
                    <Route path="/forsale" element={<Forsale/>}/>
                    <Route path="/tolet" element={<Tolet/>}/>
+                   {/* <Route path="/listaproperty" element={<Listaproperty/>}/> */}
                    <Route path="/myproperty" element={<Myproperty />} />
-                   <Route path="propertydetails" element={<Propertydetails/>}/>
-                   <Route path="/facebook" element={<Facebook />} />
+                   <Route path="/propertydetails" element={<Propertydetails/>}/>
+                   <Route path="/logout" element={<Logout />} />
+                
+                   
+
                 </Routes>
               <Footer/>
              </BrowserRouter> 

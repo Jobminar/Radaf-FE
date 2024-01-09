@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Avatar, TextField, Button, IconButton } from '@mui/material';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import '../Myaccount/myaccount.css';
+import Logout from '../profile/Logout';
+import { useNavigate } from 'react-router-dom';
 
 const Myaccount = () => {
+
+  const navigate=useNavigate()
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -68,6 +72,9 @@ const Myaccount = () => {
 
       if (response.ok) {
         console.log('Update successful:', data);
+        alert("Success full Update")
+        navigate("/profile")
+        
         setIsEditing(false);
       } else {
         console.error('Update failed:', data.error);
@@ -163,6 +170,7 @@ const Myaccount = () => {
           </center>
         </div>
       </form>
+      <Logout />
     </div>
   );
 };

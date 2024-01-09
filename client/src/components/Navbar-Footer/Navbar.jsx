@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import './Navbar.css';
 import logo from '../Home/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
-import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+// import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {
   FormControl,
   InputLabel,
@@ -45,7 +46,7 @@ const Navbar = () => {
         case 'Myaccount':
         navigate('/myaccount');
         break;
-
+       
       default:
         break;
     }
@@ -70,18 +71,22 @@ const Navbar = () => {
       <div className='route' onClick={()=>navigate('/forsale')}>
         For Sale
         </div>
-      <div className='route'>List my Property</div>
+      <div className='route'  onClick={()=>navigate('/listaproperty')}>
+        List my Property
+        </div>
       <div className='route'onClick={()=>navigate('/tolet')}>
         To-let
         </div>
-      <div className='route'>My-Property</div>
+      <div className='route' onClick={()=>navigate('/myproperty')}>
+        My-Property
+        </div>
       <div className='route' onClick={() => navigate('/support')}>
         Support
       </div>
 
-      <div className='routesignin' onClick={handlePopoverOpen}>
-        <PersonOutlineRoundedIcon />
-        Sign in
+      <div className='routesignin' onClick={()=>navigate('/profile')} >
+        {/* <PersonOutlineRoundedIcon /> */}
+        <AccountCircleIcon sx={{width:"100%"}}/>
       </div>
 
       {/* Popover for the dropdown menu */}
@@ -98,12 +103,12 @@ const Navbar = () => {
           horizontal: 'right',
         }}
       >
-        <FormControl sx={{ p: 2 }}>
+        {/* <FormControl sx={{ p: 2 }}>
           <InputLabel
             id='demo-simple-select-autowidth-label'
             sx={{ display: 'none' }}
           >
-            Sale
+            Profile
           </InputLabel>
           <Select
             labelId='demo-simple-select-autowidth-label'
@@ -111,7 +116,7 @@ const Navbar = () => {
             onChange={handleChange}
             autoWidth
             displayEmpty
-            renderValue={(value) => (value ? value : 'Sale')}
+            renderValue={(value) => (value ? value : 'Profile')}
             sx={{
               border: '#BE6B2E',
               background: '#BE6B2E',
@@ -119,14 +124,17 @@ const Navbar = () => {
               fontFamily: 'bold',
             }}
           >
-            <MenuItem value='Manage my profile'>Manage my profile</MenuItem>
+            
+            <MenuItem value='Manage my profile'>Sign In</MenuItem>
             <MenuItem value='signup'>Signup</MenuItem>
             <MenuItem value='My listing request'>My listing request</MenuItem>
             <MenuItem value='My viewing'> My viewing</MenuItem>
             <MenuItem value='My rental request'>My rental request</MenuItem>
             <MenuItem value='Myaccount'>My account</MenuItem>
+            <MenuItem value='Logout'>Logout</MenuItem>
+            
           </Select>
-        </FormControl>
+        </FormControl> */}
       </Popover>
     </div>
   );
