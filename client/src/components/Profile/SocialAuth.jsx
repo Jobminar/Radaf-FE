@@ -74,7 +74,8 @@ function SocialAuth({ onLogout, onBackendData }) {
     try {
       // Send data to the backend
       const response = await axios.post(
-        "http://localhost:3000/auth/signup", // Update with your backend endpoint
+        // "http://localhost:3000/auth/signup", // Update with your backend endpoint
+        "https://raddaf-be.onrender.com/auth/signup",
         backendData
       );
       if (response.status === 200) {

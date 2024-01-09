@@ -64,27 +64,115 @@ const App = () => {
 
 //   // }
 // };
+// const handleLogin = async (response) => {
+//   try {
+//     const userData = {
+//       // avatar: "response.short_name",
+//       username: response.data.name,
+//       email: response.data.email,
+//       password: response.data.first_name,
+//       title:response.data.last_name,
+//       fullname:response.data.last_name,
+//       profileImage:null
+
+//       // title: response.last_name,
+//       // fullname: response.graphDomain,
+//       // avatar: "response.short_name",
+//     };
+//     console.log("userdata",userData)
+//     console.log(response)
+//     // console.log(username)
+//     console.log(response.data.email,"use",userData.username)
+//     console.log(response.data.name,"JNF",userData.email)
+//     console.log(response.data.first_name,"Jnf",userData.password)
+//     console.log(response.data.last_name,"klmaflck,",userData.title,userData.fullname,userData.profileImage)
+
+//     // Send user data to the API
+//     const apiResponse = await axios.post('https://raddaf-be.onrender.com/auth/signup', userData);
+//     console.log('API response:', apiResponse);
+
+//     // Update state and sessionStorage
+//     // if (response.status==="connected"){
+//     //   navigate('/');
+//     // }
+//     navigate('/');
+//     setProfile(response.data);
+//     console.log(response)
+//     sessionStorage.setItem('profile', JSON.stringify(response.data));
+//   } catch (error) {
+//     console.log("Error:", error);
+//   }
+// };
+// const handleLogin = async (response) => {
+//   try {
+//     const userData = {
+//       username: response.data.name,
+//       email: response.data.email,
+//       password: response.data.first_name,
+//       title: response.data.last_name,
+//       fullname: response.data.last_name,
+//       profileImage: null,
+//     };
+
+//     console.log("userdata", userData);
+//     console.log("KJNLFKNL",response.authResponse.graphDomain)
+//     console.log("KJNLFKNL",response.authResponse.expiresIn)
+//     console.log("KJNLFKNL",response.authResponse.accessToken)
+
+//     const apiResponse = await axios.post('https://raddaf-be.onrender.com/auth/signup', userData);
+//     console.log('API response:', apiResponse);
+
+//     // Assuming setProfile is a state-setting function, make sure it's defined and works as expected
+//     // setProfile(response.data);
+
+//     // If setProfile is a function, ensure it's defined and does what you expect
+//     // setProfile(response.data);
+
+//     // Update state and sessionStorage
+//     navigate('/');
+//     sessionStorage.setItem('profile', JSON.stringify(response.data));
+//   } catch (error) {
+//     console.log("Error:", error);
+//   }
+// };
+
 const handleLogin = async (response) => {
   try {
     const userData = {
-      // avatar: "response.short_name",
-      username: response.name,
-      email: response.email,
-      password: response.first_name,
-      // title: response.last_name,
-      // fullname: response.graphDomain,
-      // avatar: "response.short_name",
+      username: response.data.name,
+      email: response.data.email,
+      password: response.data.first_name,
+      title: response.data.last_name,
+      fullname: response.data.last_name,
+      profileImage: response.data.picture.data.url
     };
-    console.log(userData)
 
-    // Send user data to the API
-    const apiResponse = await axios.post('https://raddaf-be.onrender.com/auth/signup', userData,);
-    console.log('API response:', apiResponse);
+    console.log("userdata", userData);
+    // console.log("KJNLFKNL", response.authResponse.graphDomain);
+    // console.log("KJNLFKNL", response.authResponse.expiresIn);
+    // console.log("KJNLFKNL", response.authResponse.accessToken);
+
+    const apiResponse = await fetch('https://raddaf-be.onrender.com/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+
+    console.log(response)
+
+    const responseData = await apiResponse.json();
+    console.log('API response:', responseData);
+
+    // Assuming setProfile is a state-setting function, make sure it's defined and works as expected
+    // setProfile(response.data);
+
+    // If setProfile is a function, ensure it's defined and does what you expect
+    // setProfile(response.data);
 
     // Update state and sessionStorage
     navigate('/');
-    setProfile(response.data);
-    console.log(response)
     sessionStorage.setItem('profile', JSON.stringify(response.data));
   } catch (error) {
     console.log("Error:", error);
