@@ -48,7 +48,7 @@ function Logout() {
   return (
     <div style={{width:"100%",height:"100%"}}>
       {/* <h1>Hii welcome to Raddaf homes</h1> */}
-      <button style={{marginBottom:"10px",background:"red",border:"none",width:"40%",height:"30px",borderRadius:"10px"}} onClick={handleLogout}>Logout</button>
+      <button style={{marginBottom:"10px",background:"#9E5C08",border:"none",width:"30%",color:"white",height:"40px",borderRadius:"10px"}} onClick={handleLogout}>Logout</button>
     </div>
   );
 }

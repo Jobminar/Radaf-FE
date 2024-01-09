@@ -1,6 +1,6 @@
 .main-div {
   margin-top: 8px;
-  border: 4px sold green;
+  /* border: 4px sold green; */
   width: 100%;
   height: 100vh;
   display: flex;
@@ -8,8 +8,8 @@
   align-items: center;
   text-align: center;
   background-image: url("https://i.insider.com/568a9f93c08a8081028b693f?width=1000&format=jpeg&auto=webp");
-
-  /* background-repeat: no-repeat; */
+  background-size:cover ;
+  /* background-attachment: fixed;  */
   }
   .first-div{
     /* border: 2px solid red; */
@@ -31,13 +31,13 @@
 
   .img-logo{
     width: 72%;
-    height: 35%;
+    height: 30%;
   }
   
 
   .form-in1 {
     background-image: url("https://img.freepik.com/premium-photo/white-wall-clean-cement-background-textured-blank-copy-space_24076-674.jpg");
-
+background-size: cover;
     /* border: 1px solid black; */
     /* background-color: whitesmoke; */
     /* background-color: #ffffff; */
@@ -52,7 +52,7 @@
     align-items: center;
     text-align: center;
     align-items: center;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
     
   }
   
@@ -66,6 +66,7 @@
     justify-content: center;
     border-radius: 10px;   
     border: none;
+    cursor: pointer;
   }
    
     
