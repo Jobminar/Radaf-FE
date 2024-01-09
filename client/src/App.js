@@ -15,9 +15,9 @@ import Myaccount from "./components/Profile/Myaccount/Myaccount.js";
 import Forsale from "./components/Forsale/Forsale.jsx";
 import Tolet from "./components/To-let/Tolet.jsx";
 import Myproperty from "./components/Myproperty/Myproperty.js"
-import Propertydetails from "./components/Propertydetails/propertydetails.js"
 import Logout from "./components/Profile/profile/Logout.js";
 import Listaproperty from "./components/Lista-property/Lista-property.jsx";
+import Propertydetails from "./components/To-let/propertydetails.js";
 
 
 function App() {
@@ -41,9 +41,9 @@ function App() {
                    <Route path="/tolet" element={<Tolet/>}/>
                    <Route path="/listaproperty" element={<Listaproperty/>}/>
                    <Route path="/myproperty" element={<Myproperty />} />
-                   <Route path="propertydetails" element={<Propertydetails/>}/>
-                   <Route path="/logout" element={<Logout />} />
                    <Route path="/propertydetails" element={<Propertydetails/>}/>
+                   <Route path="/logout" element={<Logout />} />
+                
                    
 
                 </Routes>
