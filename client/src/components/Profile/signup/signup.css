@@ -6,21 +6,22 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-border: 3px solid black;
+/* border: 3px solid black; */
 margin-bottom: 10px;
 margin-top: 10px;
 }
 .form-field{
-  width: 30%;
+  width:25%;
   height: 100%;
   /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   justify-content: center;
   text-align: center;
   min-width: 400px;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 
@@ -30,13 +31,14 @@ margin-top: 10px;
 }
 .buttons12{
   background-color: #9E5C08;
-  width: 50%;
+  width: 100%;
   height: 40px;
  margin-left: auto;
  margin-right: auto;
   color: aliceblue;
   border: none;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .form-container {
@@ -52,6 +54,10 @@ margin-top: 10px;
   height: 100%;
   margin-bottom: 6px;
   border: 2px solid blue;
-  
-
+}
+@media screen and (max-width:400px){
+  .form-out{
+    width: 30%;
+    height: 100%;
+  }
 }

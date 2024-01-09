@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import '../signup/signup.css';
+
 const Signup = () => {
   const navigate = useNavigate();
 

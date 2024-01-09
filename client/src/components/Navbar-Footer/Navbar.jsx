@@ -2,7 +2,8 @@ import React, { useState ,useEffect} from 'react';
 import './Navbar.css';
 import logo from '../Home/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
-import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+// import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {
   FormControl,
   InputLabel,
@@ -83,9 +84,9 @@ const Navbar = () => {
         Support
       </div>
 
-      <div className='routesignin' onClick={handlePopoverOpen}>
-        <PersonOutlineRoundedIcon />
-        Sign in
+      <div className='routesignin' onClick={()=>navigate('/profile')} >
+        {/* <PersonOutlineRoundedIcon /> */}
+        <AccountCircleIcon sx={{width:"100%"}}/>
       </div>
 
       {/* Popover for the dropdown menu */}
@@ -102,7 +103,7 @@ const Navbar = () => {
           horizontal: 'right',
         }}
       >
-        <FormControl sx={{ p: 2 }}>
+        {/* <FormControl sx={{ p: 2 }}>
           <InputLabel
             id='demo-simple-select-autowidth-label'
             sx={{ display: 'none' }}
@@ -123,7 +124,8 @@ const Navbar = () => {
               fontFamily: 'bold',
             }}
           >
-            <MenuItem value='Manage my profile'>Manage my profile</MenuItem>
+            
+            <MenuItem value='Manage my profile'>Sign In</MenuItem>
             <MenuItem value='signup'>Signup</MenuItem>
             <MenuItem value='My listing request'>My listing request</MenuItem>
             <MenuItem value='My viewing'> My viewing</MenuItem>
@@ -132,7 +134,7 @@ const Navbar = () => {
             <MenuItem value='Logout'>Logout</MenuItem>
             
           </Select>
-        </FormControl>
+        </FormControl> */}
       </Popover>
     </div>
   );
