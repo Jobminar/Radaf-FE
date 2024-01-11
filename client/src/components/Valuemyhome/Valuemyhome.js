@@ -36,7 +36,7 @@ const Valuemyhome = () => {
             
           // Replace 'http://your-api-endpoint' with your actual API endpoint
 
-          const response = await axios.post('https://raddaf-be.onrender.com/instantevals', formData);
+          const response = await axios.post('https://raddaf-be.onrender.com/evalRequests', formData);
         //   setShowPopup(true);
           if (response.status===201){
             // window.alert("Thank you for submitting your details. A confirmation will be sent to your provided email address shortly. Rest assured; we value your privacy. In accordance with GDPR guidelines, only your name and contact number will be shared with our selected agents. They will reach out to you regarding your property valuation.Have a great day!")

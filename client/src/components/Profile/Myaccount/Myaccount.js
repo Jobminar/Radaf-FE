@@ -1,107 +1,178 @@
-// import React, { useState } from 'react';
-// import { Avatar, TextField, Button, IconButton } from '@mui/material';
-// import EditCalendarIcon from '@mui/icons-material/EditCalendar';
-// import '../Myaccount/myaccount.css';
+import React, { useState, useEffect } from 'react';
+import { Avatar, TextField, Button, IconButton } from '@mui/material';
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+import '../Myaccount/myaccount.css';
+import Logout from '../profile/Logout';
+import { useNavigate } from 'react-router-dom';
 
-// const Myaccount = () => {
-//   const [formData, setFormData] = useState({
-//     username: '',
-//     email: '',
-//     password: '',
-//     title: '',
-//     fullname: '',
-//     avatar: '',
-//   });
+const Myaccount = () => {
 
-//   const [image, setImage] = useState(null);
+  const navigate=useNavigate()
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    title: '',
+    fullname: '',
+    avatar: '',
+  });
 
-//   const convertBase64 = (e) => {
-//     let reader = new FileReader();
-//     reader.readAsDataURL(e.target.files[0]);
-//     reader.onload = () => {
-//       setImage(reader.result);
-//     };
-//     reader.onerror = (error) => {
-//       console.log('Error ', error);
-//     };
-//   };
+  const [image, setImage] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
-//   const handleInputChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
+  useEffect(() => {
+    const userString = sessionStorage.getItem('user');
+    console.log('userString:', userString);
 
-//   const editHandler = () => {
-//     sessionStorage.getItem('email', email.current.value);
-//     sessionStorage.getItem('fullname', fullname.current.value);
-//     sessionStorage.getItem('title', title.current.value);
-  
-//   };
+    try {
+      const user = userString ? JSON.parse(userString) : {};
+      console.log('user:', user);
 
-//   return (
-//     <div className='total-div'>
-//       <Avatar alt="Remy Sharp" sx={{ width: '8%', height: '90px', borderRadius: '50%' }}>
-//         {image !== '' && image !== null ? <img style={{ width: '100%', height: '100%', borderRadius: '50px' }} src={image} alt="avatar" /> : null}
-//       </Avatar>
+      setFormData({
+        username: user.username || '',
+        email: user.email || '',
+        password: user.password || '',
+        title: user.title || '',
+        fullname: user.fullname || '',
+        avatar: user.profileImage || '',
+      });
 
-//       <h2>My Account</h2>
+      setImage(user.profileImage || null);
+    } catch (error) {
+      console.error('Error parsing user data:', error);
+    }
+  }, []); // Empty dependency array ensures useEffect runs only once, similar to componentDidMount
 
-//       <form className="form-field">
-//         <TextField
-//           type="text"
-//           name="username"
-//           className="inputs"
-//           placeholder="Username"
-//           value={formData.username}
-//           onChange={handleInputChange}
-//         />
+  const convertBase64 = (e) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.error('Error reading image:', error);
+    };
+  };
 
-//         <TextField
-//           type="email"
-//           name="email"
-//           className="inputs"
-//           placeholder="Email"
-//           value={formData.email}
-//           onChange={handleInputChange}
-//         />
+  const handleInputChange = (e) => {
+    setFormData((prevData) => ({ ...prevData, [e.target.name]: e.target.value }));
+  };
 
-//         <TextField
-//           type="password"
-//           name="password"
-//           className="inputs"
-//           placeholder="Password"
-//           value={formData.password}
-//           onChange={handleInputChange}
-//         />
+  const handleUpdate = async () => {
+    try {
+      const response = await fetch('https://raddaf-be.onrender.com/auth/update-profile', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-//         <TextField
-//           type="text"
-//           name="title"
-//           className="inputs"
-//           placeholder="Title"
-//           value={formData.title}
-//           onChange={handleInputChange}
-//         />
+      const data = await response.json();
 
-//         <TextField
-//           type="text"
-//           name="fullname"
-//           className="inputs"
-//           placeholder="Fullname"
-//           value={formData.fullname}
-//           onChange={handleInputChange}
-//         />
+      if (response.ok) {
+        console.log('Update successful:', data);
+        alert("Success full Update")
+        navigate("/profile")
+        
+        setIsEditing(false);
+      } else {
+        console.error('Update failed:', data.error);
+      }
+    } catch (error) {
+      console.error('Error during update:', error);
+    }
+  };
 
-//         <TextField type="file" className="inputs" onChange={convertBase64} accept="image/*" />
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
 
-//         <center className='center'>
-//           <Button className='buttonsmy'>Update</Button>
-//           <IconButton onClick={editHandler}>
-//             <EditCalendarIcon />
-//           </IconButton>
-//         </center>
-//       </form>
-//     </div>
-//   );
-// };
+  return (
+    <div className='total-divs'>
+      <Avatar alt="Remy Sharp" sx={{ width: '8%', height: '90px', borderRadius: '50%' }}>
+        {image ? <img style={{ width: '100%', height: '100%', borderRadius: '50px' }} src={image} alt="avatar" /> : null}
+      </Avatar>
 
-// export default Myaccount;
+      <h2>My Account</h2>
+
+      <form className="form-fieldss">
+        <div className='forminside'>
+          <TextField
+            type="text"
+            name="username"
+            className="inputs"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
+
+          <TextField
+            type="email"
+            name="email"
+            className="inputs"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
+
+          <TextField
+            type="password"
+            name="password"
+            className="inputs"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
+
+          <TextField
+            type="text"
+            name="title"
+            className="inputs"
+            placeholder="Title"
+            value={formData.title}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
+
+          <TextField
+            type="text"
+            name="fullname"
+            className="inputs"
+            placeholder="Fullname"
+            value={formData.fullname}
+            onChange={handleInputChange}
+            disabled={!isEditing}
+          />
+
+          <TextField
+            type="file"
+            name="avatar"
+            className="inputs"
+            onChange={convertBase64}
+            accept="image/*"
+            disabled={!isEditing}
+          />
+
+          <center className='center'>
+            {isEditing ? (
+              <Button variant="contained" className='buttonsmy' onClick={handleUpdate}>
+                Update
+              </Button>
+            ) : (
+              <IconButton onClick={handleEditClick}>
+                Edit: <EditCalendarIcon />
+              </IconButton>
+            )}
+          </center>
+        </div>
+      </form>
+      <Logout />
+    </div>
+  );
+};
+
+export default Myaccount;

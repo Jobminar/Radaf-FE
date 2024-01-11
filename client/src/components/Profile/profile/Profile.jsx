@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 import {
   FormControl,
   IconButton,
@@ -11,19 +12,17 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import { FcGoogle } from "react-icons/fc";
-import Logo from "./logo.svg";
-import imgs from '../profile/imgs.jpg';
+import Logo from '../profile/logo.png';
 import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
-import Facebook from "../face/Faceboo.js"
+import Facebook from "./Facebook";
 
 const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -37,6 +36,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
 
     try {
       const response = await fetch("https://raddaf-be.onrender.com/auth/login", {
@@ -64,6 +64,8 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -75,7 +77,7 @@ const Login = () => {
             <img src={Logo} alt="img" width="100%" height="100%" />
           </div>
 
-          <p>Sign in to save properties and much more</p>
+          {loading && <CircularProgress sx={{ color: "#9E5C08" }} />}
 
           <form
             onSubmit={handleSubmit}
@@ -134,26 +136,14 @@ const Login = () => {
               />
             </FormControl>
 
-            <div>
-              <p
-                style={{
-                  fontSize: "79%",
-                  cursor: "pointer",
-                  marginLeft: "-100px",
-                }}
-              >
-                Forget Password
-              </p>
-              <p style={{ fontSize: "85%", cursor: "pointer" }}>
-                {" "}
-                <input type="checkbox" />
-                Keep me in signed in for 7 days
-              </p>
-            </div>
-            <button className="button2">Sign In</button>
+            <button className="button2" disabled={loading}>
+              {loading ? 'Signing In...' : 'Sign In'}
+            </button>
 
-            <SocialAuth />
-            <Facebook/>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <SocialAuth />
+              <Facebook />
+            </div>
           </form>
 
           <div
@@ -161,24 +151,16 @@ const Login = () => {
           >
             By signing in you accept our Terms of use and Privacy Policy
           </div>
-
-         
-          <div style={{ display: "flex", gap: 30, cursor: "pointer" }}>
-            <FcGoogle style={{ fontSize: "25px" }} />
-            <FacebookIcon sx={{ color: "blue" }} />
-          </div>
-
           <p style={{ cursor: "pointer" }}>
             No account? &nbsp; <span onClick={() => navigate("/signup")}> Register Now</span>
           </p>
         </div>
       </div>
       <div className="last-div">
-        <img src={imgs} alt="img" width="100%" height="100%" />
+        {/* ... (existing content) */}
       </div>
     </div>
   );
 };
 
 export default Login;
-

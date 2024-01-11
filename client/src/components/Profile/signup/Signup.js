@@ -1,57 +1,64 @@
 import React, { useState } from 'react';
-import { Avatar, TextField, Button } from '@mui/material';
+import { TextField, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import '../signup/signup.css';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
     title: '',
     fullname: '',
-    avatar: '',
+    profileImage: null,
   });
 
-  const [image, setImage] = useState(null);
-
-  const convertbase64=(e)=>{
-    console.log(e)
-    let reader=new FileReader()
-     reader.readAsDataURL(e.target.files[0])
-     reader.onload=()=>{
-      console.log(reader.result)
-      setImage(reader.result)
-     }
-     reader.onerror=error=>{
-      console.log("Error ",error)
-     
-     }
-  }
-
- 
-
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, files } = e.target;
+
+    if (type === 'file' && files.length > 0) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        setFormData({ ...formData, [name]: reader.result });
+      };
+
+      reader.readAsDataURL(files[0]);
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSignup = async () => {
     try {
-      const formDataWithImage = new FormData();
-      formDataWithImage.append('image', image);
-      Object.keys(formData).forEach((key) => {
-        formDataWithImage.append(key, formData[key]);
-      });
+      const formDataObject = new FormData();
 
-      const response = await fetch('https://raddaf-be.onrender.com/auth/signup', {
-        method: 'POST',
-        body: formDataWithImage,
-      });
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataObject.append(key, value);
+    });
 
-      const data = await response.json();
+    const response = await fetch('https://raddaf-be.onrender.com/auth/signup', {
+      method: 'POST',
+      body: formDataObject,
+    });
+
+    const data = await response.json();
+
+      // const response = await fetch('https://raddaf-be.onrender.com/auth/signup', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
+
+      // const data = await response.json();
 
       if (response.ok) {
         console.log('Signup successful:', data);
-        setFormData({ ...formData, avatar: data.imageUrl });
+        navigate('/profile');
       } else {
         console.error('Signup failed:', data.error);
       }
@@ -62,11 +69,7 @@ const Signup = () => {
 
   return (
     <div className='total-div'>
-      {/* <Avatar alt="Remy Sharp"  sx={{ width: '9%', height: '115px' {image=="" || image==null?"": <img width={100} height={100} src={image} />}}} /> */}
-     <Avatar  alt="Remy Sharp" sx={{ width: '8%', height: '90px',borderRadius:"50%"}}> {image=="" || image==null?"": <img style={{width:"100%", height:"100%",borderRadius:"50px"}}  src={image} />}</Avatar>
-     
-
-      <h2>Account</h2>
+      <h2>Register Account</h2>
 
       <form className="form-field">
         <TextField
@@ -76,7 +79,6 @@ const Signup = () => {
           placeholder="Username"
           value={formData.username}
           onChange={handleInputChange}
-          
         />
 
         <TextField
@@ -115,12 +117,12 @@ const Signup = () => {
           onChange={handleInputChange}
         />
 
-        <TextField type='file'  className="inputs" onChange={convertbase64} accept='image/*'/>
+        <input type='file' name="profileImage" onChange={handleInputChange} className="inputs" accept='image/*' />
 
-        <center  className='buttons12'>
-          <Button sx={{color:"white",textTransform:"lowercase"}} type="button" onClick={handleSignup}>
-          Signup
-        </Button>
+        <center className='buttons12'>
+          <Button sx={{ color: 'white', textTransform: 'lowercase' }} type="button" onClick={handleSignup}>
+            Signup
+          </Button>
         </center>
       </form>
     </div>
