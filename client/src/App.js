@@ -16,8 +16,9 @@ import Forsale from "./components/Forsale/Forsale.jsx";
 import Tolet from "./components/To-let/Tolet.jsx";
 import Myproperty from "./components/Myproperty/Myproperty.js"
 import Logout from "./components/Profile/profile/Logout.js";
-// import Listaproperty from "./components/Lista-property/Lista-property.jsx";
+import Listaproperty from "./components/Lista-property/Lista-property.jsx";
 import Propertydetails from "./components/To-let/propertydetails.js";
+import Chatbot from "./components/Chat/FloatingChatIcon.jsx"
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
              <Navbar/>
                 <Routes>
                   <Route path="*" element={<Error />} />
+                  {/* <Route path="*" element={<Chatbot/>}/> */}
                    <Route path="/" element={<Home/>}/>
                    <Route path="/profile" element={<Profile/>}/>
                    <Route path="/aboutus" element={<Aboutus/>}/>
@@ -39,14 +41,12 @@ function App() {
                    <Route path="/myaccount" element={<Myaccount />} />
                    <Route path="/forsale" element={<Forsale/>}/>
                    <Route path="/tolet" element={<Tolet/>}/>
-                   {/* <Route path="/listaproperty" element={<Listaproperty/>}/> */}
+                   <Route path="/listaproperty" element={<Listaproperty/>}/>
                    <Route path="/myproperty" element={<Myproperty />} />
                    <Route path="/propertydetails" element={<Propertydetails/>}/>
                    <Route path="/logout" element={<Logout />} />
-                
-                   
-
                 </Routes>
+                <Chatbot/>
               <Footer/>
              </BrowserRouter> 
     </div>

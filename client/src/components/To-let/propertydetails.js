@@ -24,13 +24,13 @@ const Propertydetails = () => {
     console.log(selectedProperty)
 return(
     <>
-         <div>
+         {/* <div>
             {selectedProperty && Object.entries(selectedProperty).map(([key, value]) => (
                 <div key={key}>
                     <strong>{key}: </strong> {typeof value === 'object' ? JSON.stringify(value) : value}
                 </div>
             ))}
-        </div>
+        </div> */}
         <div>
             <div className='ma'>
                 <div className="gallery-container">
