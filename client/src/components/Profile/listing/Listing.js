@@ -1,69 +1,54 @@
-import React, { useState } from "react";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import "../listing/listing.css";
-import { images } from "../listing/Data";
-import { data } from "../listing/Data";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Icon } from "@mui/material";
-import bed from "../listing/bed.jpg";
-import group from "../listing/Group.jpg";
-import vector from "../listing/Vector1.jpg";
-import car from "../listing/car.jpg";
-import share from "../listing/share.jpg";
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
+import '../listing/listing.css'
+import bedroomlogo from '../listing/images/bedsymbol.png'
+import toilet from '../listing/images/toilet.png'
+import washroom from '../listing/images/washroom.png'
+import parking from '../listing/images/car.png'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const Listing = () => {
-  const [age, setAge] = React.useState("");
-  const [color, setColor] = useState("white");
+const [age,setAge]=useState("")
 
-  const [count, setCount] = useState(0);
-  // const [count1, setCount1] = useState(0);
-  // const [count2, setCount2] = useState(0);
-  // const [count3, setCount3] = useState(0);
-
+  const handleCallAgent = () => {
+    window.location.href = 'tel:6303364305';
+  };
   const handleChange = (event) => {
-    setAge(event.target.value);
+        setAge(event.target.value);
+      };
+  
+  const [saleListings, setSaleListings] = useState([]);
+  const fetchListings = async () => {
+    try {
+      const url = `https://raddaf-be.onrender.com/listing-property/get-listings?purpose=Sale`;
+      const response = await axios.get(url);
+      const { data } = response;
+      setSaleListings(data);
+      console.log(saleListings);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
-  const handleClick = () => {
-    setColor((prevColor) => (prevColor === "white" ? "red" : "white"));
+
+  useEffect(() => {
+    fetchListings();
+  }, []);
+
+  const [mainImage, setMainImage] = useState('');
+
+  const clicktop = (imageSrc) => {
+    setMainImage(imageSrc);
   };
-
-  const first = () => {
-    setCount(count - 1);
-  };
-  // const second = () => {
-  //   setCount(count + 1);
-  // };
-
-  // const first1 = () => {
-  //   setCount1(count1 - 1);
-  // };
-  // const second1 = () => {
-  //   setCount1(count1 + 1);
-  // };
-
-  // const first2 = () => {
-  //   setCount2(count2 - 1);
-  // };
-  // const second2 = () => {
-  //   setCount2(count2 + 1);
-  // };
-
-  // const first3 = () => {
-  //   setCount3(count3 - 1);
-  // };
-  // const second3 = () => {
-  //   setCount3(count3 + 1);
-  // };
 
   return (
-    <div>
+    <div className='Forsale-con1'>
+    
+     
+
       <div className="h2">
-        <h1>My listing request for</h1>
-        <div>
-          <FormControl
+         <h1>My listing request for</h1>
+         <div>
+           <FormControl
             sx={{
               m: 1,
               minWidth: 280,
@@ -101,80 +86,47 @@ const Listing = () => {
             </Select>
           </FormControl>
         </div>
+
       </div>
 
-      <div className="main1">
-        <div className="image-section">
-          <div className="main-image-section">
-            {images.slice(0, 1).map((ele) => (
-              <div key={ele.id} className="main-image">
-                <img
-                  className="main-image-large"
-                  src={ele.img}
-                  alt={ele.title}
-                />
-                <Icon onClick={handleClick}>
-                  <FavoriteIcon
-                    sx={{
-                      position: "absolute",
-                      top: "191px",
-                      left: "572px",
-                      fontSize: 55,
-                      color: color,
-                      cursor: "pointer",
-                    }}
-                  />
-                </Icon>
+      {saleListings.map((data, index) => (
+        <div className='forsale-sub-con1' key={index}>
+          <div className='forsale-img-sub-con1'>
+          <div className='main-img-con1'>
+          {mainImage ? (
+            <img src={mainImage} alt="Main" />
+          ) : (
+            data.images.length > 0 && <img src={data.images[0].Value} alt="First" />
+          )}
+          </div>
+          <div className='sub-img-con1'>
+            {data.images.map((image, index) => (
+              <div key={index} onClick={() => clicktop(image.Value)} className='sub-img-con-hw1'>
+                <img src={image.Value} alt={`Image ${index}`} />
               </div>
             ))}
           </div>
-          <div className="sub-images">
-            {images.slice(1).map((ele) => (
-              <div className="grid" key={ele.id}>
-                <img src={ele.img} alt={ele.title} className="grid-img" />
+         </div>
+          <div className='forsale-details-sub-con1'>
+            <div className='forsale-details-sub1'>
+              <div className='price1'><span>&#163; </span><span>299 PCM</span></div>
+              <div className='apartment1'>{data.noOfBedrooms} bedroom apartment to rent</div>
+              <div className='address1'>address</div>
+              <div className='rooms-details1'>
+                <div className='noofbedrooms1'><img src={bedroomlogo} alt='bedroomlogo'/>  {data.noOfBedrooms}</div>
+                <div className='bathrooms1'><img src={washroom} alt='washroom'/>  {data.noOfBathrooms}</div>
+                <div className='toilets1'><img src={toilet} alt='toilet'/>  {data.noOfToilets}</div>
+                <div className='parking1'><img src={parking} alt='parking'/>  {data.parkingCapacity}</div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="content-section1">
-          {data.map((ele, ind) => (
-            <div className="content-inside" key={ind}>
-              <h1>
-                <b>{ele.month}PCM(~190PW)</b>
-              </h1>
-              <h2>{ele.sale}</h2>
-              <p>{ele.description}</p>
-
-              <div className="icons">
-                <div>
-                  <img src={bed} alt="bed" />
-                   <span><b>{count}</b></span>
-                </div>
-                <div>
-                  <img src={group} alt="group" />
-                  <span><b>{count}</b></span>
-                </div>
-                <div>
-                  <img src={vector} alt="vector1" />
-                  <span><b>{count}</b></span>
-                </div>
-                <div>
-                  <img src={car} alt="car" />
-                  <span><b>{count}</b></span>
-                </div>
-
-                <div>
-                  <img src={share} alt="share" />
-                </div>
-              </div>
-            
             </div>
-            
-          ))}
-            <button className="button1">Contact with agent</button>
+            <div className='buttonagenthandle1'>
+              <button className='button-connect1' onClick={handleCallAgent}>
+                Contact with agent
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };

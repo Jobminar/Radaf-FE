@@ -33,19 +33,32 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await fetch('https://raddaf-be.onrender.com/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const formDataObject = new FormData();
 
-      const data = await response.json();
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataObject.append(key, value);
+    });
+
+    const response = await fetch('https://raddaf-be.onrender.com/auth/signup', {
+      method: 'POST',
+      body: formDataObject,
+    });
+
+    const data = await response.json();
+
+      // const response = await fetch('https://raddaf-be.onrender.com/auth/signup', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
+
+      // const data = await response.json();
 
       if (response.ok) {
         console.log('Signup successful:', data);
-        navigate('/profile');
+        navigate('/login');
       } else {
         console.error('Signup failed:', data.error);
       }
@@ -116,4 +129,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signup;

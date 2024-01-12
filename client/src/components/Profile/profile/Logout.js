@@ -13,7 +13,7 @@ function Logout() {
         if (!token) {
           // No token available, navigate to login page
           alert("first login details")
-          navigate("/profile");
+          navigate("/login");
           return;
         }
 

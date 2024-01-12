@@ -1,8 +1,7 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import logo from '../Home/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
-// import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {
   FormControl,
@@ -28,8 +27,8 @@ const Navbar = () => {
 
   const handleChange = (event) => {
     switch (event.target.value) {
-      case 'Manage my profile':
-        navigate('/profile');
+      case 'SignIn':
+        navigate('/login');
         break;
       case 'My listing request':
         navigate('/listing');
@@ -84,12 +83,45 @@ const Navbar = () => {
         Support
       </div>
 
-      <div className='routesignin' onClick={()=>navigate('/profile')} >
-        {/* <PersonOutlineRoundedIcon /> */}
-        <AccountCircleIcon sx={{width:"100%"}}/>
+
+      <div className='routesignin'>
+       
+            <FormControl sx={{ p: 2 }}>
+          {/* <InputLabel
+            id='demo-simple-select-autowidth-label'
+            sx={{ display: 'none' }}
+          >
+            Profile
+          </InputLabel> */}
+         
+          <Select
+            labelId='demo-simple-select-autowidth-label'
+            id='demo-simple-select-autowidth'
+            onChange={handleChange}
+            autoWidth
+            displayEmpty
+            renderValue={(value) => (value ? value :  <AccountCircleIcon />)}
+            sx={{
+              border: '#BE6B2E',
+              background: '#BE6B2E',
+              color: 'white',
+              fontFamily: 'bold',
+            }}
+          >
+            
+            <MenuItem value='SignIn'>Sign In</MenuItem>
+            <MenuItem value='signup'>Signup</MenuItem>
+            <MenuItem value='My listing request'>My listing request</MenuItem>
+            <MenuItem value='My viewing'> My viewing</MenuItem>
+            <MenuItem value='My rental request'>My rental request</MenuItem>
+            <MenuItem value='Myaccount'>My account</MenuItem>
+            <MenuItem value='Logout'>Logout</MenuItem>
+            
+          </Select>
+        </FormControl>
       </div>
 
-      {/* Popover for the dropdown menu */}
+      
       <Popover
         open={open}
         anchorEl={anchorEl}
@@ -103,7 +135,7 @@ const Navbar = () => {
           horizontal: 'right',
         }}
       >
-        {/* <FormControl sx={{ p: 2 }}>
+        <FormControl sx={{ p: 2 }}>
           <InputLabel
             id='demo-simple-select-autowidth-label'
             sx={{ display: 'none' }}
@@ -134,8 +166,9 @@ const Navbar = () => {
             <MenuItem value='Logout'>Logout</MenuItem>
             
           </Select>
-        </FormControl> */}
+        </FormControl>
       </Popover>
+      
     </div>
   );
 };
