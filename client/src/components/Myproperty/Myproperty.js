@@ -1,189 +1,51 @@
-// // import React, { useState } from 'react'
-// // import "./Myproperty.css"
-
-// // const Myproperty = () => {
-// //     const [selectedOption, setSelectedOption] = useState(null);
-
-// //     // Options for the dropdown
-// //     const options = [
-// //       'Letted Properties',
-// //       'Letting Properties',
-// //       'Properties under sale',
-// //     ];
-  
-// //     // Event handler for option selection
-// //     const handleSelect = (option) => {
-// //       setSelectedOption(option);
-// //     };
-  
-// //     return (
-// //       <div className='mainco'>
-// //         <h3>Filters: {selectedOption}</h3>
-// //         <select
-// //           value={selectedOption}
-// //           onChange={(e) => handleSelect(e.target.value)} style={{background:"#BE6B2E",border:"none",width:"15%",padding:"20px",fontSize:"18px"}}
-// //         >
-// //           <option value="">My Properties</option>
-// //           {options.map((option, index) => (
-// //             <option key={index} value={option}>
-// //               {option}
-// //             </option>
-// //           ))}
-// //         </select>
-// //         <div>
-
-// //         </div>
-// //       </div>
-// //     );
-// //   };
-
-// // export default Myproperty
-
-// import React, { useState } from 'react';
-// import "./Myproperty.css";
-// import da from './da.js'; // Make sure to import your data file
-
-// const SampleComponent = ({ data }) => {
-//   return (
-//     <div key={data.id} className='mains'>
-//       <div className='profile-ent'>
-//         <img src="your_sample_image_url.jpg" alt="Sample" className="sample-image" />
-//         <div className='incont'>
-//           <div className='nn'>
-//             <h1 className='headi'>ID</h1>
-//             <h3>{data.id}</h3>
-//           </div>
-//           <div className='nn'>
-//             <h1>Address</h1>
-//             <h3>{data.address}</h3>
-//           </div>
-//           <div className='nn'>
-//             <h1>Price</h1>
-//             <h3>{data.price}</h3>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const Myproperty = () => {
-//   const [selectedOption, setSelectedOption] = useState(null);
-
-//   // Options for the dropdown
-//   const options = [
-//     'Letted Properties',
-//     'Letting Properties',
-//     'Properties under sale',
-//   ];
-
-//   // Event handler for option selection
-//   const handleSelect = (option) => {
-//     setSelectedOption(option);
-//   };
-
-//   return (
-//     <div className='mainco'>
-//       <h3>Filters: {selectedOption}</h3>
-//       <select
-//         value={selectedOption}
-//         onChange={(e) => handleSelect(e.target.value)} style={{background:"#BE6B2E",border:"none",width:"15%",padding:"20px",fontSize:"18px"}}
-//       >
-//         <option value="">My Properties</option>
-//         {options.map((option, index) => (
-//           <option key={index} value={option}>
-//             {option}
-//           </option>
-//         ))}
-//       </select>
-//       <div>
-//         {da.map((data) => (
-//           <SampleComponent key={data.id} data={data} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Myproperty;
-
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Myproperty.css";
 import bed from "../Profile/listing/bed.jpg"
 import car from "../Profile/listing/car.jpg"
 import toilet from "../Profile/listing/Vector1.jpg"
 import shower from "../Profile/listing/Group.jpg"
-import da from './da.js'; // Make sure to import your data file
+import da from './da.js'; 
 import imag from "../Profile/MyViewing/Frame1.jpg"
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import bedroomlogo from '../Forsale/images/bedsymbol.png';
-// import toilet from '../Forsale/images/toilet.png';
 import washroom from '../Forsale/images/washroom.png';
 import parking from '../Forsale/images/car.png';
 
 const SampleComponent = ({ data }) => {
+  const navigate = useNavigate()
+  const [property,setproperty]=useState('')
+  const handleProperty = (item) => {
+    setproperty(item);
+    navigate('/propertydetails', { state: { property: item } });
+    console.log(item,'data')
+  };
   return (
     <div className='mains'>
       <div className='profile-ent'>
         <img src={imag} alt="Sample" className="sample-image" />
         <div className='incont'>
           <div className='nn'>
-            {/* <h1 className='headi'>ID</h1> */}
             <h3>{data.id}</h3> 
           </div>
           <div className='nn'>
-            {/* <h1>Address</h1> */}
-            <h3>{data.address}</h3>
+            <h3>{data.place}</h3>
           </div>
           <div className='nn'>
-            {/* <h1>Price</h1> */}
-            <h3>{data.price}</h3>
-            {/* <div>
-                <car/>
-            </div> */}
-
+            <h3>{data.purpose}  {data.price}</h3>
+            
                 <div className="iconm"  style={{display:"flex"}}>
-                  {/* <div style={{display:"flex",marginRight:"20px"}}>
-                  <div>
-                      <img src={bed} alt="bed" />
-                  </div>
-                  <div>
-                   <span><b>3</b></span>
-                </div>
-                <div>
-                  <img src={shower} alt="group" />
-                  </div>
-                  <div>
-                  <span><b>1</b></span>
-                </div>
-                <div>
-                  <img src={toilet} alt="vector1" />
-                  </div>
-                  <div>
-                  <span><b>3</b></span>
-                </div>
-                <div>
-                  <img src={car} alt="car" />
-                  </div>
-                  <div>
-                  <span><b>2</b></span>
-                </div>
-                  </div> */}
+                  
                   <div className='rooms-detai'>
-                <div className='noofbedrooms'><img src={bedroomlogo} alt='bedroomlogo'/>  {data.noofbedrooms}</div>
-                <div className='bahrooms'><img src={washroom} alt='washroom'/>  {data.noofbathrooms}</div>
-                <div className='toilets'><img src={toilet} alt='toilet'/>  {data.nooftoilets}</div>
-                <div className='parking'><img src={parking} alt='parking'/>  {data.noofpraking}</div>
+                <div className='noofbedrooms'><img src={bedroomlogo} alt='bedroomlogo'/>  {data.noOfBedrooms}</div>
+                <div className='bahrooms'><img src={washroom} alt='washroom'/>  {data.noOfBathrooms}</div>
+                <div className='toilets'><img src={toilet} alt='toilet'/>  {data.noOfToilets}</div>
+                <div className='parking'><img src={parking} alt='parking'/>  {data.parkingCapacity}</div>
               </div>
 
-                {/* <div> */}
-                  {/* <img src={share} alt="share" /> */}
-                {/* </div> */}
+                
                 </div>
-                {/* <div>
-                    <button>Property Details</button>
-                </div> */}
+               
 
 
           </div>
@@ -191,8 +53,7 @@ const SampleComponent = ({ data }) => {
                 <svg xmlns="http://www.w3.org/2000/svg" className='hicon' width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
                     <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"/>
                 </svg>
-                    <Link to="/propertydetails"><button  className='btnn'>Property Details</button></Link>
-                    {/* <img src={bed} alt="bed" /> */}
+                    <button onClick={() => handleProperty(data)} className='btnn'>Property Details</button>
             </div>
         </div>
       </div>
@@ -202,6 +63,7 @@ const SampleComponent = ({ data }) => {
 
 const Myproperty = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [listings, setListings] = useState([]);
 
   // Options for the dropdown
   const options = [
@@ -214,6 +76,20 @@ const Myproperty = () => {
   const handleSelect = (option) => {
     setSelectedOption(option);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://raddaf-be.onrender.com/listing-property/get-listings');
+        const data = await response.json();
+        setListings(data); // Update the state with fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className='mainco'>
@@ -230,7 +106,7 @@ const Myproperty = () => {
         ))}
       </select>
       <div className='row-container'>
-        {da.map((data) => (
+        {listings.map((data) => (
           <SampleComponent key={data.id} data={data} />
         ))}
       </div>
