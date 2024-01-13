@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import '../signup/signup.css';
+// import 'sweetalert2/dist/sweetalert2.css';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -49,12 +51,27 @@ const Signup = () => {
 
       if (response.ok) {
         console.log('Signup successful:', data);
+        Swal.fire({
+          icon: 'success',
+          title: 'Signup Successful!',
+          text: 'User signup  has been successfully ',
+        });
         navigate('/login');
       } else {
         console.error('Signup failed:', data.error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Signup failed!',
+          text: 'User signup  failed ',
+        });
       }
     } catch (error) {
       console.error('Error during signup:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Signup failed!',
+        text: 'User signup  failed ',
+      });
     }
   };
 

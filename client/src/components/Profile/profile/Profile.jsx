@@ -16,6 +16,7 @@ import Logo from '../profile/logo.png';
 import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
 import Facebook from "./Facebook";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -54,13 +55,27 @@ const Login = () => {
 
         if (data.user && data.user.email) {
           sessionStorage.setItem("user", JSON.stringify(data.user));
-          alert(`Hi ${data.user.email}, Welcome!`);
+          Swal.fire({
+            icon: 'success',
+            title: 'Signup Successful!',
+            text: 'User signup  has been successfully ',
+          });
           navigate("/");
         } else {
           console.error("User data not available in the response:", data);
+          Swal.fire({
+            icon: 'error',
+            title: 'Signup failed!',
+            text: "invalid credentilas"
+          });
         }
       } else {
         console.error("Error details:", data);
+        Swal.fire({
+          icon: 'error',
+          title: 'Signup failed!',
+          text:"invalid credentilas"
+        });
       }
     } catch (error) {
       console.error("Error:", error);

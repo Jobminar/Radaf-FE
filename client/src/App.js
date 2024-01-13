@@ -19,6 +19,7 @@ import Logout from './components/Profile/profile/Logout.js';
 import Listaproperty from './components/Lista-property/Lista-property.jsx';
 import Login from './components/Profile/profile/Profile.jsx';
 
+
 function App() {
   const isLoggedIn = sessionStorage.getItem('token') !== null;
 
