@@ -73,7 +73,7 @@ const Myaccount = () => {
       if (response.ok) {
         console.log('Update successful:', data);
         alert("Success full Update")
-        navigate("/profile")
+        navigate("/login")
         
         setIsEditing(false);
       } else {

@@ -1,78 +1,91 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
 import '../MyViewing/viewpage.css'
-import { data } from "../listing/Data";
-import { viewpage } from "../listing/Data";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Icon } from "@mui/material";
-import bed from '../listing/bed.jpg'
-import group from '../listing/Group.jpg'
-import vector from '../listing/Vector1.jpg'
-import car from '../listing/car.jpg'
-import share from '../listing/share.jpg'
+import bedroomlogo from '../MyViewing/images/bedsymbol.png'
+import toilet from '../MyViewing/images/toilet.png'
+import washroom from '../MyViewing/images/washroom.png'
+import parking from '../MyViewing/images/car.png'
+
 const Viewpage = () => {
+
+  const handleCallAgent = () => {
+    window.location.href = 'tel:6303364305';
+  };
   
-  const [color,setColor]=useState('white')
- 
-  const handleClick = () => {
-    setColor((prevColor) => (prevColor === 'white' ? 'red' : 'white'));
+  const [saleListings, setSaleListings] = useState([]);
+  const fetchListings = async () => {
+    try {
+      const url = `https://raddaf-be.onrender.com/listing-property/get-listings?purpose=Sale`;
+      const response = await axios.get(url);
+      const { data } = response;
+      setSaleListings(data);
+      console.log(saleListings);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchListings();
+  }, []);
+
+  const [mainImage, setMainImage] = useState('');
+
+  const clicktop = (imageSrc) => {
+    setMainImage(imageSrc);
   };
 
   return (
-    <div>
+    <div className='Forsale-con2'>
+    
+     
+
+          <div className="head2">
+         <h1>My Viewing</h1>
+         <p className="p">upcoming viewing</p>
+         <p className="p">23rd March 2024, 1:32pm</p>
         
-      <div className="head">
-        <h1>My Viewing</h1>
-        <p className="p">upcoming viewing</p>
-        <p className="p">23rd March 2024, 1:32pm</p>
-        <div>
-      
-        </div>
+
       </div>
 
-      <div className="main2">
-        <div className="image-section2">
-          <div className="main-image-section2">
-            {viewpage.slice(0, 1).map((ele) => (
-              <div key={ele.id} className="main-image2">
-              
-                <img 
-                  className="main-image-large2"
-                  src={ele.img}
-                  alt={ele.title}
-                />
-                <Icon onClick={handleClick}><FavoriteIcon  sx={{position:'absolute',top:"220px",left:"572px",fontSize:55,color: color,cursor:"pointer"}}/></Icon>
+      {saleListings.map((data, index) => (
+        <div className='forsale-sub-con2' key={index}>
+          <div className='forsale-img-sub-con2'>
+          <div className='main-img-con2'>
+          {mainImage ? (
+            <img src={mainImage} alt="Main" />
+          ) : (
+            data.images.length > 0 && <img src={data.images[0].Value} alt="First" />
+          )}
+          </div>
+          <div className='sub-img-con2'>
+            {data.images.map((image, index) => (
+              <div key={index} onClick={() => clicktop(image.Value)} className='sub-img-con-hw2'>
+                <img src={image.Value} alt={`Image ${index}`} />
               </div>
             ))}
           </div>
-          <div className="sub-images2">
-            {viewpage.slice(1).map((ele) => (
-              <div className="grid2" key={ele.id}>
-                <img src={ele.img} alt={ele.title} className="grid-img2" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="content-section2">
-          {data.map((ele,ind) => (
-            <div className="content-inside2" key={ind}>
-               <h1><b>{ele.month}PCM(~190PW)</b></h1>
-               <h2>{ele.sale}</h2>
-               <p>{ele.description}</p>
-
-        <div className="icons">
-         <img src={bed} alt="bed"/>
-            <img src={group} alt="group"/>
-            <img src={vector} alt="vector1" />
-            <img src={car} alt="car"/>
-            <img src={share} alt="share"/>        
          </div>
-         <button className="buttonss">Contact with agent</button>
+          <div className='forsale-details-sub-con2'>
+            <div className='forsale-details-sub2'>
+              <div className='price2'><span>&#163; </span><span>299 PCM</span></div>
+              <div className='apartment2'>{data.noOfBedrooms} bedroom apartment to rent</div>
+              <div className='address2'>address</div>
+              <div className='rooms-details2'>
+                <div className='noofbedrooms2'><img src={bedroomlogo} alt='bedroomlogo'/>  {data.noOfBedrooms}</div>
+                <div className='bathrooms2'><img src={washroom} alt='washroom'/>  {data.noOfBathrooms}</div>
+                <div className='toilets2'><img src={toilet} alt='toilet'/>  {data.noOfToilets}</div>
+                <div className='parking2'><img src={parking} alt='parking'/>  {data.parkingCapacity}</div>
+              </div>
             </div>
-          ))}
+            <div className='buttonagenthandle2'>
+              <button className='button-connect2' onClick={handleCallAgent}>
+                Contact with agent
+              </button>
+            </div>
+          </div>
         </div>
-        
-      </div>
+      ))}
     </div>
   );
 };
