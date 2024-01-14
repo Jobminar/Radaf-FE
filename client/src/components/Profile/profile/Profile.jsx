@@ -12,7 +12,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import Logo from '../profile/logo.png';
+import Logo from './logo.png';
 import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
 import Facebook from "./Facebook";

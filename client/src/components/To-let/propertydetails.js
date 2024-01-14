@@ -272,4 +272,4 @@ return(
 };
 
 
-export default Propertydetails
+export default Propertydetails ;

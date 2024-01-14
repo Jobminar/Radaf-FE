@@ -5,16 +5,20 @@ import bedroomlogo from './images/bedsymbol.png';
 import toilet from './images/toilet.png';
 import washroom from './images/washroom.png';
 import parking from './images/car.png';
+import { useNavigate } from 'react-router-dom';
 // mui images
 import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Forsale = () => {
+  const navigate = useNavigate()
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
   };
   
   const [saleListings, setSaleListings] = useState([]);
+  const [loading, setLoading] = useState(true);
   const fetchListings = async () => {
     try {
       const url = 'https://raddaf-be.onrender.com/listing-property/get-listings';
@@ -26,7 +30,13 @@ const Forsale = () => {
     } catch (error) {
       console.error('Error:', error);
     }
-  };
+    finally {
+      // Set loading to false after fetching data, with a delay of 3 seconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+  }
+}
   
 
   useEffect(() => {
@@ -38,8 +48,26 @@ const Forsale = () => {
   const clicktop = (imageSrc) => {
     setMainImage(imageSrc);
   };
+  const [property,setproperty]=useState('')
+
+  const handleProperty = (item) => {
+    setproperty(item);
+    navigate('/propertydetails', { state: { property: item } });
+    console.log(item,'data')
+  };
 
   return (
+
+    <>
+
+      {loading ? (
+        // Render loading spinner while data is being fetched
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <CircularProgress />
+          
+        </div>
+      ) : (
+
     <div className='Forsale-con'>
       <div className='filter-section'>
         <div className='pincode-filter'>
@@ -92,7 +120,7 @@ const Forsale = () => {
       {saleListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>
           <div className='forsale-img-sub-con'>
-          <div className='main-img-con'>
+          <div className='main-img-con' onClick={() => handleProperty(data)} >
           {mainImage ? (
             <img src={mainImage} alt="Main" />
           ) : (
@@ -128,6 +156,9 @@ const Forsale = () => {
         </div>
       ))}
     </div>
+     )}
+    </>
+    
   );
 };
 
