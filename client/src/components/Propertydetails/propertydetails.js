@@ -1,5 +1,5 @@
 import React from 'react'
-import {images,dimmentions} from "./propertydata.js"
+// import {images,dimmentions} from "./propertydata.js"
 import "./propertydetails.css"
 import bed from "../Profile/listing/bed.jpg"
 import car from "../Profile/listing/car.jpg"
