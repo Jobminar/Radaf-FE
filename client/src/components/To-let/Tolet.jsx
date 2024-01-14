@@ -8,6 +8,7 @@ import bedroomlogo from '../Forsale/images/bedsymbol.png';
 import toilet from '../Forsale/images/toilet.png';
 import washroom from '../Forsale/images/washroom.png';
 import parking from '../Forsale/images/car.png';
+import CircularProgress from '@mui/material/CircularProgress';
 // mui images
 import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
@@ -29,23 +30,30 @@ const Tolet = () => {
    console.log(selectedBedroom)
 
   const [toletListings, setToletListings] = useState([]);
+  const [loading, setLoading] = useState(true);
   const fetchListings = async () => {
     try {
       const url = 'https://raddaf-be.onrender.com/listing-property/get-listings';
       const response = await axios.get(url);
       const { data } = response;
-      const filteredToletListings = data.filter(data => data.purpose === 'Tolet');
+      const filteredToletListings = data.filter((data) => data.purpose === 'Tolet');
       console.log(filteredToletListings);
-      setToletListings(filteredToletListings); 
+      setToletListings(filteredToletListings);
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      // Set loading to false after fetching data, with a delay of 3 seconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     }
   };
 
   useEffect(() => {
     fetchListings();
   }, []);
-  
+
+
   const [mainImage, setMainImage] = useState('');
 
   const clicktop = (imageSrc) => {
@@ -61,7 +69,15 @@ const Tolet = () => {
   };
 
   return (
-    <div className='Forsale-con'>
+    <>
+    {loading ? (
+        // Render loading spinner while data is being fetched
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <CircularProgress />
+        </div>
+      ) : (
+         
+      <div className='Forsale-con'>
       <div className='filter-section'>
         <div className='pincode-filter'>
           <AddLocationAltOutlinedIcon />
@@ -143,6 +159,9 @@ const Tolet = () => {
         </div>
       ))}
     </div>
+     )}
+    </>
+    
   );
 };
 
