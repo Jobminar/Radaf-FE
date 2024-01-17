@@ -2,8 +2,11 @@
 import Cookies from 'universal-cookie';
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+
 
 function Logout() {
+  // const history = useHistory();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,8 +17,10 @@ function Logout() {
 
         if (!token) {
           // No token available, navigate to login page
-          alert("first login details")
-          navigate("/login");
+          // alert("first login details")
+          // history.replace("/login");
+          window.location.replace("/login");
+          // navigate("/login");
           return;
         }
 
@@ -30,7 +35,8 @@ function Logout() {
 
         if (!response.ok) {
           // Session expired, navigate to login page
-          navigate("/");
+          // navigate("/login",{ replace: true });
+          window.location.replace("/login");
         }
       } catch (error) {
         console.error("Error checking session:", error);
@@ -43,12 +49,16 @@ function Logout() {
   // Logout logic
   const handleLogout = () => {
     // Clear sessionStorage and navigate to login page
+    // navigate("/login",{ replace: true });
+    
     sessionStorage.clear();
     const cookies = new Cookies();
+    window.location.replace("/login");
+
 
   // Remove the token and user cookies
-  cookies.remove('token', { path: '/' });
-    navigate("/");
+  // cookies.remove('token', { path: '/' });
+    // navigate("/login");
   };
 
   return (

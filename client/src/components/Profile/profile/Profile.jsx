@@ -50,6 +50,18 @@ const Login = () => {
         },
         body: JSON.stringify({ email: formData.email, password: formData.password }),
       });
+      
+      // const token = sessionStorage.getItem("token");
+
+      //   if (!token) {
+      //     // No token available, navigate to login page
+      //     // alert("first login details")
+      //     navigate("/login");
+      //     return;
+      //   }
+      //   else{
+      //     navigate('/valuemyhome')
+      //   }
 
       const data = await response.json();
 
@@ -64,7 +76,7 @@ const Login = () => {
             title: 'Signup Successful!',
             text: 'User signup  has been successfully ',
           });
-          navigate("/",{replace:true});
+          navigate("/aboutus",{replace:true});
         } else {
           console.error("User data not available in the response:", data);
           Swal.fire({
@@ -85,8 +97,22 @@ const Login = () => {
       console.error("Error:", error);
     } finally {
       setLoading(false); // Stop loading
+      // const token = sessionStorage.getItem("token");
+      const da=sessionStorage.getItem("token")
+
+  if (da){
+    navigate("/aboutus",{ replace: true })
+  }
+
+        
     }
   };
+  const da=sessionStorage.getItem("token")
+
+  if (da){
+    navigate("/aboutus",{ replace: true })
+  }
+  
 
   return (
     <div className="main-div">
@@ -100,6 +126,7 @@ const Login = () => {
 
           <form
             onSubmit={handleSubmit}
+            // onClick={()=>{navigate('/aboutus')}}
             style={{
               display: "flex",
               flexDirection: "column",
