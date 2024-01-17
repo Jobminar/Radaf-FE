@@ -17,9 +17,12 @@ import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
 import Facebook from "./Facebook";
 import Swal from "sweetalert2";
+import { useAuth } from "../../auth";
 
 const Login = () => {
   const navigate = useNavigate();
+  const {login} =useAuth()
+  const [name,setName]=useState("")
 
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
@@ -37,7 +40,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true); 
 
     try {
       const response = await fetch("https://raddaf-be.onrender.com/auth/login", {
@@ -55,12 +58,13 @@ const Login = () => {
 
         if (data.user && data.user.email) {
           sessionStorage.setItem("user", JSON.stringify(data.user));
+          setName(data.user)
           Swal.fire({
             icon: 'success',
             title: 'Signup Successful!',
             text: 'User signup  has been successfully ',
           });
-          navigate("/");
+          navigate("/",{replace:true});
         } else {
           console.error("User data not available in the response:", data);
           Swal.fire({

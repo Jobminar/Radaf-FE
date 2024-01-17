@@ -10,9 +10,12 @@ import { useNavigate } from 'react-router-dom';
 import mainimg from './Images/main-img.png'
 import Forsalehome from './forsalehome';
 import Tolethome from './tolethome';
+import { useAuth } from '../auth';
 
 const Home =(()=>{
     const navigate = useNavigate()
+    const data=useAuth()
+    console.log(data)
     return(
         <>
             <div className="home-con">

@@ -19,38 +19,40 @@ import Propertydetails from './components/To-let/propertydetails.js';
 import Logout from './components/Profile/profile/Logout.js';
 import Listaproperty from './components/Lista-property/Lista-property.jsx';
 import Login from './components/Profile/profile/Profile.jsx';
+import { AuthProvider } from './components/auth.js';
+import PrivateRoute from './components/PrivateRoute.js';
 
 
 function App() {
   const isLoggedIn = sessionStorage.getItem('token') !== null;
 
   return (
-    <div>
+    <AuthProvider>
       <BrowserRouter>
         <Navbar isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path='*' element={<Error />} />
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
           <Route path='/login' element={<Login />} />
-          <Route path='/aboutus' element={<Aboutus />} />
-          <Route path='/support' element={<Support />} />
-          <Route path='/valuemyhome' element={<Valuemyhome />} />
+          <Route path='/aboutus' element={<PrivateRoute><Aboutus /></PrivateRoute>} />
+          <Route path='/support' element={<PrivateRoute><Support /></PrivateRoute>} />
+          <Route path='/valuemyhome' element={<PrivateRoute><Valuemyhome /></PrivateRoute>} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/listing' element={<Listing />} />
-          <Route path='/viewpage' element={<Viewpage />} />
-          <Route path='/rentalpage' element={<Rentalpage />} />
-          <Route path='/myaccount' element={<Myaccount />} />
-          <Route path='/forsale' element={<Forsale />} />
-          <Route path='/tolet' element={<Tolet />} />
-          <Route path='/listaproperty' element={<Listaproperty />} />
-          <Route path='/myproperty' element={<Myproperty />} />
-          <Route path='propertydetails' element={<Propertydetails />} />
-          <Route path='/logout' element={<Logout />} />
-          <Route path='/propertydetails' element={<Propertydetails />} />
+          <Route path='/listing' element={<PrivateRoute><Listing /></PrivateRoute>} />
+          <Route path='/viewpage' element={<PrivateRoute><Viewpage /></PrivateRoute>} />
+          <Route path='/rentalpage' element={<PrivateRoute><Rentalpage /></PrivateRoute>} />
+          <Route path='/myaccount' element={<PrivateRoute><Myaccount /></PrivateRoute>} />
+          <Route path='/forsale' element={<PrivateRoute><Forsale /></PrivateRoute>} />
+          <Route path='/tolet' element={<PrivateRoute><Tolet /></PrivateRoute>} />
+          <Route path='/listaproperty' element={<PrivateRoute><Listaproperty /></PrivateRoute>} />
+          <Route path='/myproperty' element={<PrivateRoute><Myproperty /></PrivateRoute>} />
+          <Route path='propertydetails' element={<PrivateRoute><Propertydetails /></PrivateRoute>} />
+          <Route path='/logout' element={<PrivateRoute><Logout /></PrivateRoute>} />
+          <Route path='/propertydetails' element={<PrivateRoute><Propertydetails /></PrivateRoute>} />
         </Routes>
         <Footer />
       </BrowserRouter>
-    </div>
+    </AuthProvider>
   );
 }
 

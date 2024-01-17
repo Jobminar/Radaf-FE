@@ -1,3 +1,5 @@
+// import { Cookie } from "@mui/icons-material";
+import Cookies from 'universal-cookie';
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -42,6 +44,10 @@ function Logout() {
   const handleLogout = () => {
     // Clear sessionStorage and navigate to login page
     sessionStorage.clear();
+    const cookies = new Cookies();
+
+  // Remove the token and user cookies
+  cookies.remove('token', { path: '/' });
     navigate("/");
   };
 
