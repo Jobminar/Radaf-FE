@@ -21,6 +21,7 @@ import Listaproperty from './components/Lista-property/Lista-property.jsx';
 import Login from './components/Profile/profile/Profile.jsx';
 import { AuthProvider } from './components/auth.js';
 import PrivateRoute from './components/PrivateRoute.js';
+import Chartbot from "./components/Chat/FloatingChatIcon.jsx"
 
 
 function App() {
@@ -50,8 +51,10 @@ function App() {
           <Route path='/logout' element={<PrivateRoute><Logout /></PrivateRoute>} />
           <Route path='/propertydetails' element={<PrivateRoute><Propertydetails /></PrivateRoute>} />
         </Routes>
+        
         <Footer />
       </BrowserRouter>
+      <Chartbot/>
     </AuthProvider>
   );
 }
