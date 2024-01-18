@@ -237,11 +237,10 @@ const Navbar = () => {
   const dd=sessionStorage.getItem("token")
 
   return (
-    <div  className={dd ? 'navbar-con' : 'false-class'}>
+    <div className={dd?"navbar-con":"nav-below"}>
       <div className='logo'>
         <img src={logo} alt='logo' />
       </div>
-      {/* {auth.authenticated ? */}
       {dd ?
        (<>
       <div className='route' onClick={() => navigate('/')}>
@@ -268,18 +267,8 @@ const Navbar = () => {
       <div className='route' onClick={() => navigate('/support')}>
         Support
       </div>
-
-
-      <div className='routesignin'>
-       
+      <div className='routesignin'>       
             <FormControl sx={{ p: 2 }}>
-          {/* <InputLabel
-            id='demo-simple-select-autowidth-label'
-            sx={{ display: 'none' }}
-          >
-            Profile
-          </InputLabel> */}
-         
           <Select
             labelId='demo-simple-select-autowidth-label'
             id='demo-simple-select-autowidth'
@@ -294,9 +283,6 @@ const Navbar = () => {
               fontFamily: 'bold',
             }}
           >
-            
-            {/* <MenuItem value='SignIn'>Sign In</MenuItem> */}
-            {/* <MenuItem value='signup'>Signup</MenuItem> */}
             <MenuItem value='My listing request'>My listing request</MenuItem>
             <MenuItem value='My viewing'> My viewing</MenuItem>
             <MenuItem value='My rental request'>My rental request</MenuItem>
@@ -308,60 +294,27 @@ const Navbar = () => {
       </div></>)
 :(
       <>
-      <div style={{display:"flex",marginBottom:"20px"}}>
-        <div className='route' style={{paddingRight:"20px"}} onClick={() => navigate('/login')}>
-          Login
-        </div>
-        <div className='route' onClick={() => navigate('/signup')}>
-          Signup
-        </div>
-      </div>
-      {/* <Popover
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handlePopoverClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-      > */}
-        {/* <FormControl sx={{ p: 2 }}>
-          <InputLabel
-            id='demo-simple-select-autowidth-label'
-            sx={{ display: 'none' }}
-          >
-            Profile
-          </InputLabel>
+      <div className='routesignin'>       
+            <FormControl sx={{ p: 1 }}>         
           <Select
             labelId='demo-simple-select-autowidth-label'
             id='demo-simple-select-autowidth'
             onChange={handleChange}
             autoWidth
             displayEmpty
-            renderValue={(value) => (value ? value : 'Profile')}
+            renderValue={(value) => (value ? <AccountCircleIcon /> :  <AccountCircleIcon />)}
             sx={{
               border: '#BE6B2E',
               background: '#BE6B2E',
               color: 'white',
               fontFamily: 'bold',
             }}
-          > */}
-            
-            {/* <MenuItem value='Manage my profile'>Sign In</MenuItem>
-            <MenuItem value='signup'>Signup</MenuItem> */}
-            {/* <MenuItem value='My listing request'>My listing request</MenuItem> */}
-            {/* <MenuItem value='My viewing'> My viewing</MenuItem> */}
-            {/* <MenuItem value='My rental request'>My rental request</MenuItem> */}
-            {/* <MenuItem value='Myaccount'>My account</MenuItem> */}
-            {/* <MenuItem value='Logout'>Logout</MenuItem> */}
-            
-          {/* </Select>
+          >
+            <MenuItem value='SignIn'>Sign In</MenuItem>
+            <MenuItem value='signup'>Signup</MenuItem>            
+          </Select>
         </FormControl>
-      </Popover> */}
+      </div>
       </>)}
       
     </div>

@@ -8,6 +8,8 @@ import washroom from '../Forsale/images/washroom.png';
 import parking from '../Forsale/images/car.png';
 import Tolet from '../To-let/Tolet';
 import Forsale from '../Forsale/Forsale';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const SampleComponent = ({ data }) => {
   const navigate = useNavigate()
@@ -72,6 +74,8 @@ const SampleComponent = ({ data }) => {
 const Myproperty = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [listings, setListings] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
 //   let content;
 
@@ -110,8 +114,10 @@ const Myproperty = () => {
         const data = await response.json();
         setListings(data); // Update the state with fetched data
         console.log(data)
+        setLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
+        setLoading(false)
       }
     };
 
@@ -119,16 +125,28 @@ const Myproperty = () => {
   }, []);
 
   return (
+    <>
+    {loading ? (
+      
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress />
+      </div>
+    ) : (
     <div className='mainco'>
       
       <div className='row-container'>
+        
         {listings.map((data) => (
           <SampleComponent key={data.id} data={data} />
         ))}
         {/* <img src={listings.images.Value}/> */}
       </div>
     </div>
-  );
+    )
+        }
+  
+  </>
+  )
 };
 
 export default Myproperty;

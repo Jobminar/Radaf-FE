@@ -61,7 +61,7 @@ const Tolet = () => {
 
   const handleProperty = (item) => {
     setproperty(item);
-    navigate('/propertydetails', { state: { property: item } });
+    navigate('/lettedpropertydetails', { state: { property: item } });
     console.log(item,'data')
   };
 
@@ -75,7 +75,7 @@ const Tolet = () => {
         </div>
       ) : (
     <div className='Forsale-con' style={{width:"100%"}}>
-      <div className='filter-section'>
+      {/* <div className='filter-section'>
         <div className='pincode-filter'>
           <AddLocationAltOutlinedIcon />
           <input type='text' placeholder='Manchester' />
@@ -115,7 +115,7 @@ const Tolet = () => {
               <option className='option' value="option2">Commercial</option>
             </select>
         </div>
-      </div>
+      </div> */}
 
       {toletListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>
