@@ -13,10 +13,12 @@ const Forsalehome = () => {
     const navigate = useNavigate()
     const fetchListings = async () => {
         try {
-            const url = `https://raddaf-be.onrender.com/listing-property/get-listings?purpose=Sale`;
+            const url = 'https://raddaf-be.onrender.com/listing-property/get-listings';
             const response = await axios.get(url);
             const { data } = response;
-            setSaleListings(data);
+            const filteredToletListings = data.filter(data => data.purpose === 'Sale');
+            console.log(filteredToletListings);
+            setSaleListings(filteredToletListings); 
         } catch (error) {
             console.error('Error:', error);
         }
@@ -42,7 +44,7 @@ const Forsalehome = () => {
                 {saleListings.slice(0, 3).map((listing, index) => (
                     <div key={index} className='forsalesub-con'>
                         <div className='sale-image' onClick={() => handleProperty(listing)}>
-                            <img src={listing.images[0].Value} alt={`main-img-${index}`} />
+                            <img src={listing.images[0]?.Value} alt={`main-img-${index}`} />
                         </div>
                         <div className='sale-details'>
                             <div className='home-sale-price'>
