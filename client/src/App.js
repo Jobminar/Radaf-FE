@@ -27,6 +27,7 @@ import Lettedinspection from "./components/LettedProperties/lettedpropertiesinsp
 import Lettedbill from "./components/LettedProperties/Lettedbill.js"
 import Lettedagreements from "./components/LettedProperties/Lettedagreements.js"
 import Lettedrepair from "./components/LettedProperties/Lettedrepair.js"
+import "./App.css"
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Navbar isLoggedIn={isLoggedIn} />
-        <div style={{paddingTop:"80px"}}>
+        <div className={isLoggedIn?"login":"logout"}>
+        {/* style={{paddingTop:"80px"}} */}
         <Routes>
           <Route path='*' element={<Error />} />
           <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
