@@ -36,29 +36,29 @@ return(
                 <div className="gallery-container">
                     <div className="main-image">
                         {/* <img className='imagmain' src={images[0].img} alt={`Image ${images[0].id}`} /> */}
-                        <div className='imagmain' style={{backgroundImage:`url(${selectedProperty.images[0].Value})`,width:"100%"}}>
-                            <div className='contaier'>
+                        <div className='imagmain' style={{backgroundSize:"cover",backgroundImage:`url(${selectedProperty.images[0].Value})`,width:"100%",height:"500px"}}>
+                            <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container'>
                                     <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"8px"}} width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
                                         <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
                                         <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
                                     </svg>Photos</button>
                             </div>
-                            <div className='contaier'>
+                            <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container'>
                                     <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"8px"}} width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                                         <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
                                         <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
                                     </svg>Print Details</button>
                             </div >
-                            <div className='contaner'>
+                            <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container'>
                                     <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"8px"}} width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
                                         <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
                                         <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
                                     </svg>Make Offer</button>
                             </div>
-                            <div className='contaner'>
+                            <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container'>
                                     <svg xmlns="http://www.w3.org/2000/svg"  style={{paddingRight:"8px"}} width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
                                         <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
@@ -217,8 +217,8 @@ return(
                     </div>
                     <div className="side-images">
                     {selectedProperty.images.map((image, index) => (
-                        <div key={index} className='sub-img-con-hw'>
-                        <img src={image.Value} alt={`Image ${index}`} />
+                        <div key={index} style={{height:"165px",paddingBottom:"5px"}} className='sub-img-con-hw'>
+                            <img src={image.Value} alt={`Image ${index}`} />
                         </div>
                     ))}
 

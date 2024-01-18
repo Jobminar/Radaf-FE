@@ -146,10 +146,13 @@ import parking from '../Forsale/images/car.png';
 // mui images
 import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const Tolet = () => {
    
    const navigate = useNavigate()
+   const [loading, setLoading] = useState(true);
 
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
@@ -172,8 +175,10 @@ const Tolet = () => {
       const filteredToletListings = data.filter(data => data.purpose === 'Sale');
       console.log(filteredToletListings);
       setToletListings(filteredToletListings); 
+      setLoading(false)
     } catch (error) {
       console.error('Error:', error);
+      setLoading(false)
     }
   };
 
@@ -196,6 +201,14 @@ const Tolet = () => {
   };
 
   return (
+    <>
+    {loading ? (
+        // Render loading spinner while data is being fetched
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <CircularProgress />
+          
+        </div>
+      ) : (
     <div style={{width:"100%"}} className='Forsale-con'>
       <div className='filter-section'>
         <div className='pincode-filter'>
@@ -279,6 +292,8 @@ const Tolet = () => {
         </div>
       ))}
     </div>
+      )}
+    </>
   );
 };
 
