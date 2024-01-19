@@ -59,7 +59,7 @@ const Login = () => {
             title: 'Login Successful!',
             text: 'User login has been successful',
           });
-          navigate("/");
+          navigate("/home");
         } else {
           console.error("User data not available in the response:", data);
           Swal.fire({

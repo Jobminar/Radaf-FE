@@ -63,7 +63,7 @@ const Navbar = ({children}) => {
         <img src={logo} alt='logo' />
       </div>
  
-      <div className='route' onClick={() => navigate('/')}>
+      <div className='route' onClick={() => navigate('/home')}>
         Home
       </div>
       <div className='route' onClick={() => navigate('/aboutus')}>
@@ -174,7 +174,9 @@ const Navbar = ({children}) => {
         </FormControl>
       </Popover>
       </div>
+      <div style={{marginTop:"7%"}}>
       {children}
+      </div>
     </div>
   );
 };
