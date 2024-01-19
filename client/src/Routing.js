@@ -31,8 +31,8 @@ function Routing() {
         
         <Routes>
           <Route path='*' element={<Navbar><Error /></Navbar>} />
-          <Route path='/' element={<Navbar><Home /></Navbar>} />
-          <Route path='/login' element={<Nav><Login /></Nav>} />
+          <Route path='/home' element={<Navbar><Home /></Navbar>} />
+          <Route path='/' element={<Nav><Login /></Nav>} />
           <Route path='/aboutus' element={<Navbar><Aboutus /></Navbar>} />
           <Route path='/support' element={<Navbar><Support /></Navbar>} />
           <Route path='/valuemyhome' element={<Navbar><Valuemyhome /></Navbar>} />
