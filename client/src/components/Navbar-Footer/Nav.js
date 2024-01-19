@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Navbar.css';
+import '../Navbar-Footer/nav.css'
 import logo from '../Home/Images/logo.png';
 import { useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -11,7 +11,7 @@ import {
   Popover,
 } from '@mui/material';
 
-const Navbar = ({children}) => {
+const Nav = ({children}) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -45,9 +45,6 @@ const Navbar = ({children}) => {
         case 'Myaccount':
         navigate('/myaccount');
         break;
-        case 'Logout':
-          navigate('/login');
-          break;
        
       default:
         break;
@@ -58,34 +55,12 @@ const Navbar = ({children}) => {
   return (
     <div>
     <div className='navbar-con'>
+      
       <div className='logo'>
         <img src={logo} alt='logo' />
       </div>
 
-      <div className='route' onClick={() => navigate('/')}>
-        Home
-      </div>
-      <div className='route' onClick={() => navigate('/aboutus')}>
-        About us
-      </div>
-      <div className='route' onClick={() => navigate('/valuemyhome')}>
-        Value my Home
-      </div>
-      <div className='route' onClick={()=>navigate('/forsale')}>
-        For Sale
-        </div>
-      <div className='route'  onClick={()=>navigate('/listaproperty')}>
-        List my Property
-        </div>
-      <div className='route'onClick={()=>navigate('/tolet')}>
-        To-let
-        </div>
-      <div className='route' onClick={()=>navigate('/myproperty')}>
-        My-Property
-        </div>
-      <div className='route' onClick={() => navigate('/support')}>
-        Support
-      </div>
+     
 
 
       <div className='routesignin'>
@@ -113,13 +88,8 @@ const Navbar = ({children}) => {
             }}
           >
             
-            {/* <MenuItem value='SignIn'>Sign In</MenuItem>
-            <MenuItem value='signup'>Signup</MenuItem> */}
-            <MenuItem value='My listing request'>My listing request</MenuItem>
-            <MenuItem value='My viewing'> My viewing</MenuItem>
-            <MenuItem value='My rental request'>My rental request</MenuItem>
-            <MenuItem value='Myaccount'>My account</MenuItem>
-            <MenuItem value='Logout'>Logout</MenuItem>
+            <MenuItem value='SignIn'>Sign In</MenuItem>
+            <MenuItem value='signup'>Signup</MenuItem>
             
           </Select>
         </FormControl>
@@ -178,4 +148,4 @@ const Navbar = ({children}) => {
   );
 };
 
-export default Navbar;
+export default Nav

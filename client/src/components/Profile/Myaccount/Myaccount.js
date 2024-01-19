@@ -1,13 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { Avatar, TextField, Button, IconButton } from '@mui/material';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import '../Myaccount/myaccount.css';
-import Logout from '../profile/Logout';
 import { useNavigate } from 'react-router-dom';
 
 const Myaccount = () => {
-
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -22,11 +21,9 @@ const Myaccount = () => {
 
   useEffect(() => {
     const userString = sessionStorage.getItem('user');
-    console.log('userString:', userString);
 
     try {
       const user = userString ? JSON.parse(userString) : {};
-      console.log('user:', user);
 
       setFormData({
         username: user.username || '',
@@ -41,7 +38,7 @@ const Myaccount = () => {
     } catch (error) {
       console.error('Error parsing user data:', error);
     }
-  }, []); // Empty dependency array ensures useEffect runs only once, similar to componentDidMount
+  }, []);
 
   const convertBase64 = (e) => {
     let reader = new FileReader();
@@ -72,9 +69,8 @@ const Myaccount = () => {
 
       if (response.ok) {
         console.log('Update successful:', data);
-        alert("Success full Update")
-        navigate("/login")
-        
+        alert('Successful Update');
+        navigate('/login'); // Navigate to the login page after successful update
         setIsEditing(false);
       } else {
         console.error('Update failed:', data.error);
@@ -88,9 +84,10 @@ const Myaccount = () => {
     setIsEditing(true);
   };
 
+
   return (
     <div className='total-divs'>
-      <Avatar alt="Remy Sharp" sx={{ width: '8%', height: '90px', borderRadius: '50%' }}>
+     <Avatar alt="Remy Sharp">
         {image ? <img style={{ width: '100%', height: '100%', borderRadius: '50px' }} src={image} alt="avatar" /> : null}
       </Avatar>
 
@@ -157,7 +154,7 @@ const Myaccount = () => {
             disabled={!isEditing}
           />
 
-          <center className='center'>
+      <center className='center'>
             {isEditing ? (
               <Button variant="contained" className='buttonsmy' onClick={handleUpdate}>
                 Update
@@ -170,7 +167,7 @@ const Myaccount = () => {
           </center>
         </div>
       </form>
-      <Logout />
+     
     </div>
   );
 };

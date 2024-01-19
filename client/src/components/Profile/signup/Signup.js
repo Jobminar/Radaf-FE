@@ -20,26 +20,31 @@ const Signup = () => {
 
   const handleInputChange = (e) => {
     const { name, value, type, files } = e.target;
-
+  
     if (type === 'file' && files.length > 0) {
       const file = files[0];
-
+  
       if (file.size > 30000) {
-        alert("Please upload an image less than 30KB.");
+        Swal.fire({
+          icon: 'error', // Use 'error' icon for indicating an error
+          title: 'File Size Too Large',
+          text: 'Please select a file with size less than 30000 bytes.',
+        });
         return;
       }
-
+  
       const reader = new FileReader();
-
+  
       reader.onload = () => {
         setFormData({ ...formData, [name]: reader.result });
       };
-
+  
       reader.readAsDataURL(file);
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
+  
 
   const handleSignup = async () => {
     try {
