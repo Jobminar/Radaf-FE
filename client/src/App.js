@@ -17,10 +17,11 @@ import Myproperty from './components/Myproperty/Myproperty.js';
 import Propertydetails from './components/Propertydetails/propertydetails.js';
 import Logout from './components/Profile/profile/Logout.js';
 import Listaproperty from './components/Lista-property/Lista-property.jsx';
-import Login from './components/Profile/profile/Profile.jsx';
+import Login from './components/Profile/profile/Login.jsx';
+// import Login from './components/Profile/profile/Login.jsx';
 
 
-function App() {
+function Routing() {
   const isLoggedIn = sessionStorage.getItem('token') !== null;
 
   return (
@@ -53,4 +54,4 @@ function App() {
   );
 }
 
-export default App;
+export default Routing;

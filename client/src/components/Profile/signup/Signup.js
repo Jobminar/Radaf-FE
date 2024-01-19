@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, CircularProgress } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import '../signup/signup.css';
-// import 'sweetalert2/dist/sweetalert2.css';
 import Swal from 'sweetalert2';
 
 const Signup = () => {
@@ -17,17 +16,26 @@ const Signup = () => {
     profileImage: null,
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value, type, files } = e.target;
 
     if (type === 'file' && files.length > 0) {
+      const file = files[0];
+
+      if (file.size > 30000) {
+        alert("Please upload an image less than 30KB.");
+        return;
+      }
+
       const reader = new FileReader();
 
       reader.onload = () => {
         setFormData({ ...formData, [name]: reader.result });
       };
 
-      reader.readAsDataURL(files[0]);
+      reader.readAsDataURL(file);
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -35,26 +43,27 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
+      setLoading(true);
+
       const formDataObject = new FormData();
 
-    Object.entries(formData).forEach(([key, value]) => {
-      formDataObject.append(key, value);
-    });
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataObject.append(key, value);
+      });
 
-    const response = await fetch('https://raddaf-be.onrender.com/auth/signup', {
-      method: 'POST',
-      body: formDataObject,
-    });
+      const response = await fetch('https://raddaf-be.onrender.com/auth/signup', {
+        method: 'POST',
+        body: formDataObject,
+      });
 
-    const data = await response.json();
-
+      const data = await response.json();
 
       if (response.ok) {
         console.log('Signup successful:', data);
         Swal.fire({
           icon: 'success',
           title: 'Signup Successful!',
-          text: 'User signup  has been successfully ',
+          text: 'User signup has been successful',
         });
         navigate('/login');
       } else {
@@ -62,7 +71,7 @@ const Signup = () => {
         Swal.fire({
           icon: 'error',
           title: 'Signup failed!',
-          text: 'User signup  failed ',
+          text: 'User signup failed',
         });
       }
     } catch (error) {
@@ -70,8 +79,10 @@ const Signup = () => {
       Swal.fire({
         icon: 'error',
         title: 'Signup failed!',
-        text: 'User signup  failed ',
+        text: 'User signup failed',
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -129,7 +140,7 @@ const Signup = () => {
 
         <center className='buttons12'>
           <Button sx={{ color: 'white', textTransform: 'lowercase' }} type="button" onClick={handleSignup}>
-            Signup
+            {loading ? <CircularProgress size={20} sx={{color:"white"}}/> : 'Signup'}
           </Button>
         </center>
       </form>
@@ -137,4 +148,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signup;
