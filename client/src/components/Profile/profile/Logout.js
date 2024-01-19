@@ -35,8 +35,7 @@ function Logout() {
 
         if (!response.ok) {
           // Session expired, navigate to login page
-          // navigate("/login",{ replace: true });
-          window.location.replace("/login");
+          navigate("/login");
         }
       } catch (error) {
         console.error("Error checking session:", error);

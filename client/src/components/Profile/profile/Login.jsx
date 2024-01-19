@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import {
@@ -17,13 +17,9 @@ import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
 import Facebook from "./Facebook";
 import Swal from "sweetalert2";
-import { useAuth } from "../../auth";
-
 const Login = () => {
   const navigate = useNavigate();
-  const {login} =useAuth()
-  const [name,setName]=useState("")
-
+  
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -73,24 +69,24 @@ const Login = () => {
           setName(data.user)
           Swal.fire({
             icon: 'success',
-            title: 'Signup Successful!',
-            text: 'User signup  has been successfully ',
+            title: 'Login Successful!',
+            text: 'User login has been successful',
           });
           navigate("/aboutus",{replace:true});
         } else {
           console.error("User data not available in the response:", data);
           Swal.fire({
             icon: 'error',
-            title: 'Signup failed!',
-            text: "invalid credentilas"
+            title: 'Login failed!',
+            text: "Invalid credentials"
           });
         }
       } else {
         console.error("Error details:", data);
         Swal.fire({
           icon: 'error',
-          title: 'Signup failed!',
-          text:"invalid credentilas"
+          title: 'Login failed!',
+          text:"Invalid credentials"
         });
       }
     } catch (error) {
@@ -121,8 +117,6 @@ const Login = () => {
           <div className="img-logo">
             <img src={Logo} alt="img" width="100%" height="100%" />
           </div>
-
-          {loading && <CircularProgress sx={{ color: "#9E5C08" }} />}
 
           <form
             onSubmit={handleSubmit}
@@ -183,7 +177,7 @@ const Login = () => {
             </FormControl>
 
             <button className="button2" disabled={loading}>
-              {loading ? 'Signing In...' : 'Sign In'}
+              {loading ? <CircularProgress size={20} sx={{ color: "white" }} /> : 'Sign In'}
             </button>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -204,6 +198,7 @@ const Login = () => {
       </div>
       <div className="last-div">
         {/* ... (existing content) */}
+        
       </div>
     </div>
   );
