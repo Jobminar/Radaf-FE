@@ -22,6 +22,8 @@ import Login from "./components/Profile/profile/Profile.jsx";
 import { AuthProvider } from "./components/auth.js";
 import PrivateRoute from "./components/PrivateRoute.js";
 import PropSubmit from "./components/PropList/PropSubmit.jsx";
+import FloatingChatIcon from "./components/Chat/FloatingChatIcon.jsx";
+import Listaproperty from "./components/Lista-property/Lista-property.jsx";
 
 function App() {
   const isLoggedIn = sessionStorage.getItem("token") !== null;
@@ -118,7 +120,7 @@ function App() {
             path="/listaproperty"
             element={
               <PrivateRoute>
-                <PropSubmit />
+                <Listaproperty />
               </PrivateRoute>
             }
           />
@@ -158,7 +160,7 @@ function App() {
 
         <Footer />
       </BrowserRouter>
-      <Chartbot />
+      <FloatingChatIcon/>
     </AuthProvider>
   );
 }
