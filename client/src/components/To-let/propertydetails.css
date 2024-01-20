@@ -34,7 +34,7 @@
     width: 20%;
     height: 80%;
     /* margin-bottom: 20px; */
-    margin-left: 20px;
+    margin-left: 0px;
     flex-direction: column;
     justify-content: space-between;
   }
@@ -60,7 +60,7 @@
   .stabut{
     padding: 10px;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 4px;
     margin-top: 15px;
   }
   .checl{
@@ -82,7 +82,7 @@
     background-color: #9E4D00;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
     font-size: medium;
     font-weight: bold;
     /* height: 20px; */
@@ -94,7 +94,8 @@
     padding: 10px;
     border: none;
     color: rgb(9, 6, 6);
-    border-radius: 15px;
+    font-weight: bold;
+    border-radius: 4px;
     font-size: 17px;
     background-color: #E9A361;
   }

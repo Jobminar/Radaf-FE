@@ -26,7 +26,17 @@ import Lettedpropetydetails from "./components/LettedProperties/Lettedpropertyde
 import Lettedinspection from "./components/LettedProperties/lettedpropertiesinspection.js"
 import Lettedbill from "./components/LettedProperties/Lettedbill.js"
 import Lettedagreements from "./components/LettedProperties/Lettedagreements.js"
+import Lettedagree from "./components/LettedProperties/lettedagree.js"
 import Lettedrepair from "./components/LettedProperties/Lettedrepair.js"
+import Lettingpropertydetails from "./components/LettingProperties/Lettingpropertydetails.js"
+import Lettinginspection from "./components/LettingProperties/lettingpropertiesinspection.js"
+import Undersalepropertydetails from "./components/Undersale/Undersalepropertydetails.js"
+import Undersaleinspection from "./components/Undersale/Undersalepropertiesinspection.js"
+import Undersalebill from "./components/Undersale/Undersalebill.js"
+import Undersaleagreemtns from "./components/Undersale/Undersaleagreements.js"
+import Undersalerepair from "./components/Undersale/Undersalerepair.js"
+import Bookviweing from "./components/Bookviewing/Bookviewing.js"
+import Bookafreevaluation from "./components/Bookafreevaluation/Bookafreevaluation.js"
 import "./App.css"
 
 
@@ -63,6 +73,16 @@ function App() {
           <Route path='/lettedbill' element={<PrivateRoute><Lettedbill /></PrivateRoute>} />
           <Route path='/lettedagreements' element={<PrivateRoute><Lettedagreements /></PrivateRoute>} />
           <Route path='/lettedrepair' element={<PrivateRoute><Lettedrepair /></PrivateRoute>} />
+          <Route path='/lettedagree' element={<PrivateRoute><Lettedagree /></PrivateRoute>} />
+          <Route path='/lettingpropertydetails' element={<PrivateRoute><Lettingpropertydetails /></PrivateRoute>} />
+          <Route path='/lettinginspection' element={<PrivateRoute><Lettinginspection /></PrivateRoute>} />
+          <Route path='/undersalepropertydetails' element={<PrivateRoute><Undersalepropertydetails /></PrivateRoute>} />
+          <Route path='/undersaleinspection' element={<PrivateRoute><Undersaleinspection /></PrivateRoute>} />
+          <Route path='/undersalebill' element={<PrivateRoute><Undersalebill /></PrivateRoute>} />
+          <Route path='/undersaleagreements' element={<PrivateRoute><Undersaleagreemtns /></PrivateRoute>} />
+          <Route path='/undersalerepair' element={<PrivateRoute><Undersalerepair /></PrivateRoute>} />
+          <Route path='/bookviewing' element={<PrivateRoute><Bookviweing /></PrivateRoute>} />
+          <Route path='/bookafreevaluation' element={<PrivateRoute><Bookafreevaluation /></PrivateRoute>} />
         </Routes>
         </div>
         <Footer />

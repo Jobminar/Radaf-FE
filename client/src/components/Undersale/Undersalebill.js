@@ -3,7 +3,7 @@ import sampled from "./sampled.js";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 // import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
-const Lettedbill = () => {
+const Undersalebill = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const handleSelect = (option) => {
         setSelectedOption(option);
@@ -70,4 +70,4 @@ const Lettedbill = () => {
   )
 }
 
-export default Lettedbill
+export default Undersalebill

@@ -8,7 +8,7 @@ import toilet from "../Profile/listing/Vector1.jpg"
 import shower from "../Profile/listing/Group.jpg"
 import bedroomlogo from '../Forsale/images/bedsymbol.png';
 // import toilet from '../Forsale/images/toilet.png';
-import washroom from '../Forsale/images/washroom.png';
+import washroom from '../Forsale/images/washroom.png'; 
 import parking from '../Forsale/images/car.png';
 import { useNavigate } from 'react-router-dom';
 // mui icons
@@ -17,7 +17,7 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import SchoolIcon from '@mui/icons-material/School';
 import DirectionsRailwayIcon from '@mui/icons-material/DirectionsRailway';
 
-const Propertydetails = () => {
+const Undersalepropertydetails = () => {
     const navigate = useNavigate()
     const location = useLocation();
     const selectedProperty = location.state ? location.state.property : null;
@@ -26,22 +26,22 @@ const Propertydetails = () => {
     const lettedinspection = () => {
         // You can perform any necessary actions here before navigating
         // For now, let's just navigate to "/lettedinspection"
-        navigate('/lettedinspection');
+        navigate('/undersaleinspection');
     };
     const lettedbill = () => {
         // You can perform any necessary actions here before navigating
         // For now, let's just navigate to "/lettedinspection"
-        navigate('/lettedbill');
+        navigate('/undersalebill');
     };
     const lettedagreemetns = () => {
         // You can perform any necessary actions here before navigating
         // For now, let's just navigate to "/lettedinspection"
-        navigate('/lettedagreements',{ state: { property: selectedProperty } });
+        navigate('/undersaleagreements',{ state: { property: selectedProperty } });
     };
     const lettedrepair = () => {
         // You can perform any necessary actions here before navigating
         // For now, let's just navigate to "/lettedinspection"
-        navigate('/lettedrepair');
+        navigate('/undersalerepair');
     };
 return(
     <>
@@ -182,8 +182,11 @@ return(
 
                         
                         
-                        <button style={{marginTop:"0px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
+                        <button style={{marginTop:"10px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
                             Contact Agent
+                        </button>
+                        <button style={{marginTop:"20px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
+                            Make an Offer
                         </button>
                     </div>
                 </div>
@@ -196,4 +199,4 @@ return(
 };
 
 
-export default Propertydetails ;
+export default Undersalepropertydetails ;

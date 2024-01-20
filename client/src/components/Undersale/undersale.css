@@ -62,10 +62,10 @@
 .forsale-sub-con {
     /* existing styles */
     height: 20rem;
-    padding: 0.5rem 2rem;
+    /* padding: 0.5rem 2rem; */
     display: grid;
-    grid-template-columns: 75% 25%;
-    margin-bottom: 5rem;
+    grid-template-columns: 65% 35%;
+    margin-bottom: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
@@ -73,8 +73,8 @@
 .forsale-img-sub-con{
     /* border: 1px solid black; */
     display: grid;
-    grid-template-columns: 70% 25%;
-    gap: 1rem;
+    grid-template-columns: 70% 20%;
+    gap: 0rem;
   
 }
 .forsale-img-sub-con div{
@@ -96,7 +96,7 @@
     /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
 }
 
 .sub-img-con{
@@ -116,7 +116,7 @@
 }
 
 .forsale-details-sub-con{
-   font-family: Roboto;
+   font-family: "Roboto";
     font-size: 24px;
     font-weight: 500;
     line-height: 28px;
@@ -124,10 +124,10 @@
     text-align: center;
 }
 .forsale-details-sub{
-    padding: 2rem 1rem;
+    /* padding: 2rem rem; */
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    /* row-gap: 1rem; */
     justify-content: center;
     align-items: center;
 }
@@ -179,7 +179,7 @@
 }
 .button-connect{
     width: 15rem;
-    height: 2.5rem;
+    height: 3.5rem;
     background-color: #BE6B2E;
     border-radius: 10px;
     border: none;
@@ -197,7 +197,7 @@
 }
 .buttonagenthandle{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: baseline;
-    padding-right: 2rem;
+    padding-right: 0rem;
 }

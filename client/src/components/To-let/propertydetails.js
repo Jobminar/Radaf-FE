@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import {images,dimmentions} from "./propertydata.js"
 import "./propertydetails.css"
 import bed from "../Profile/listing/bed.jpg"
@@ -18,10 +18,19 @@ import SchoolIcon from '@mui/icons-material/School';
 import DirectionsRailwayIcon from '@mui/icons-material/DirectionsRailway';
 
 const Propertydetails = () => {
+    const navigate =useNavigate()
 
     const location = useLocation();
     const selectedProperty = location.state ? location.state.property : null;
     console.log(selectedProperty)
+
+    const bookview=()=>{
+        navigate('/bookviewing')
+    }
+    const bookafree=()=>{
+        navigate("/bookafreevaluation")
+    }
+
 return(
     <>
          {/* <div>
@@ -32,7 +41,7 @@ return(
             ))}
         </div> */}
         <div>
-            <div className='ma'>
+            <div className='ma' style={{width:"100%"}}>
                 <div className="gallery-container">
                     <div className="main-image">
                         {/* <img className='imagmain' src={images[0].img} alt={`Image ${images[0].id}`} /> */}
@@ -68,8 +77,8 @@ return(
                         </div>
                         <div className='iconsadd'>
                             <div>
-                                <h1 style={{marginTop:"20px",paddingBottom:"15px"}}>{selectedProperty.place}</h1>
-                                <p>{selectedProperty.noOfBedrooms} Bedrooms Flat For Rent</p>
+                                <h1 style={{marginTop:"0px",fontSize:"32px",paddingBottom:"15px"}}>{selectedProperty.place}</h1>
+                                <p style={{fontSize:"24px"}}>{selectedProperty.noOfBedrooms} Bedrooms Flat For Rent</p>
                             </div>
                             <div>
                                {/* room details */}
@@ -79,14 +88,18 @@ return(
                                 <div className='toilets'><img src={toilet} alt='toilet'/>  {selectedProperty.noOfToilets}</div>
                                 <div className='parking'><img src={parking} alt='parking'/>  {selectedProperty.parkingCapacity}</div>
                             </div>
-                            <div>
-                                <h1 style={{marginTop:"20px"}}>OIRO &pound;{selectedProperty.price}</h1>
+                            <div >
+                                <div style={{display:"flex",justifyContent:"flex-end",alignItems:"flex-end",flexDirection:"column"}}>
+                                    <p style={{marginTop:"20px",fontSize:"24px"}}>OIRO &pound;{selectedProperty.price}</p>
+                                </div>
+                                <div style={{display:"flex",justifyContent:"flex-end",alignItems:"flex-end",flexDirection:"column"}}>
                                 <button className='stabut'>Status :
                                     <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"5px"}}  width="16" height="16" fill="currentColor" class="checl bi bi-patch-check" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
                                         <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"/>
                                     </svg> {selectedProperty.isVerified?"Verified":"Not Verified"}
                                 </button>
+                                </div>
                             </div>
                             </div>
                         </div>
@@ -97,7 +110,7 @@ return(
                                <LocalHospitalIcon/>
                                 Hospitals
                                 </div>
-                                <div style={{display:"flex", justifyContent:"center",alignItems:'center',columnGap:'1rem'}}>
+                                <div style={{display:"flex",paddingLeft:"70.4%", justifyContent:"center",alignItems:'center',columnGap:'1rem'}}>
                                 <DirectionsIcon/>  {selectedProperty.nearby.hospital.distance}
                                 </div>
                             </div>
@@ -115,7 +128,7 @@ return(
                                     <DirectionsRailwayIcon/>
                                     Railway Station
                                 </div>
-                                <div style={{display:"flex", justifyContent:"center",alignItems:'center',columnGap:'1rem'}}>
+                                <div style={{display:"flex",paddingLeft:"73%", justifyContent:"center",alignItems:'center',columnGap:'1rem'}}>
                                  <DirectionsIcon/>  {selectedProperty.nearby.busStation.distance}
                                 </div>
                             </div>
@@ -143,7 +156,7 @@ return(
                                 </div>
                             </div>
                             <div style={{display:"flex", justifyContent:"space-between",paddingTop:"15px"}}>
-                                <div >
+                                <div style={{paddingRight:"41%"}} >
                                 MasterBedroom
                                 </div>
                                 <div>
@@ -151,7 +164,7 @@ return(
                                 </div>
                             </div>
                             <div style={{display:"flex", justifyContent:"space-between",paddingTop:"15px"}}>
-                                <div>
+                                <div style={{paddingRight:"50%"}}>
                                 
                                 Bedroom
                                 </div>
@@ -223,7 +236,7 @@ return(
                     ))}
 
                         <div className='bokvie'>
-                            <div className='bokve'>
+                            <div className='bokve' onClick={bookview}>
                                 <button className='love' style={{paddingLeft:"30px",paddingRight:"30px"}} >Book Viewing</button>
                             </div>
                             <div>
@@ -234,31 +247,31 @@ return(
                                 </button>
                             </div>
                         </div>
-                        <button style={{marginTop:"20px",borderRadius:"15px",paddingTop:"15px",paddingBottom:"15px"}}>
+                        <button style={{marginTop:"20px",borderRadius:"4px",paddingTop:"15px",paddingBottom:"15px"}}>
                             <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"20px"}} width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
                                 <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
                             </svg>{selectedProperty.contactDetails.name}
                         </button>
-                        <button style={{marginTop:"20px",borderRadius:"15px",paddingTop:"15px",paddingBottom:"15px"}}>
+                        <button style={{marginTop:"20px",borderRadius:"4px",paddingTop:"15px",paddingBottom:"15px"}}>
                             <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"20px"}} width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                                 <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
                             </svg>{selectedProperty.contactDetails.email}
                         </button>
-                        <button style={{marginTop:"20px",borderRadius:"15px",paddingTop:"15px",paddingBottom:"15px"}}>
+                        <button style={{marginTop:"20px",borderRadius:"4px",paddingTop:"15px",paddingBottom:"15px"}}>
                             <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"20px"}} width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
                                 <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
                                 <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
                             </svg>Book service
                         </button>
-                        <button style={{marginTop:"20px",borderRadius:"15px",paddingTop:"15px",paddingBottom:"15px"}}>
+                        <button style={{marginTop:"20px",borderRadius:"4px",paddingTop:"15px",paddingBottom:"15px"}}>
                             <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"20px"}} width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
                                 <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5"/>
                             </svg>0234567
                         </button>
-                        <button style={{marginTop:"20px",backgroundColor:"#9E4D00",border:"none",color:"white",borderRadius:"15px",paddingTop:"15px",paddingBottom:"15px"}}>
+                        <button onClick={bookafree} style={{marginTop:"20px",backgroundColor:"#9E4D00",border:"none",color:"white",borderRadius:"4px",paddingTop:"15px",paddingBottom:"15px"}}>
                             Book A Free Valuation
                         </button>
-                        <button style={{marginTop:"20px",backgroundColor:"#9E4D00",border:"none",color:"white",borderRadius:"15px",paddingTop:"15px",paddingBottom:"15px"}}>
+                        <button style={{marginTop:"20px",backgroundColor:"#9E4D00",border:"none",color:"white",borderRadius:"4px",paddingTop:"15px",paddingBottom:"15px"}}>
                             Book an Agent Appointment
                         </button>
                     </div>

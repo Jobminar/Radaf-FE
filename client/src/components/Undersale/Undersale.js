@@ -196,7 +196,7 @@ const Tolet = () => {
 
   const handleProperty = (item) => {
     setproperty(item);
-    navigate('/propertydetails', { state: { property: item } });
+    navigate('/undersalepropertydetails', { state: { property: item } });
     console.log(item,'data')
   };
 
