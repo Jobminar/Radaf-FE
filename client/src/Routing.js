@@ -19,6 +19,7 @@ import Logout from './components/Profile/profile/Logout.js';
 import Listaproperty from './components/Lista-property/Lista-property.jsx';
 import Login from './components/Profile/profile/Login.jsx';
 import Nav from './components/Navbar-Footer/Nav.js';
+import FloatingChatIcon from './components/Chat/FloatingChatIcon.jsx';
 // import Login from './components/Profile/profile/Login.jsx';
 
 
@@ -32,6 +33,7 @@ function Routing() {
         <Routes>
           <Route path='*' element={<Navbar><Error /></Navbar>} />
           <Route path='/home' element={<Navbar><Home /></Navbar>} />
+          <Route path='/home1' element={<Nav><Home /></Nav>} />
           <Route path='/' element={<Nav><Login /></Nav>} />
           <Route path='/aboutus' element={<Navbar><Aboutus /></Navbar>} />
           <Route path='/support' element={<Navbar><Support /></Navbar>} />
@@ -47,8 +49,8 @@ function Routing() {
           <Route path='/myproperty' element={<Navbar><Myproperty /></Navbar>} />
           <Route path='propertydetails' element={<Navbar><Propertydetails /></Navbar>} />
           <Route path='/logout' element={<Logout />} />
-          <Route path='/propertydetails' element={<Navbar><Propertydetails /></Navbar>} />
         </Routes>
+        <FloatingChatIcon />
         <Footer />
       </BrowserRouter>
     </div>

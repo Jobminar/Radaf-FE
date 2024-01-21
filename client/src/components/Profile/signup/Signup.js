@@ -147,7 +147,9 @@ const Signup = () => {
           <Button sx={{ color: 'white', textTransform: 'lowercase' }} type="button" onClick={handleSignup}>
             {loading ? <CircularProgress size={20} sx={{color:"white"}}/> : 'Signup'}
           </Button>
+         
         </center>
+        <p onClick={()=>navigate("/")} style={{cursor:"pointer"}}>Already have an Account ?</p>
       </form>
     </div>
   );

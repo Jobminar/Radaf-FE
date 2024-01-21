@@ -19,7 +19,7 @@ function Logout() {
           // No token available, navigate to login page
           // alert("first login details")
           // history.replace("/login");
-          window.location.replace("/login");
+          window.location.replace("/");
           // navigate("/login");
           return;
         }
@@ -35,7 +35,7 @@ function Logout() {
 
         if (!response.ok) {
           // Session expired, navigate to login page
-          navigate("/login");
+          navigate("/");
         }
       } catch (error) {
         console.error("Error checking session:", error);
@@ -52,7 +52,7 @@ function Logout() {
     
     sessionStorage.clear();
     const cookies = new Cookies();
-    window.location.replace("/login");
+    window.location.replace("/");
 
 
   // Remove the token and user cookies
