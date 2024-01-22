@@ -1,6 +1,6 @@
 // import upload from '../Images/upload-image.jpeg'
 import backarrow from "../Images/backarrow.png";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "./Lista-property.css";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,6 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 // rooms have added
@@ -27,7 +26,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import uploadimage from "../Images/uploadimagesmall.png";
-
 
 const Listaproperty = () => {
 
