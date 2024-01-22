@@ -1,13 +1,5 @@
-
-
 import React, { useEffect, useState } from 'react';
 import './Myproperty.css'
-import toilet from "../Profile/listing/Vector1.jpg"
-import imag from "../Profile/MyViewing/Frame1.jpg"
-import { useNavigate } from 'react-router-dom';
-import bedroomlogo from '../Forsale/images/bedsymbol.png';
-import washroom from '../Forsale/images/washroom.png';
-import parking from '../Forsale/images/car.png';
 import Tolet from '../LettingProperties/Lettingproperties.js';
 import Forsale from '../Undersale/Undersale.js';
 import Myprop from "./my.js"
@@ -69,18 +61,21 @@ const Myproperty = () => {
 
   return (
     <div className='mainco'>
-      <h3>Filters: {selectedOption}</h3>
-      <select
-        value={selectedOption}
-        onChange={(e) => handleSelect(e.target.value)} style={{ background: "#BE6B2E",color:"white", border: "none", width: "180px", padding: "20px", fontSize: "18px",borderRadius:"20px",marginTop:"20px" }}
-      >
-        <option value="">My Properties</option>
-        {options.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
+      <div style={{display:"flex",alignItems:"center"}}>
+
+        <h3>Filter :</h3>
+        <select
+          value={selectedOption}
+          onChange={(e) => handleSelect(e.target.value)} style={{ background: "#BE6B2E",textAlign:"center",color:"white", border: "none", width: "182px",height:"50px", fontSize: "18px",borderRadius:"10px",marginLeft:"10px" }}
+        >
+          <option value="">My Properties</option>
+          {options.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
       <>
       {loading ? (
         // Render loading spinner while data is being fetched

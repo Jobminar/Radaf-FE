@@ -76,26 +76,6 @@ const Myproperty = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
-//   let content;
-
-//   switch (selectedOption) {
-//     case 'Letted Properties':
-//       // Render specific component for 'Letted Properties'
-//       content = <Tolet />;
-//       break;
-//     case 'Letting Properties':
-//       // Render specific component for 'Letting Properties'
-//       content = <Tolet />;
-//       break;
-//     case 'Properties under sale':
-//       // Render specific component for 'Properties under sale'
-//       content = <Forsale />;
-//       break;
-//     default:
-//       content = <div>No option selected</div>;
-//   }
-  // Options for the dropdown
   const options = [
     'Letted Properties',
     'Letting Properties',

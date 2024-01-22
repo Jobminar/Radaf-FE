@@ -14,15 +14,10 @@
   }
   
   .custom-table th{
-    /* border: 1px solid #ddd; */
     padding: 8px;
     text-align: center;
   }
-  /* .custom-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  } */
+
   
   .custom-table th {
     background-color: #f2f2f2;
@@ -33,17 +28,17 @@
   }
   
   .custom-table {
-    border: 2px solid #BE6B2E; /* Replace #yourBorderColor with the desired color code */
+    border: 2px solid #BE6B2E; 
     border-collapse: collapse;
   }
   
   .custom-table th {
-    border: 1px solid #BE6B2E; /* Replace #yourBorderColor with the desired color code */
+    border: 1px solid #BE6B2E; 
     padding: 8px;
   }
   
   .custom-table td {
-    border-bottom: none; /* Hide the bottom border for table data cells */
+    border-bottom: none; 
     text-align: center;
     border-left: none;
     border: 1px solid #BE6B2E;

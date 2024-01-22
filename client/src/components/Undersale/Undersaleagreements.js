@@ -1,55 +1,3 @@
-// import React from 'react'
-
-// const Lettedagreements = () => {
-//     const data=sessionStorage.getItem("user")
-//     console.log(data,"kjnafejjln")
-//   return (
-//     <div style={{margin:"3%"}}>
-//         <div style={{display:"flex"}}>
-//             <div style={{width:"30%",height:"500px"}}>
-//                 <div style={{borderWidth:"5px",borderColor:"green",borderStyle:"solid"}}>
-//                     <h3>{data.fullname}</h3>
-//                 </div>
-//             </div>
-//             <div style={{width:"70%"}}>
-                
-//             </div>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Lettedagreements
-// import React from 'react';
-
-// const Lettedagreements = () => {
-//   const data = JSON.parse(sessionStorage.getItem("user")) || {};
-//   console.log(data, "kjnafejjln");
-
-//   return (
-//     <div style={{ margin: "3%" }}>
-//       <div style={{ display: "flex" }}>
-//         <div style={{ width: "30%", height: "500px" }}>
-//           <div style={{ borderWidth: "5px", borderColor: "green", borderStyle: "solid" }}>
-//             <h3>{data.fullname}</h3>
-//           </div>
-//         </div>
-//         <div style={{ width: "70%" }}>
-//           {/* Additional content or information goes here */}
-//           <p>Additional Information:</p>
-//           <ul>
-//             <li>Email: {data.email}</li>
-//             <li>Role: {data.role}</li>
-//             {/* Add more properties as needed */}
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Lettedagreements;
-
 import React from 'react';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import AddIcon from '@mui/icons-material/Add';
@@ -79,17 +27,7 @@ const Lettedagreements = () => {
             <h4>Verified Email:  {data.isverified}</h4>
             {/* <h1>{selectedProperty.contactDetails.email}</h1> */}
             <h4>Verified Phone:  {data.isverified}</h4>
-            <h4>{data.status}</h4>
-            {/* <div>
-            <button style={{display:"flex",borderRadius:"10px",width:"120px",border:"none",backgroundColor:"#0FA958",marginRight:"15px",borderStyle:"solid",padding:"7px",borderWidth:"1px"}}>
-                      <div>
-                          <CheckIcon/>
-                      </div>
-                      <div style={{paddingTop:"5px",paddingLeft:"5px"}}>
-                          <h1>Verified</h1>
-                      </div>
-                  </button>
-            </div> */}
+            <h4>{data.status}</h4>            
             <div style={{marginTop:"15px",marginBottom:"15px"}}>
             {selectedProperty.isVerified?(<button style={{display:"flex",borderRadius:"10px",width:"120px",color:"white",border:"none",backgroundColor:"#0FA958",marginRight:"15px",borderStyle:"solid",padding:"7px",borderWidth:"1px"}}>
                       <div>
