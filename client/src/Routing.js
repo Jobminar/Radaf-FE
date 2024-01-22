@@ -14,12 +14,27 @@ import Myaccount from './components/Profile/Myaccount/Myaccount.js';
 import Forsale from './components/Forsale/Forsale.jsx';
 import Tolet from './components/To-let/Tolet.jsx';
 import Myproperty from './components/Myproperty/Myproperty.js';
-import Propertydetails from './components/Propertydetails/propertydetails.js';
+import Propertydetails from './components/To-let/propertydetails.js';
 import Logout from './components/Profile/profile/Logout.js';
 import Listaproperty from './components/Lista-property/Lista-property.jsx';
 import Login from './components/Profile/profile/Login.jsx';
 import Nav from './components/Navbar-Footer/Nav.js';
 import FloatingChatIcon from './components/Chat/FloatingChatIcon.jsx';
+import Bookviewing from "./components/Bookviewing/Bookviewing.js"
+import Bookafreevaluation from './components/Bookafreevaluation/Bookafreevaluation.js';
+import Lettedpropertydetails from "./components/LettedProperties/Lettedpropertydetails.js"
+import Lettedaggrements from "./components/LettedProperties/Lettedagreements.js"
+import Lettedbills from "./components/LettedProperties/Lettedbill.js"
+import Lettedinspection from "./components/LettedProperties/lettedpropertiesinspection.js"
+import Lettedrepair from "./components/LettedProperties/Lettedrepair.js"
+import Letting from './components/LettingProperties/Lettingpropertydetails.js';
+// import Lettinginpectio from "./components/LettingProperties/lettingpropertiesinspection.js"
+import Lettinginspection from './components/LettingProperties/lettingpropertiesinspection.js';
+import Undersalepropertydetails from "./components/Undersale/Undersalepropertydetails.js"
+import Undersaleinspection from "./components/Undersale/Undersalepropertiesinspection.js"
+import Undersalebill from "./components/Undersale/Undersalebill.js"
+import Undersaleagreements from "./components/Undersale/Undersaleagreements.js"
+import Undersalerepair from "./components/Undersale/Undersalerepair.js"
 // import Login from './components/Profile/profile/Login.jsx';
 
 
@@ -48,6 +63,22 @@ function Routing() {
           <Route path='/listaproperty' element={<Navbar><Listaproperty /></Navbar>} />
           <Route path='/myproperty' element={<Navbar><Myproperty /></Navbar>} />
           <Route path='propertydetails' element={<Navbar><Propertydetails /></Navbar>} />
+          <Route path='/bookviewing' element={<Navbar><Bookviewing /></Navbar>} />
+          <Route path='/bookafreevaluation' element={<Navbar><Bookafreevaluation /></Navbar>} />
+          <Route path='/lettedpropertydetails' element={<Navbar><Lettedpropertydetails /></Navbar>} />
+          <Route path='/lettedagreements' element={<Navbar><Lettedaggrements /></Navbar>} />
+          <Route path='/lettedbill' element={<Navbar><Lettedbills /></Navbar>} />
+          <Route path='/lettedinspection' element={<Navbar><Lettedinspection /></Navbar>} />
+          <Route path='/lettedrepair' element={<Navbar><Lettedrepair /></Navbar>} />
+          {/*  */}
+          <Route path='/lettingpropertydetails' element={<Navbar><Letting /></Navbar>} />
+          <Route path='/lettinginspection' element={<Navbar><Lettinginspection /></Navbar>} />
+
+          <Route path='/undersalepropertydetails' element={<Navbar><Undersalepropertydetails /></Navbar>} />
+          <Route path='/undersaleinspection' element={<Navbar><Undersaleinspection /></Navbar>} />
+          <Route path='/undersalebill' element={<Navbar><Undersalebill /></Navbar>} />
+          <Route path='/undersaleagreements' element={<Navbar><Undersaleagreements /></Navbar>} />
+          <Route path='/undersalerepair' element={<Navbar><Undersalerepair /></Navbar>} />
           <Route path='/logout' element={<Logout />} />
         </Routes>
         <FloatingChatIcon />

@@ -43,6 +43,9 @@ const Undersalepropertydetails = () => {
         // For now, let's just navigate to "/lettedinspection"
         navigate('/undersalerepair');
     };
+    const agent =()=>{
+        navigate("/bookafreevaluation")
+    }
 return(
     <>
         <div style={{fontFamily:"Roboto",marginLeft:"1.5%"}}>
@@ -182,7 +185,7 @@ return(
 
                         
                         
-                        <button style={{marginTop:"10px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
+                        <button onClick={agent} style={{marginTop:"10px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
                             Contact Agent
                         </button>
                         <button style={{marginTop:"20px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
