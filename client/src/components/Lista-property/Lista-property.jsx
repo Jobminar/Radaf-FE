@@ -422,15 +422,15 @@ const Listaproperty = () => {
               To-let
             </MenuItem>
           </Select>
-    </FormControl>
+        </FormControl>
         </div>
       </div>
       {/* filter section */}
-      <div className="filter-section">
-        <div className="for-sale-filter">
+      <div className="filter-section-user">
+        <div className="for-sale-filter-user">
           {selectedOption === "Forsale" && (
-            <div className="commercial-residential">
-              <div className="custom-radio">
+            <div className="commercial-residential-user">
+              <div className="custom-radio-user">
                 <input
                   type="radio"
                   id="Commercial"
@@ -441,7 +441,7 @@ const Listaproperty = () => {
                 />
                 <label htmlFor="Commercial">Commercial</label>
               </div>
-              <div className="custom-radio">
+              <div className="custom-radio-user">
                 <input
                   type="radio"
                   id="Residential"
@@ -455,13 +455,13 @@ const Listaproperty = () => {
             </div>
           )}
         </div>
-        <div className="to-let-filter">
+        <div className="to-let-filter-user">
           {selectedOption === "To-let" && (
-            <div className="to-let-filter-sub">
+            <div className="to-let-filter-sub-user">
               {/* Commercial / residential */}
 
-              <div class="commercial-residential-rental">
-                <div className="custom-radio">
+              <div class="commercial-residential-rental-user">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="Commercial"
@@ -471,7 +471,7 @@ const Listaproperty = () => {
                   />
                   <label for="Commercial">Commercial</label>
                 </div>
-                <div className="custom-radio">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="Residential"
@@ -484,8 +484,8 @@ const Listaproperty = () => {
 
               {/* let only / management only / introduce only  */}
 
-              <div class="onlytype">
-                <div className="custom-radio">
+              <div class="onlytype-user">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="letonly"
@@ -494,7 +494,7 @@ const Listaproperty = () => {
                   />
                   <label for="letonly">Let only</label>
                 </div>
-                <div className="custom-radio">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="Managementonly"
@@ -503,7 +503,7 @@ const Listaproperty = () => {
                   />
                   <label for="Managementonly">Management only </label>
                 </div>
-                <div className="custom-radio">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="Introduceonly"
@@ -515,8 +515,8 @@ const Listaproperty = () => {
               </div>
 
               {/* including bills / excluding bills */}
-              <div className="billsonly">
-                <div className="custom-radio">
+              <div className="billsonly-user">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="includingbills"
@@ -525,7 +525,7 @@ const Listaproperty = () => {
                   />
                   <label for="includingbills">Including Bills</label>
                 </div>
-                <div className="custom-radio">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="excludingbills"
@@ -1316,13 +1316,13 @@ const Listaproperty = () => {
         <button onClick={handleSubmit}>Submit</button>
       </div>
       <div>
-      <p>
+      {/* <p>
         {Object.entries(formValues).map(([key, value]) => (
           <span key={key}>
             <strong>{key}:</strong> {JSON.stringify(value)} <br />
           </span>
         ))}
-      </p>
+      </p> */}
 
       {/* <img src={selectedimage} alt=" selected image"/> */}
       </div>
