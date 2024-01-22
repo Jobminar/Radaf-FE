@@ -14,7 +14,7 @@ import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
-const Tolet = () => {
+const Letting = () => {
    
    const navigate = useNavigate()
    const [loading, setLoading] = useState(true);
@@ -61,7 +61,7 @@ const Tolet = () => {
 
   const handleProperty = (item) => {
     setproperty(item);
-    navigate('/propertydetails', { state: { property: item } });
+    navigate('/lettingpropertydetails', { state: { property: item } });
     console.log(item,'data')
   };
 
@@ -137,7 +137,7 @@ const Tolet = () => {
           </div>
           <div className='forsale-details-sub-con'>
             <div className='forsale-details-sub'>
-              <div className='price'><span>&#163; </span><span>299 PCM</span></div>
+              <div className='price'><span>&#163; </span><span>29 PCM</span></div>
               <div className='apartment'>{data.noOfBedrooms} bedroom apartment to rent</div>
               <div className='address'>address</div>
               <div className='rooms-details'>
@@ -147,9 +147,12 @@ const Tolet = () => {
                 <div className='parking'><img src={parking} alt='parking'/>  {data.parkingCapacity}</div>
               </div>
             </div>
-            <div className='buttonagenthandle'>
-              <button className='button-connect' onClick={handleCallAgent}>
+            <div className='buttonagenthandle' style={{display:"flex",alignItems:"center",justifyContent:"space-evenly"}}>
+              <button className='button-connect' style={{marginRight:"10px",fontSize:"20px"}} onClick={handleCallAgent}>
                 Contact with agent
+              </button>
+              <button className='button-connect' style={{marginRight:"10px",fontSize:"20px"}} onClick={handleCallAgent}>
+                Raise an Inspection Report
               </button>
             </div>
           </div>
@@ -161,4 +164,4 @@ const Tolet = () => {
   );
 };
 
-export default Tolet;
+export default Letting;

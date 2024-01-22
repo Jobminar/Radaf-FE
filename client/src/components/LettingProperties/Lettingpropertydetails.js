@@ -26,23 +26,23 @@ const Propertydetails = () => {
     const lettedinspection = () => {
         // You can perform any necessary actions here before navigating
         // For now, let's just navigate to "/lettedinspection"
-        navigate('/lettedinspection');
+        navigate('/lettinginspection');
     };
-    const lettedbill = () => {
-        // You can perform any necessary actions here before navigating
-        // For now, let's just navigate to "/lettedinspection"
-        navigate('/lettedbill');
-    };
+    // const lettedbill = () => {
+    //     // You can perform any necessary actions here before navigating
+    //     // For now, let's just navigate to "/lettedinspection"
+    //     navigate('/lettedbill');
+    // };
     const lettedagreemetns = () => {
         // You can perform any necessary actions here before navigating
         // For now, let's just navigate to "/lettedinspection"
         navigate('/lettedagreements',{ state: { property: selectedProperty } });
     };
-    const lettedrepair = () => {
-        // You can perform any necessary actions here before navigating
-        // For now, let's just navigate to "/lettedinspection"
-        navigate('/lettedrepair');
-    };
+    // const lettedrepair = () => {
+    //     // You can perform any necessary actions here before navigating
+    //     // For now, let's just navigate to "/lettedinspection"
+    //     navigate('/lettedrepair');
+    // };
 return(
     <>
         <div style={{fontFamily:"Roboto",marginLeft:"1.5%"}}>
@@ -55,18 +55,18 @@ return(
                                 <button className='container' onClick={lettedagreemetns}>
                                     Agreements</button>
                             </div>
-                            <div className='contaier' style={{ margin: '0 40px' }}>
+                            {/* <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container' onClick={lettedbill}>
                                     Bills & Documents</button>
-                            </div >
+                            </div > */}
                             <div className='conta' style={{ margin: '0 40px' }}>
                                 <button className='container' onClick={lettedinspection}>
                                     Inspections</button>
                             </div>
-                            <div className='contaier' style={{ margin: '0 40px' }}>
+                            {/* <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container' onClick={lettedrepair}>
                                     Repair Request</button>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='iconsadd'>
                             <div>

@@ -96,7 +96,7 @@ import "./leins.css";
 import sada from "./sampletabdata.js";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
-const Valuemyhome = () => {
+const Lettinginspection = () => {
   const [activeTab, setActiveTab] = useState('Future Inspection');
 
   const handleTabClick = (tabId) => {
@@ -190,4 +190,4 @@ const Valuemyhome = () => {
   );
 };
 
-export default Valuemyhome;
+export default Lettinginspection;

@@ -147,11 +147,13 @@ const Tolet = () => {
                 <div className='parking'><img src={parking} alt='parking'/>  {data.parkingCapacity}</div>
               </div>
             </div>
+            
             <div className='buttonagenthandle'>
               <button className='button-connect' onClick={handleCallAgent}>
                 Contact with agent
               </button>
             </div>
+            
           </div>
         </div>
       ))}

@@ -16,8 +16,23 @@
     /* border: 1px solid black; */
 }
 .nav-below{
+    
     display: flex;
     justify-content: space-around;
+    height: 5rem;
+    background-color: white;
+    color: #955108;
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+    column-gap: 1.5rem;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #955108;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 .route{
     font-family: Roboto;
