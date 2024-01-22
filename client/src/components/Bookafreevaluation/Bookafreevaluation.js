@@ -14,11 +14,11 @@ const Bookafreevaluation = () => {
     }
     
   return (
-    <div style={{fontFamily:"Roboto"}}>
+    <div style={{fontFamily:"Roboto",margin:"3%"}}>
         <center>
-            Request A Property Valuation
+            <h1 style={{fontSize:"32px",paddingBottom:"40px"}}>Request A Property Valuation</h1>
         </center>
-        <div style={{display:"flex",justifyContent:"space-between",margin:"5%"}}>
+        <div style={{display:"flex",justifyContent:"space-between"}}>
             <div style={{borderStyle:"solid",borderRadius:"10px", width:"30%",height:"60%"}}>
                 <center style={{padding:"10px  20px 70px 20px"}}>
                     <div style={{backgroundColor:"#F6C677",margin:"20px",borderRadius:"50%",width:"175px",height:"175px",alignItems:"center"}}>
