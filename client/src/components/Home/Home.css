@@ -19,7 +19,7 @@
 
 .main-serch {
     position: absolute;
-    top: 100%;
+    top: 95%;
     left: 15%;
     transform: translateY(-50%);
     width: 70%;
@@ -31,19 +31,24 @@
     background-color: white;
 }
 .serch-routes{
-    background-color: white;
-    padding: 0.5rem 4rem;
-    padding-bottom: 0rem;
     display: flex;
     column-gap: 2rem;
     justify-content: left;
+      /* border: 1px solid black; */
+      padding: 0.5rem 4rem;
+}
+.serch-routes h1{
+    background-color: white;
+    padding: 0.5rem 0rem;
+    padding-bottom: 0rem;
+   
     font-family: Roboto;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 200;
     line-height: 23px;
     letter-spacing: 0rem;
-    text-align: left;
-   /* border: 1px solid black; */
+   
+ 
 }
 .serch-routes:hover{
     cursor: pointer;
@@ -60,7 +65,7 @@
 .sale-home-con{
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .sub-card{
     width: 30%;
@@ -84,7 +89,7 @@
     justify-content: center;
     column-gap: 1rem;
     padding: 1rem 0rem;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .sale-head{
     font-family: Roboto;
@@ -108,4 +113,9 @@
 }
 .showmoreproperty:hover{
     cursor: pointer;
+}
+.sale-section{
+    /* border: 1px solid black; */
+    padding: 1rem 3rem;
+   
 }

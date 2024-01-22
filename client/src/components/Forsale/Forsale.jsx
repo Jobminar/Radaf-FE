@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Forsale = () => {
   const navigate = useNavigate()
@@ -54,6 +56,19 @@ const Forsale = () => {
     setproperty(item);
     navigate('/propertydetails', { state: { property: item } });
     console.log(item,'data')
+  };
+
+  // favourite
+  const [favoriteProperties, setFavoriteProperties] = useState([]);
+
+  const toggleFavorite = (itemId) => {
+    setFavoriteProperties((prevFavorites) => {
+      if (prevFavorites.includes(itemId)) {
+        return prevFavorites.filter((id) => id !== itemId);
+      } else {
+        return [...prevFavorites, itemId];
+      }
+    });
   };
 
   return (
@@ -137,7 +152,7 @@ const Forsale = () => {
          </div>
           <div className='forsale-details-sub-con'>
             <div className='forsale-details-sub'>
-              <div className='price'><span>&#163; </span><span>299 PCM</span></div>
+              <div className='pricehouse'><span>&#163; </span><span>299 PCM</span></div>
               <div className='apartment'>{data.noOfBedrooms} bedroom apartment to rent</div>
               <div className='address'>address</div>
               <div className='rooms-details'>
@@ -148,6 +163,9 @@ const Forsale = () => {
               </div>
             </div>
             <div className='buttonagenthandle'>
+            <div style={{ fontSize: '80px', color: favoriteProperties.includes(data.id) ? 'red' : 'black' }} onClick={() => toggleFavorite(data.id)}>
+                  {favoriteProperties.includes(data.id) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            </div>
               <button className='button-connect' onClick={handleCallAgent}>
                 Contact with agent
               </button>
