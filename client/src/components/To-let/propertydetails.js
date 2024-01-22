@@ -1,28 +1,29 @@
 import React from 'react'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
-import {images,dimmentions} from "./propertydata.js"
+import { useLocation, useNavigate } from 'react-router-dom'
+import {dimmentions} from "./propertydata.js"
 import "./propertydetails.css"
-import bed from "../Profile/listing/bed.jpg"
-import car from "../Profile/listing/car.jpg"
 import toilet from "../Profile/listing/Vector1.jpg"
-import shower from "../Profile/listing/Group.jpg"
 import bedroomlogo from '../Forsale/images/bedsymbol.png';
-// import toilet from '../Forsale/images/toilet.png';
 import washroom from '../Forsale/images/washroom.png';
 import parking from '../Forsale/images/car.png';
-
-// mui icons
+import MakeOffer from '../Undersale/Makeoffer.js'
+import Swal from 'sweetalert2';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import SchoolIcon from '@mui/icons-material/School';
 import DirectionsRailwayIcon from '@mui/icons-material/DirectionsRailway';
 
 const Propertydetails = () => {
+    const [open, setOpen] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
     const navigate =useNavigate()
 
     const location = useLocation();
     const selectedProperty = location.state ? location.state.property : null;
     console.log(selectedProperty)
+    const handleClose = () => {
+        setOpen(false);
+      };
 
     const bookview=()=>{
         navigate('/bookviewing')
@@ -30,21 +31,47 @@ const Propertydetails = () => {
     const bookafree=()=>{
         navigate("/bookafreevaluation")
     }
+    const [formData, setFormData] = React.useState({
+        condition: '',
+      });
+      const handleChange = (event) => {
+        setFormData({
+          ...formData,
+          [event.target.name]: event.target.value,
+        });
+      };
+      const handleSubmit = async () => {
+        try {
+          setLoading(true);
+          console.log('Form Data:', formData);
+          Swal.fire({
+            icon: 'success',
+            title: 'Form Submitted Successfully!',
+            text: JSON.stringify(formData),
+          });
+        } catch (error) {
+          setOpen(false);
+          Swal.fire({
+            icon: 'error',
+            title: 'Form Submission Failed!',
+            text: 'An unexpected error occurred. Please try again later.',
+          });
+          console.error('Error while sending data:', error);
+        } finally {
+          setOpen(false);
+          setLoading(false);
+        }
+      };
+      const makeoffer = () => {
+        setOpen(true);
+      };
 
 return(
     <>
-         {/* <div>
-            {selectedProperty && Object.entries(selectedProperty).map(([key, value]) => (
-                <div key={key}>
-                    <strong>{key}: </strong> {typeof value === 'object' ? JSON.stringify(value) : value}
-                </div>
-            ))}
-        </div> */}
         <div>
             <div className='ma' style={{width:"100%"}}>
                 <div className="gallery-container">
                     <div className="main-image">
-                        {/* <img className='imagmain' src={images[0].img} alt={`Image ${images[0].id}`} /> */}
                         <div className='imagmain' style={{backgroundSize:"cover",backgroundImage:`url(${selectedProperty.images[0].Value})`,width:"100%",height:"500px"}}>
                             <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container'>
@@ -60,7 +87,7 @@ return(
                                         <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
                                     </svg>Print Details</button>
                             </div >
-                            <div className='contaier' style={{ margin: '0 40px' }}>
+                            <div onClick={makeoffer} className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container'>
                                     <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"8px"}} width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
                                         <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
@@ -173,55 +200,7 @@ return(
                                 {dimmentions[0].bedroom}
                                 </div>
                             </div>
-                            {/* <div style={{display:"flex", justifyContent:"space-between",paddingTop:"15px"}}>
-                                <div>
-                                
-                                    Letting Services
-                                </div>
-                                <div style={{paddingLeft:"30%"}}>
-                                
-                                    Home connect estates offer rent guarantee and management schemes should 
-                                    you decide to let your property. If you are looking to make an investment or, are 
-                                    looking for someone to manage your portfolio, feel free to speak to one of our 
-                                    staff and we will schedule an appointment and go through the best available 
-                                    options.
-                                </div>
-                            </div> */}
                         </div>
-                        {/* letting service */}
-                        {/* <div className='iconsadd'>
-                            <div>
-                                <p style={{marginTop:"20px",paddingBottom:"15px"}}>Letting Serivices</p>
-                                
-                            </div>
-                            <div>
-                                <div className="icon" style={{paddingLeft:"22%"}}>
-                                    <div>
-                                    Home connect estates offer rent guarantee and management schemes should 
-                                    you decide to let your property. If you are looking to make an investment or, are 
-                                    looking for someone to manage your portfolio, feel free to speak to one of our 
-                                    staff and we will schedule an appointment and go through the best available 
-                                    options.
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div> */}
-                        {/* Money laundering */}
-                        {/* <div className='iconsadd'  style={{marginTop:"20px",width:"50%"}}>
-                            <div>
-                                <p style={{marginTop:"20px",paddingBottom:"15px"}}>Money Laundering</p>
-                              
-                            </div>
-                            <div>
-                                <div className="icon" style={{paddingLeft:"40%"}}>
-                                    <div>
-                                    Buyers will be asked to produce identification documents.
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div> */}
                         <h1 style={{paddingTop:"10%",color:"#626262"}}>IMPORTANT NOTICE FROM RADDAF HOMES</h1>
                         <p style={{paddingTop:"20px",color:"#626262"}}>Descriptions of the property are subjective and are used in good faith as an opinion and NOT as a statement of fact. Please make further 
                             specific enquires to ensure that our descriptions are likely to match any expectations you may have of the property. We have not tested 
@@ -279,6 +258,15 @@ return(
                 
             </div>              
         </div>
+        <MakeOffer
+        open={open}
+        handleClose={handleClose}
+        loading={loading}
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        selectedProperty={selectedProperty}
+      />
     </>
 )
   

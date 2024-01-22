@@ -101,7 +101,7 @@ const handlesubmit = async () => {
   return (
     <React.Fragment>
       <div className="cont">
-        <h1>Support</h1>
+        <h1 style={{fontSize:"32px"}}>Support</h1>
         <div className="mai" style={{ margin: "30px" }}>
           <div className="sma" onClick={handleClickOpen}>
             <svg

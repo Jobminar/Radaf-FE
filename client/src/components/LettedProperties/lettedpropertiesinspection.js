@@ -1,102 +1,9 @@
-// import React, { useState } from 'react';
-// import "./leins.css";
-// import "./sampletabdata.js"
-
-// const Valuemyhome = () => {
-//   const [activeTab, setActiveTab] = useState('Future Inspection');
-
-//   const handleTabClick = (tabId) => {
-//     setActiveTab(tabId);
-//   };
-
-//   return (
-//     <div className='maincoos'>
-//       My Properties Letted Properties Inspection
-//       <div className='cal'>
-//         <button style={{ borderTop: "none", borderLeft: "none", borderRight: "none" }}
-//           className={activeTab === 'Future Inspection' ? 'active-' : ''}
-//           onClick={() => handleTabClick('Future Inspection')}
-//         >
-//           Instant Valuation
-//         </button>
-//         <button style={{ borderTop: "none", borderLeft: "none", borderRight: "none" }}
-//           className={activeTab === 'Past Inspection' ? 'active-' : ''}
-//           onClick={() => handleTabClick('Past Inspection')}
-//         >
-//           Agent Valuation
-//         </button>
-//         <div style={{ display: activeTab === 'Future Inspection' ? 'block' : 'none' }}>
-//           {/* Future Inspection Table */}
-//           <div >
-//           <table className="custom-table" style={{width:"100%",textAlign:"center"}}>
-//             <thead>
-//               <tr>
-//                 <th>S.No</th>
-//                 <th>Schedule Details</th>
-//                 <th>Date</th>
-//                 <th>Time</th>
-//                 <th>Reschedule</th>
-//                 <th>Agent Details</th>
-//                 <th>Download</th>
-//                 {/* Add more header cells if needed */}
-//               </tr>
-//             </thead>
-//             <tbody>
-//               <tr>
-//                 <td>Data 1</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//               </tr>
-//             </tbody>
-//           </table>
-//           </div>
-//         </div>
-
-//         <div className='inp2d' style={{ display: activeTab === 'Past Inspection' ? 'block' : 'none' }}>
-//           {/* Past Inspection Table */}
-//           <div >
-//           <table className="custom-table" style={{width:"100%",textAlign:"center"}}>
-//             <thead>
-//               <tr>
-//                 <th>S.No</th>
-//                 <th>Schedule Details</th>
-//                 <th>Date</th>
-//                 <th>Time</th>
-//                 <th>Agent Details</th>
-//                 <th>Download Inspection</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               <tr>
-//               <td>Data 1</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//                 <td>Data 2</td>
-//                 {/* Add more data cells if needed */}
-//               </tr>
-//             </tbody>
-//           </table>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Valuemyhome;
-
 import React, { useState } from 'react';
 import "./leins.css";
 import sada from "./sampletabdata.js";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
-const Valuemyhome = () => {
+const Lettedinspection = () => {
   const [activeTab, setActiveTab] = useState('Future Inspection');
 
   const handleTabClick = (tabId) => {
@@ -190,4 +97,4 @@ const Valuemyhome = () => {
   );
 };
 
-export default Valuemyhome;
+export default Lettedinspection;

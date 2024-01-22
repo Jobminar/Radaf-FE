@@ -1,55 +1,3 @@
-// import React from 'react'
-
-// const Lettedagreements = () => {
-//     const data=sessionStorage.getItem("user")
-//     console.log(data,"kjnafejjln")
-//   return (
-//     <div style={{margin:"3%"}}>
-//         <div style={{display:"flex"}}>
-//             <div style={{width:"30%",height:"500px"}}>
-//                 <div style={{borderWidth:"5px",borderColor:"green",borderStyle:"solid"}}>
-//                     <h3>{data.fullname}</h3>
-//                 </div>
-//             </div>
-//             <div style={{width:"70%"}}>
-                
-//             </div>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Lettedagreements
-// import React from 'react';
-
-// const Lettedagreements = () => {
-//   const data = JSON.parse(sessionStorage.getItem("user")) || {};
-//   console.log(data, "kjnafejjln");
-
-//   return (
-//     <div style={{ margin: "3%" }}>
-//       <div style={{ display: "flex" }}>
-//         <div style={{ width: "30%", height: "500px" }}>
-//           <div style={{ borderWidth: "5px", borderColor: "green", borderStyle: "solid" }}>
-//             <h3>{data.fullname}</h3>
-//           </div>
-//         </div>
-//         <div style={{ width: "70%" }}>
-//           {/* Additional content or information goes here */}
-//           <p>Additional Information:</p>
-//           <ul>
-//             <li>Email: {data.email}</li>
-//             <li>Role: {data.role}</li>
-//             {/* Add more properties as needed */}
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Lettedagreements;
-
 import React from 'react';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import AddIcon from '@mui/icons-material/Add';
@@ -66,30 +14,16 @@ const Lettedagreements = () => {
   console.log(data, "kjnafejjln");
   const location = useLocation();
   const selectedProperty = location.state ? location.state.property : null;
-  // console.log(selectedProperty)
-
   return (
     <div style={{ margin: "3%" }}>
       <div style={{ display: "flex" }}>
         <div style={{ width: "30%", height: "500px",marginRight:"1%" }}>
           <div style={{ borderWidth: "5px", borderColor: "green", borderStyle: "solid" }}>
-            {/* <h3>{data.fullname}</h3> */}
             <div style={{margin:"20px"}}>
             {data.profileImage && <img src={`data:image/jpeg;base64,${data.profileImage}`} alt="User" style={{ width: "80%", height: "100px" }} />}
             <h4>Verified Email:  {data.isverified}</h4>
-            {/* <h1>{selectedProperty.contactDetails.email}</h1> */}
             <h4>Verified Phone:  {data.isverified}</h4>
             <h4>{data.status}</h4>
-            {/* <div>
-            <button style={{display:"flex",borderRadius:"10px",width:"120px",border:"none",backgroundColor:"#0FA958",marginRight:"15px",borderStyle:"solid",padding:"7px",borderWidth:"1px"}}>
-                      <div>
-                          <CheckIcon/>
-                      </div>
-                      <div style={{paddingTop:"5px",paddingLeft:"5px"}}>
-                          <h1>Verified</h1>
-                      </div>
-                  </button>
-            </div> */}
             <div style={{marginTop:"15px",marginBottom:"15px"}}>
             {selectedProperty.isVerified?(<button style={{display:"flex",borderRadius:"10px",width:"120px",color:"white",border:"none",backgroundColor:"#0FA958",marginRight:"15px",borderStyle:"solid",padding:"7px",borderWidth:"1px"}}>
                       <div>
@@ -122,11 +56,9 @@ const Lettedagreements = () => {
           </div>
         </div>
         <div style={{ width: "70%" }}>
-          {/* Additional content or information goes here */}
           <div style={{marginBottom:"15px"}}>
             <h1 style={{color:"#FE7424"}}>{data.fullname}</h1>
           </div>
-          {/* <h1 style={{width:"100%",backgroundColor:"blue"}}>Personal Details</h1> */}
           <div style={{borderStyle:"solid"}}>
             <h1 style={{width:"100%",backgroundColor:"#285D8F",color:"white",padding:"20px 0px 20px"}}>Personal Details</h1>
             <div style={{padding:"15px"}}>
@@ -252,7 +184,6 @@ const Lettedagreements = () => {
                 </div>
                 <div>
                   <CheckIcon/>
-                  {/* <h4>klnafslnlsgnkakjlh kjh ac</h4> */}
                 </div>
               </div>
               

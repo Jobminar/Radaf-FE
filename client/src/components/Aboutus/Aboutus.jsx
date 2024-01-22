@@ -1,6 +1,5 @@
 import "./About.css"
 
-
 const Aboutus =(()=>{
     return(
         <>

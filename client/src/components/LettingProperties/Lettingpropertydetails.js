@@ -2,16 +2,11 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import {images,dimmentions} from "./propertydata.js"
 import "./propertydetails.css"
-import bed from "../Profile/listing/bed.jpg"
-import car from "../Profile/listing/car.jpg"
 import toilet from "../Profile/listing/Vector1.jpg"
-import shower from "../Profile/listing/Group.jpg"
 import bedroomlogo from '../Forsale/images/bedsymbol.png';
-// import toilet from '../Forsale/images/toilet.png';
 import washroom from '../Forsale/images/washroom.png';
 import parking from '../Forsale/images/car.png';
 import { useNavigate } from 'react-router-dom';
-// mui icons
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import SchoolIcon from '@mui/icons-material/School';
@@ -24,25 +19,11 @@ const Propertydetails = () => {
     console.log(selectedProperty)
 
     const lettedinspection = () => {
-        // You can perform any necessary actions here before navigating
-        // For now, let's just navigate to "/lettedinspection"
         navigate('/lettinginspection');
     };
-    // const lettedbill = () => {
-    //     // You can perform any necessary actions here before navigating
-    //     // For now, let's just navigate to "/lettedinspection"
-    //     navigate('/lettedbill');
-    // };
     const lettedagreemetns = () => {
-        // You can perform any necessary actions here before navigating
-        // For now, let's just navigate to "/lettedinspection"
         navigate('/lettedagreements',{ state: { property: selectedProperty } });
     };
-    // const lettedrepair = () => {
-    //     // You can perform any necessary actions here before navigating
-    //     // For now, let's just navigate to "/lettedinspection"
-    //     navigate('/lettedrepair');
-    // };
 return(
     <>
         <div style={{fontFamily:"Roboto",marginLeft:"1.5%"}}>
@@ -55,18 +36,10 @@ return(
                                 <button className='container' onClick={lettedagreemetns}>
                                     Agreements</button>
                             </div>
-                            {/* <div className='contaier' style={{ margin: '0 40px' }}>
-                                <button className='container' onClick={lettedbill}>
-                                    Bills & Documents</button>
-                            </div > */}
                             <div className='conta' style={{ margin: '0 40px' }}>
                                 <button className='container' onClick={lettedinspection}>
                                     Inspections</button>
-                            </div>
-                            {/* <div className='contaier' style={{ margin: '0 40px' }}>
-                                <button className='container' onClick={lettedrepair}>
-                                    Repair Request</button>
-                            </div> */}
+                            </div>                        
                         </div>
                         <div className='iconsadd'>
                             <div>
@@ -85,14 +58,6 @@ return(
                                 <div>
                                 <p style={{marginTop:"20px",fontSize:"24px"}}>OIRO &pound;{selectedProperty.price}</p>
                                 </div>
-                                {/* <div>
-                                <button className='stabut'>Status :
-                                    <svg xmlns="http://www.w3.org/2000/svg" style={{paddingRight:"5px"}}  width="16" height="16" fill="currentColor" class="checl bi bi-patch-check" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
-                                        <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"/>
-                                    </svg> {selectedProperty.isVerified?"Verified":"Not Verified"}
-                                </button>
-                                </div> */}
                             </div>
                             </div>
                         </div>

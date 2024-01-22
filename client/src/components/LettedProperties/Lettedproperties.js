@@ -1,33 +1,21 @@
-
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import '../Undersale/undersale.css';
 import { useNavigate } from 'react-router-dom';
-
 import bedroomlogo from '../Forsale/images/bedsymbol.png';
 import toilet from '../Forsale/images/toilet.png';
 import washroom from '../Forsale/images/washroom.png';
 import parking from '../Forsale/images/car.png';
-// mui images
-import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
-import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
 
-
 const Tolet = () => {
-   
    const navigate = useNavigate()
    const [loading, setLoading] = useState(true);
-
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
   };
 
   const [selectedBedroom, setSelectedBedroom] = useState('');
-
-  const handleBedroomChange = (event) => {
-    setSelectedBedroom(event.target.value);
-  };
    
    console.log(selectedBedroom)
 
@@ -56,7 +44,6 @@ const Tolet = () => {
   const clicktop = (imageSrc) => {
     setMainImage(imageSrc);
   };
-// send data
   const [property,setproperty]=useState('')
 
   const handleProperty = (item) => {
@@ -68,55 +55,11 @@ const Tolet = () => {
   return (
     <>
     {loading ? (
-        // Render loading spinner while data is being fetched
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-          <CircularProgress />
-          
+          <CircularProgress />          
         </div>
       ) : (
     <div className='Forsale-con' style={{width:"100%"}}>
-      {/* <div className='filter-section'>
-        <div className='pincode-filter'>
-          <AddLocationAltOutlinedIcon />
-          <input type='text' placeholder='Manchester' />
-        </div>
-        <div className='price-filter'>
-          <span style={{ fontSize: '24px' }}>&#163; </span>
-          <select className="mySelect">
-            <option className='option' disabled selected hidden style={{ display: "none", textAlign: "center" }} value="">Price</option>
-            <option className='option' value="option1">Low - High</option>
-            <option className='option' value="option2">High - Low</option>
-          </select>
-        </div>
-        <div className='bedroom-filter'>
-          <img src={bedroomlogo} alt='bedroomimg' />
-          <select className="mySelect" onChange={handleBedroomChange} value={selectedBedroom}>
-            <option className='option' disabled value="">Bedroom</option>
-            <option className='option' value="1">1</option>
-            <option className='option' value="2">2</option>
-            <option className='option' value="3">3</option>
-            <option className='option' value="4">4</option>
-            <option className='option' value="4+">4+</option>
-          </select>
-        </div>
-        <div className='toilet-filter'>
-          <img src={toilet} alt='bedroomimg'/>
-            <select className="mySelect">
-              <option className='option' disabled selected hidden style={{ display: "none", textAlign: "center" }} value="">Bathroom</option>
-              <option className='option' value="option1">Low - High</option>
-              <option className='option' value="option2">High - Low</option>
-            </select>
-        </div>
-        <div className='property-filter'>
-          <HouseOutlinedIcon style={{fontSize:'38px'}}/>
-          <select className="mySelect">
-              <option className='option' disabled selected hidden style={{ display: "none", textAlign: "center" }} value="">Property type</option>
-              <option className='option' value="option1">Residential</option>
-              <option className='option' value="option2">Commercial</option>
-            </select>
-        </div>
-      </div> */}
-
       {toletListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>
            <div className='forsale-img-sub-con'>
