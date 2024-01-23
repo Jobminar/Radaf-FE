@@ -10,9 +10,12 @@ import { useNavigate } from 'react-router-dom';
 import mainimg from './Images/main-img.png'
 import Forsalehome from './forsalehome';
 import Tolethome from './tolethome';
+import { useAuth } from '../auth';
 
 const Home =(()=>{
     const navigate = useNavigate()
+    const data=useAuth()
+    console.log(data)
     return(
         <>
             <div className="home-con">
@@ -27,28 +30,22 @@ const Home =(()=>{
                         <h1 onClick={()=>{navigate('/tolet')}}>Rent</h1>
                         <h1 onClick={()=>{navigate('/valuemyhome')}}>Instant valuation</h1>
                     </div>
-                    <div className='search-field-home'>
-                        <Paper
-                            className='search-field-sub-home'
-                            component="form"
-                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 600 }}
-                            >
-                            {/* <IconButton sx={{ p: '10px' }} aria-label="menu">
-                                <MenuIcon />
-                            </IconButton> */}
-                            <InputBase
-                                sx={{ ml: 1, flex: 1 }}
-                                placeholder="Where do you want to Buy ?'"
-                                inputProps={{ 'aria-label': 'Where do you want to Buy ?' }}
-                            />
-                            <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-                                <SearchIcon />
-                            </IconButton>
-                            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-                            {/* <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-                                <DirectionsIcon />
-                            </IconButton> */}
-                        </Paper>
+                    <div className='search-field-home'  style={{ width: '100%'}}>
+                    <Paper
+                        className='search-field-sub-home'
+                        component="form"
+                        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '80%' }}
+                    >
+                        <InputBase
+                        sx={{ ml: 1, flex: 1 }}
+                        placeholder="Where do you want to Buy ?'"
+                        inputProps={{ 'aria-label': 'Where do you want to Buy ?' }}
+                        />
+                        <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                        <SearchIcon />
+                        </IconButton>
+                        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                    </Paper>
                     </div>
                 </div>
 

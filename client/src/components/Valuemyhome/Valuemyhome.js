@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import "./Valuemyhome.css"
 import axios from "axios"
-
-
+import CircularProgress from '@mui/material/CircularProgress';
+import Swal from "sweetalert2";
 
 const Valuemyhome = () => {
+  const [loading, setLoading] = useState(false);
     const [formData, setFormData]=useState({
-        // need to change after login and sign up woked
-        // userId:"659070f6accfa64c36245731",
-        // username:"sameerg1810@gmail.com",
         firstName:"",
         lastName:"",
         emailAddress:"",
@@ -32,49 +30,31 @@ const Valuemyhome = () => {
 
       const submitForm = async () => {
         try {
+          setLoading(true)
             console.log(formData)
-            
-          // Replace 'http://your-api-endpoint' with your actual API endpoint
-
-          const response = await axios.post('https://raddaf-be.onrender.com/instantevals', formData);
-        //   setShowPopup(true);
+          const response = await axios.post('https://raddaf-be.onrender.com/evalRequests', formData);
           if (response.status===201){
-            // window.alert("Thank you for submitting your details. A confirmation will be sent to your provided email address shortly. Rest assured; we value your privacy. In accordance with GDPR guidelines, only your name and contact number will be shared with our selected agents. They will reach out to you regarding your property valuation.Have a great day!")
-            setShowPopup(true);
+            // setShowPopup(true);
+            Swal.fire({
+              icon: 'success',
+              title: 'Form Submitted Successfully!',
+              text: 'Thank you for submitting your details. A confirmation will be sent to your provided email address shortly. Rest assured; we value your privacy. In accordance with GDPR guidelines, only your name and contact number will be shared with our selected agents. They will reach out to you regarding your property valuation. Have a great day!',
+            });
           }
           else{
             alert("add details on all fileds")
           }
-    
-        //   if (response.status === 200) {
-        //     console.log('Form data submitted successfully');
-        //     // Optionally, you can reset the form after successful submission
-        //     setFormData({
-        //         userId: "659070f6accfa64c36245731",
-        //         username: "john.doe@example.com",
-        //         firstName: "",
-        //         lastName: "",
-        //         emailAddress: "",
-        //         contactNumber: "",
-        //         postCode: "",
-        //         address: "",
-        //         propertyAction: "",
-        //         timing: "",
-        //         additionalMessage: "",
-        //         bestWayToContact: "",
-        //         bestTimeToContact: ""
-        //          // reset the todo field
-        //     });
-        //     alert('Form data submitted successfully');
-        //   } else {
-        //     console.error('Failed to submit form data');
-        //   }
         } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Form Submission Failed!',
+            text: 'Please try again later.',
+          });
           console.error('Error submitting form data', error);
-        }
+        } finally {
+          setLoading(false); // Set loading to false after API call is complete (success or failure)
+      }
       };
-
-    
     return (
     <div className='maincoos'>
         <center className='mainco'>
@@ -127,7 +107,7 @@ const Valuemyhome = () => {
                     <option value="ANYTIME">ANY TIME</option>
                 </select>
                 <center className=''>
-                    <button className='bb2' onClick={submitForm}>SUMBIT</button>
+                    <button className='bb2' onClick={submitForm}>{loading ? <CircularProgress size={20} /> : 'SUBMIT'}</button>
                 </center>
             </div>
             

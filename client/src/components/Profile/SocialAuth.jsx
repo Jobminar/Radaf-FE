@@ -20,6 +20,7 @@ function SocialAuth({ onLogout, onBackendData }) {
       const idToken = tokenResponse.id_token;
       setUser(tokenResponse);
       await fetchUserProfile(idToken);
+      
 
       // Set idToken as 'Token' in sessionStorage
       sessionStorage.setItem("Token", idToken);

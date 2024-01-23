@@ -1,0 +1,45 @@
+.active-{
+    border-bottom: 5px;
+    border-color:#955209;
+    border-style: solid;
+    border-top: none;
+    border-right: none;
+    background-color: white;
+    border-left: none;
+}
+.custom-table {
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .custom-table th{
+    padding: 8px;
+    text-align: center;
+  }
+    .custom-table th {
+    background-color: #f2f2f2;
+  }
+  .bb{
+    border: none;
+    background-color: white;
+  }
+  
+  .custom-table {
+    border: 2px solid #BE6B2E; /* Replace #yourBorderColor with the desired color code */
+    border-collapse: collapse;
+  }
+  
+  .custom-table th {
+    border: 1px solid #BE6B2E; /* Replace #yourBorderColor with the desired color code */
+    padding: 8px;
+  }
+  
+  .custom-table td {
+    border-bottom: none; /* Hide the bottom border for table data cells */
+    text-align: center;
+    border-left: none;
+    border: 1px solid #BE6B2E;
+    padding: 8px;
+    text-align: center;
+  }

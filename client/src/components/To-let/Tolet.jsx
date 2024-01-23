@@ -2,47 +2,97 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import '../Forsale/Forsale.css';
-import Forsaledata from '../Forsale/forsaledata';
+import { useNavigate } from 'react-router-dom';
+
 import bedroomlogo from '../Forsale/images/bedsymbol.png';
 import toilet from '../Forsale/images/toilet.png';
 import washroom from '../Forsale/images/washroom.png';
 import parking from '../Forsale/images/car.png';
+import CircularProgress from '@mui/material/CircularProgress';
 // mui images
 import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Tolet = () => {
+   
+   const navigate = useNavigate()
+
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
   };
-  
-  const [saleListings, setSaleListings] = useState([]);
+
+  const [selectedBedroom, setSelectedBedroom] = useState('');
+
+  const handleBedroomChange = (event) => {
+    setSelectedBedroom(event.target.value);
+  };
+   
+   console.log(selectedBedroom)
+
+  const [toletListings, setToletListings] = useState([]);
+  const [loading, setLoading] = useState(true);
   const fetchListings = async () => {
     try {
-      const url = `https://raddaf-be.onrender.com/listing-property/get-listings?purpose=Tolet`;
+      const url = 'https://raddaf-be.onrender.com/listing-property/get-listings';
       const response = await axios.get(url);
       const { data } = response;
-      setSaleListings(data);
-      console.log(saleListings);
+      const filteredToletListings = data.filter((data) => data.purpose === 'Tolet');
+      console.log(filteredToletListings);
+      setToletListings(filteredToletListings);
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      // Set loading to false after fetching data, with a delay of 3 seconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     }
   };
 
   useEffect(() => {
     fetchListings();
   }, []);
-  
+
+
   const [mainImage, setMainImage] = useState('');
 
   const clicktop = (imageSrc) => {
     setMainImage(imageSrc);
   };
+// send data
+  const [property,setproperty]=useState('')
 
+  const handleProperty = (item) => {
+    setproperty(item);
+    navigate('/propertydetails', { state: { property: item } });
+    console.log(item,'data')
+  };
 
+  // favorite
+  const [favoriteProperties, setFavoriteProperties] = useState([]);
+
+  const toggleFavorite = (itemId) => {
+    setFavoriteProperties((prevFavorites) => {
+      if (prevFavorites.includes(itemId)) {
+        return prevFavorites.filter((id) => id !== itemId);
+      } else {
+        return [...prevFavorites, itemId];
+      }
+    });
+  };
 
   return (
-    <div className='Forsale-con'>
+    <>
+    {loading ? (
+        // Render loading spinner while data is being fetched
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <CircularProgress />
+        </div>
+      ) : (
+         
+      <div className='Forsale-con'>
       <div className='filter-section'>
         <div className='pincode-filter'>
           <AddLocationAltOutlinedIcon />
@@ -57,14 +107,14 @@ const Tolet = () => {
           </select>
         </div>
         <div className='bedroom-filter'>
-        <img src={bedroomlogo} alt='bedroomimg'/>
-          <select className="mySelect">
-            <option className='option' disabled selected hidden style={{ display: "none", textAlign: "center" }} value="">Bedroom</option>
-            <option className='option' value="option1">1</option>
-            <option className='option' value="option2">2</option>
-            <option className='option' value="option1">3</option>
-            <option className='option' value="option2">4</option>
-            <option className='option' value="option2">4+</option>
+          <img src={bedroomlogo} alt='bedroomimg' />
+          <select className="mySelect" onChange={handleBedroomChange} value={selectedBedroom}>
+            <option className='option' disabled value="">Bedroom</option>
+            <option className='option' value="1">1</option>
+            <option className='option' value="2">2</option>
+            <option className='option' value="3">3</option>
+            <option className='option' value="4">4</option>
+            <option className='option' value="4+">4+</option>
           </select>
         </div>
         <div className='toilet-filter'>
@@ -85,10 +135,10 @@ const Tolet = () => {
         </div>
       </div>
 
-      {saleListings.map((data, index) => (
+      {toletListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>
            <div className='forsale-img-sub-con'>
-            <div className='main-img-con'>
+            <div className='main-img-con' onClick={() => handleProperty(data)} >
             {mainImage ? (
               <img src={mainImage} alt="Main" />
             ) : (
@@ -116,6 +166,9 @@ const Tolet = () => {
               </div>
             </div>
             <div className='buttonagenthandle'>
+            <div style={{ fontSize: '80px', color: favoriteProperties.includes(data.id) ? 'red' : 'black' }} onClick={() => toggleFavorite(data.id)}>
+                  {favoriteProperties.includes(data.id) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            </div>
               <button className='button-connect' onClick={handleCallAgent}>
                 Contact with agent
               </button>
@@ -124,6 +177,9 @@ const Tolet = () => {
         </div>
       ))}
     </div>
+     )}
+    </>
+    
   );
 };
 

@@ -4,16 +4,20 @@ import { useState } from "react";
 import "./Lista-property.css";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
 // mui
-// import InputLabel from '@mui/material/InputLabel';
+
 import MenuItem from "@mui/material/MenuItem";
-// import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-// import { Button } from '@mui/material';
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 // rooms have added
+import CurrencyPoundIcon from '@mui/icons-material/CurrencyPound';
 import SingleBedIcon from "@mui/icons-material/SingleBed";
 import BathtubIcon from "@mui/icons-material/Bathtub";
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
@@ -22,12 +26,15 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import uploadimage from "../Images/uploadimagesmall.png";
-import Imageupload from "../Imageupload/Imageupload";
 
 const Listaproperty = () => {
+
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState(null);
+
+  const [selectedOption, setSelectedOption] = useState('To-let');
+  const[selectedepcvalue,setselectedepcvalue]=useState('EPC-VALUE')
   const [formValues, setFormValues] = useState({
+    images:[],
     propertyDescription: "",
     propertytype: "",
     selectsaleorrent: "",
@@ -51,7 +58,7 @@ const Listaproperty = () => {
     busStationName: "",
     propertyscheduling: null,
     contactDetails: {
-      name: "",
+      fullname: "",
       email: "",
       mobileNumber: "",
       subject: "",
@@ -64,20 +71,31 @@ const Listaproperty = () => {
     LocalAuthoritySearch: null,
     PropertyValuationReport: null,
     FloorPlan: null,
+    place:'',
+    price:'',
+    pinCode:'',
+    epcvalue:'',
+    streetParking: false,
+    rearGarden: false,
+    gasCentralHeating: false,
+    doubleGlazedWindows: false,
 
-    // Add more fields as needed
   });
+  
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value ,checked, type} = e.target;
     setFormValues((prevState) => ({
       ...prevState,
       [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
-    if (name === "selectValue") {
+    if (name === "selectsaleorrent") {
       setSelectedOption(value);
     }
   };
+
+
 
   const handleContactDetailsChange = (e) => {
     const { name, value } = e.target;
@@ -109,392 +127,92 @@ const Listaproperty = () => {
     }));
   };
 
-  //     console.log('Form values:', formValues);
-  //     // Perform actions based on formValues changes
-  // }, [formValues]);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   // Prepare FormData
-  //   const formData = new FormData();
-  //   console.log("the final formdata line 123", formData);
-  //   formData.append("purpose", formValues.selectsaleorrent);
-  //   console.log(
-  //     "Type of selectsaleorrent:",
-  //     typeof formValues.selectsaleorrent
-  //   );
-
-  //   console.log("Appended purpose:", formValues.selectsaleorrent);
-
-  //   formData.append(" propertyType", formValues.propertytype);
-  //   console.log("Appended propertyType", formValues.propertytype);
-  //   console.log(
-  //     "  typeof Appended propertyType",
-  //     typeof formValues.propertytype
-  //   );
-  //   formData.append(
-  //     "images",
-  //     "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
-  //   );
-  //   console.log(
-  //     "Appended images:",
-  //     "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg"
-  //   );
-
-  //   formData.append(
-  //     "propertyDocuments",
-  //     JSON.stringify(formValues.propertyTitleDeals)
-  //   );
-  //   console.log("Appended propertyDocuments:", formValues.propertyTitleDeals);
-  //   console.log(
-  //     "typeof Appended propertyDocuments:",
-  //     typeof formValues.propertyTitleDeals
-  //   );
-
-  //   formData.append("fittingAndContentsForm", formValues.fittingsContentForm);
-  //   console.log(
-  //     "Appended fittingAndContentsForm:",
-  //     formValues.fittingsContentForm
-  //   );
-  //   console.log(
-  //     "typeof Appended fittingAndContentsForm:",
-  //     typeof formValues.fittingsContentForm
-  //   );
-
-  //   formData.append("energyPerformanceCertificate", formValues.EPC);
-  //   console.log("Appended energyPerformanceCertificate:", formValues.EPC);
-  //   console.log(
-  //     "typeof Appended energyPerformanceCertificate:",
-  //     typeof formValues.EPC
-  //   );
-  //   formData.append(
-  //     "leaseholdInformation",
-  //     JSON.stringify(formValues.Leasehold)
-  //   );
-  //   console.log("Appended leaseholdInformation:", formValues.Leasehold);
-  //   console.log(
-  //     "typeof Appended leaseholdInformation:",
-  //     typeof formValues.Leasehold
-  //   );
-
-  //   formData.append("propertyInfoForm", formValues.TA6);
-  //   console.log("Appended propertyInfoForm:", formValues.TA6);
-  //   console.log("typeof Appended propertyInfoForm:", typeof formValues.TA6);
-
-  //   formData.append("localAuthoritySearch", formValues.LocalAuthoritySearch);
-  //   console.log(
-  //     "Appended localAuthoritySearch:",
-  //     formValues.LocalAuthoritySearch
-  //   );
-  //   console.log(
-  //     "typeof Appended localAuthoritySearch:",
-  //     typeof formValues.LocalAuthoritySearch
-  //   );
-
-  //   formData.append(
-  //     "propertyValuationReport",
-  //     JSON.stringify(formValues.PropertyValuationReport)
-  //   );
-  //   console.log(
-  //     "Appended propertyValuationReport:",
-  //     formValues.PropertyValuationReport
-  //   );
-  //   console.log(
-  //     "typeof Appended propertyValuationReport:",
-  //     typeof formValues.PropertyValuationReport
-  //   );
-
-  //   formData.append("floorplan", formValues.FloorPlan);
-  //   console.log("Appended floorplan:", formValues.FloorPlan);
-  //   console.log("typeof Appended floorplan:", typeof formValues.FloorPlan);
-
-  //   formData.append("propertyDescription", formValues.propertyDescription);
-  //   console.log(
-  //     "Appended propertyDescription:",
-  //     formValues.propertyDescription
-  //   );
-  //   console.log(
-  //     "typeof Appended propertyDescription:",
-  //     typeof formValues.propertyDescription
-  //   );
-  //   // Append other form values similarly...
-  //   formData.append("receptionlength", formValues.receptionlength);
-  //   console.log("Appended receptionlength:", formValues.receptionlength);
-  //   console.log(
-  //     "typeof Appended receptionlength:",
-  //     typeof formValues.receptionlength
-  //   );
-
-  //   formData.append("receptionwidth", formValues.receptionwidth);
-  //   console.log("Appended receptionwidth:", formValues.receptionwidth);
-  //   console.log(
-  //     "typeof Appended receptionwidth:",
-  //     typeof formValues.receptionwidth
-  //   );
-
-  //   formData.append("kitchenlength", formValues.kitchenlength);
-  //   console.log("Appended kitchenlength:", formValues.kitchenlength);
-  //   console.log(
-  //     "typeof Appended kitchenlength:",
-  //     typeof formValues.kitchenlength
-  //   );
-
-  //   formData.append("kitchenwidth", formValues.kitchenwidth);
-  //   console.log("Appended kitchenwidth:", formValues.kitchenwidth);
-  //   console.log(
-  //     "typeof Appended kitchenwidth:",
-  //     typeof formValues.kitchenwidth
-  //   );
-
-  //   formData.append("masterBedroomlength", formValues.masterBedroomlength);
-  //   console.log(
-  //     "Appended masterBedroomlength:",
-  //     formValues.masterBedroomlength
-  //   );
-  //   console.log(
-  //     "typeof Appended masterBedroomlength:",
-  //     typeof formValues.masterBedroomlength
-  //   );
-
-  //   formData.append("masterBedroomwidth", formValues.masterBedroomwidth);
-  //   console.log("Appended masterBedroomwidth:", formValues.masterBedroomwidth);
-  //   console.log(
-  //     "typeof Appended masterBedroomwidth:",
-  //     typeof formValues.masterBedroomwidth
-  //   );
-
-  //   formData.append("bedroomlength", formValues.bedroomlength);
-  //   console.log("Appended bedroomlength:", formValues.bedroomlength);
-  //   console.log(
-  //     "typeof Appended bedroomlength:",
-  //     typeof formValues.bedroomlength
-  //   );
-
-  //   formData.append("bedroomwidth", formValues.bedroomwidth);
-  //   console.log("Appended bedroomwidth:", formValues.bedroomwidth);
-  //   console.log(
-  //     "typeof Appended bedroomwidth:",
-  //     typeof formValues.bedroomwidth
-  //   );
-
-  //   formData.append("noOfBedrooms", formValues.numberOfRooms);
-  //   console.log("Appended noOfBedrooms:", formValues.numberOfRooms);
-  //   console.log(
-  //     "typeof Appended noOfBedrooms:",
-  //     typeof formValues.numberOfRooms
-  //   );
-
-  //   formData.append("noOfBathrooms", formValues.numberOfBathrooms);
-  //   console.log("Appended noOfBathrooms:", formValues.numberOfBathrooms);
-  //   console.log(
-  //     "typeof Appended noOfBathrooms:",
-  //     typeof formValues.numberOfBathrooms
-  //   );
-
-  //   formData.append("noOfToilets", formValues.numberOfToilets);
-  //   console.log("Appended noOfToilets:", formValues.numberOfToilets);
-  //   console.log(
-  //     "typeof Appended noOfToilets:",
-  //     typeof formValues.numberOfToilets
-  //   );
-
-  //   formData.append("parkingCapacity", formValues.numberOfParkingSpaces);
-  //   console.log("Appended parkingCapacity:", formValues.numberOfParkingSpaces);
-  //   console.log(
-  //     "typeof Appended parkingCapacity:",
-  //     typeof formValues.numberOfParkingSpaces
-  //   );
-  //   // contact details
-  //   //name
-  //   formData.append("contactDetails.name", formValues.contactDetails.fullname);
-  //   console.log(
-  //     "typeof Appended contactDetails.fullname:",
-  //     typeof formValues.contactDetails.fullname
-  //   );
-  //   // email
-  //   formData.append("contactDetails.email", formValues.contactDetails.email);
-  //   console.log(
-  //     "typeof Appended contactDetails.email:",
-  //     typeof formValues.contactDetails.email
-  //   );
-  //   // mobile number
-  //   formData.append(
-  //     "contactDetails.mobileNumber",
-  //     formValues.contactDetails.mobileNumber
-  //   );
-  //   console.log(
-  //     "Appended contactDetails.mobileNumber:",
-  //     formValues.contactDetails.mobileNumber
-  //   );
-  //   console.log(
-  //     "typeof Appended contactDetails.mobileNumber:",
-  //     typeof formValues.contactDetails.mobileNumber
-  //   );
-  //   // subject
-  //   formData.append(
-  //     "contactDetails.subject",
-  //     formValues.contactDetails.subject
-  //   );
-  //   console.log(
-  //     "Appended contactDetails.subject:",
-  //     formValues.contactDetails.subject
-  //   );
-
-  //   console.log(
-  //     "typeof Appended contactDetails.subject:",
-  //     typeof formValues.contactDetails.subject
-  //   );
-
-  //   // formData.append("specialConditions", formValues.specialConditions);
-  //   // console.log("Appended specialConditions:", formValues.specialConditions);
-
-  //   formData.append("nearby.hospital.distance", formValues.hospitalDistance);
-  //   console.log(
-  //     "Appended nearby.hospital.distance:",
-  //     formValues.hospitalDistance
-  //   );
-  //   console.log(
-  //     "typeof Appended nearby.hospital.distance:",
-  //     typeof formValues.hospitalDistance
-  //   );
-  //   // hospital school station
-  //   formData.append("nearby.hospital.name", formValues.hospitalName);
-  //   console.log("Appended nearby.hospital.name:", formValues.hospitalName);
-  //   console.log(
-  //     "typeof Appended nearby.hospital.name:",
-  //     typeof formValues.hospitalName
-  //   );
-
-  //   formData.append("nearby.school.distance", formValues.schoolDistance);
-  //   console.log("Appended nearby.school.distance:", formValues.schoolDistance);
-  //   console.log(
-  //     "typeof Appended nearby.school.distance:",
-  //     typeof formValues.schoolDistance
-  //   );
-
-  //   formData.append("nearby.school.name", formValues.schoolName);
-  //   console.log("Appended nearby.school.name:", formValues.schoolName);
-  //   console.log(
-  //     "typeof Appended nearby.school.name:",
-  //     typeof formValues.schoolName
-  //   );
-
-  //   formData.append(
-  //     "typeof nearby.busStation.distance",
-  //     typeof formValues.busStationDistance
-  //   );
-  //   console.log(
-  //     "typeof Appended nearby.busStation.distance:",
-  //     typeof formValues.busStationDistance
-  //   );
-  //   console.log(
-  //     "typeof Appended nearby.busStation.distance:",
-  //     typeof formValues.busStationDistance
-  //   );
-
-  //   formData.append("nearby.busStation.name", formValues.busStationName);
-  //   console.log("Appended nearby.busStation.name:", formValues.busStationName);
-  //   console.log(
-  //     "typeof Appended nearby.busStation.name:",
-  //     typeof formValues.busStationName
-  //   );
-
-  //   formData.append("scheduleDateTime", formValues.propertyscheduling);
-  //   console.log("Appended scheduleDateTime:", formValues.propertyscheduling);
-  //   console.log(
-  //     "typeof Appended scheduleDateTime:",
-  //     typeof formValues.propertyscheduling
-  //   );
-
-  //   console.log("Final FormData before submission:", formData);
-
-  //   try {
-  //     console.log("now the we are going to submit the form", formData);
-
-  //     // Your existing fetch code for sending data to the backend
-  //     const response = await fetch(
-  //       "http://localhost:3000/listing-property/create",
-  //       {
-  //         method: "POST",
-  //         body: formData,
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       // Handle successful response
-  //       console.log("Property created successfully:", data);
-  //     } else {
-  //       // Handle error response
-  //       const errorData = await response.json();
-  //       console.error("Error creating property:", errorData);
-  //     }
-  //   } catch (error) {
-  //     // Handle fetch error
-  //     console.error("Fetch error:", error);
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
 
     // Basic form fields
-    formData.append("userType", "User");
     formData.append("purpose", formValues.selectsaleorrent);
     formData.append("propertyType", formValues.propertytype);
+
+    // Images
+    // formData.append("images", imageURL); // Assuming you have an input for image URL
+    for (let i = 0; i < formValues.images.length; i++) {
+      formData.append("images", formValues.images[i]);
+    }
+    // Property documents
+    formData.append(
+      "propertyDocuments",
+      JSON.stringify(formValues.propertyTitleDeals)
+    );
+
+    // Other document types (if needed)
+    formData.append("fittingAndContentsForm", formValues.fittingsContentForm);
+    formData.append("energyPerformanceCertificate", formValues.EPC);
+    formData.append(
+      "leaseholdInformation",
+      JSON.stringify(formValues.Leasehold)
+    );
+    formData.append("propertyInfoForm", formValues.TA6);
+    formData.append("localAuthoritySearch", formValues.LocalAuthoritySearch);
+    formData.append(
+      "propertyValuationReport",
+      JSON.stringify(formValues.PropertyValuationReport)
+    );
+    formData.append("floorplan", formValues.FloorPlan);
+
+    // Property description
     formData.append("propertyDescription", formValues.propertyDescription);
 
-    // Property dimensions
+    // Numeric fields (convert to number)
+    formData.append("receptionlength", parseFloat(formValues.receptionlength));
+    formData.append("receptionwidth", parseFloat(formValues.receptionwidth));
+    formData.append("kitchenlength", parseFloat(formValues.kitchenlength));
+    formData.append("kitchenwidth", parseFloat(formValues.kitchenwidth));
     formData.append(
-      "propertyDimensions.reception.rlength",
-      parseFloat(formValues.receptionlength)
-    );
-    formData.append(
-      "propertyDimensions.reception.Width",
-      parseFloat(formValues.receptionwidth)
-    );
-    formData.append(
-      "propertyDimensions.kitchen.rlength",
-      parseFloat(formValues.kitchenlength)
-    );
-    formData.append(
-      "propertyDimensions.kitchen.Width",
-      parseFloat(formValues.kitchenwidth)
-    );
-    formData.append(
-      "propertyDimensions.masterBedroom.rlength",
+      "masterBedroomlength",
       parseFloat(formValues.masterBedroomlength)
     );
     formData.append(
-      "propertyDimensions.masterBedroom.width",
+      "masterBedroomwidth",
       parseFloat(formValues.masterBedroomwidth)
     );
     formData.append(
-      "propertyDimensions.bedroom.rlength",
-      parseFloat(formValues.bedroomlength)
-    );
+      "bedroomlength",
+       parseFloat(formValues.bedroomlength)
+       );
     formData.append(
-      "propertyDimensions.bedroom.width",
+      "bedroomwidth", 
       parseFloat(formValues.bedroomwidth)
-    );
-
-    // Numeric fields
-    formData.append("noOfBedrooms", parseInt(formValues.numberOfRooms, 10));
+      );
+    formData.append(
+      "noOfBedrooms", 
+      parseInt(formValues.numberOfRooms, 10)
+      );
     formData.append(
       "noOfBathrooms",
       parseInt(formValues.numberOfBathrooms, 10)
     );
-    formData.append("noOfToilets", parseInt(formValues.numberOfToilets, 10));
+    formData.append(
+      "noOfToilets", 
+      parseInt(formValues.numberOfToilets, 10)
+      );
     formData.append(
       "parkingCapacity",
       parseInt(formValues.numberOfParkingSpaces, 10)
     );
 
     // Contact details
-    formData.append("contactDetails.name", formValues.contactDetails.name);
-    formData.append("contactDetails.email", formValues.contactDetails.email);
+    formData.append(
+      "contactDetails.name", 
+      formValues.contactDetails.fullname
+      );
+    formData.append(
+      "contactDetails.email",
+       formValues.contactDetails.email
+       );
     formData.append(
       "contactDetails.mobileNumber",
       formValues.contactDetails.mobileNumber
@@ -503,59 +221,60 @@ const Listaproperty = () => {
       "contactDetails.subject",
       formValues.contactDetails.subject
     );
-
-    // Images
-    if (formValues.images) {
-      for (const image of formValues.images) {
-        formData.append("images", image);
-      }
-    }
-
-    // Property documents
-    if (formValues.propertyTitleDeals) {
-      if (Array.isArray(formValues.propertyTitleDeals)) {
-        for (const document of formValues.propertyTitleDeals) {
-          formData.append("propertyTitleDeals", document);
-        }
-      } else {
-        formData.append("propertyTitleDeals", formValues.propertyTitleDeals);
-      }
-    }
-    // Other document types (if needed)
-    formData.append("fittingContentForm", formValues.fittingsContentForm);
-    formData.append("energyPerformanceCertificate", formValues.EPC);
-    formData.append("leaseHoldInformation", formValues.Leasehold);
-    formData.append("propertyInfoForm", formValues.TA6);
-    formData.append("localAuthoritySearch", formValues.LocalAuthoritySearch);
+    // place & price & pincode & epc value
     formData.append(
-      "propertyValuationReport",
-      formValues.PropertyValuationReport
+      "place",
+      formValues.place
     );
-    formData.append("floorPlan", formValues.FloorPlan);
+    formData.append(
+      "price",
+      formValues.price
+    );
+    formData.append(
+      "pinCode",
+      formValues.pinCode
+    );
+    formData.append(
+      "epcvalue",
+      formValues.epcvalue
+    );
 
     // Nearby details
     formData.append(
       "nearby.hospital.distance",
       parseFloat(formValues.hospitalDistance)
     );
-    formData.append("nearby.hospital.name", formValues.hospitalName);
+    formData.append(
+      "nearby.hospital.name", 
+      formValues.hospitalName
+      );
     formData.append(
       "nearby.school.distance",
       parseFloat(formValues.schoolDistance)
     );
-    formData.append("nearby.school.name", formValues.schoolName);
+    formData.append(
+      "nearby.school.name", 
+      formValues.schoolName
+      );
     formData.append(
       "nearby.busStation.distance",
       parseFloat(formValues.busStationDistance)
     );
-    formData.append("nearby.busStation.name", formValues.busStationName);
+    formData.append(
+      "nearby.busStation.name",
+       formValues.busStationName
+       );
 
-    // Schedule date time
-    formData.append("ScheduleDateTime", formValues.propertyscheduling);
+// Schedule date time
+
+    formData.append(
+      "scheduleDateTime", 
+      formValues.propertyscheduling
+      );
 
     try {
       const response = await fetch(
-        "http://localhost:3000/listing-property/create",
+        "https://raddaf-be.onrender.com/listing-property/create",
         {
           method: "POST",
           body: formData,
@@ -564,6 +283,7 @@ const Listaproperty = () => {
 
       if (response.ok) {
         const data = await response.json();
+        alert('your details submitted successfully')
         console.log("Property created successfully:", data);
       } else {
         const errorData = await response.json();
@@ -574,9 +294,11 @@ const Listaproperty = () => {
     }
   };
 
+  // handle skip function
+
   const handleSkip = () => {
     if (
-      !formValues.contactDetails.name ||
+      !formValues.contactDetails.fullname ||
       !formValues.contactDetails.email ||
       !formValues.contactDetails.mobileNumber ||
       !formValues.contactDetails.subject
@@ -585,6 +307,8 @@ const Listaproperty = () => {
     } else {
     }
   };
+
+  // file upload section
 
   const fileInputTitleDealsRef = useRef(null);
   const fileInputFittingsContentRef = useRef(null);
@@ -624,6 +348,39 @@ const Listaproperty = () => {
     setFormValues(updatedFormValues);
   };
 
+// images change
+  const [selectedimages, setSelectedimages] = useState([]);
+  const maxFiles = 4; 
+  const allowedExtensions = ['.png', '.jpg', '.jpeg']; // Set allowed file extensions
+
+  const handleimagechange = (event) => {
+    const files = event.target.files;
+    const selectedFilesArray = Array.from(files);
+
+    // Validate the number of selected files
+    if (selectedFilesArray.length > maxFiles) {
+      alert("Please select up to ${maxFiles} files.");
+      event.target.value = ''; // Clear the file input to prevent selecting too many files
+      return;
+    }
+
+    // Validate each file's extension
+    const invalidFiles = selectedFilesArray.filter(file => {
+      const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+      return !allowedExtensions.includes(fileExtension);
+    });
+
+    if (invalidFiles.length > 0) {
+      alert("Invalid file type. Please select only PNG or JPEG files.");
+      event.target.value = ''; // Clear the file input to prevent selecting invalid files
+      return;
+    }
+
+    // Update the selected files state
+    setSelectedimages(selectedFilesArray);
+    console.log(selectedimages)
+  };
+
   return (
     <div className="Lista-property-con">
       {/* list head */}
@@ -637,47 +394,43 @@ const Listaproperty = () => {
         />
         <h1>List a Property</h1>
         <div>
-          <FormControl sx={{ m: 1, minWidth: 250 }}>
-            <Select
-              // displayEmpty
-              inputProps={{ "aria-label": "Without label" }}
-              sx={{
+        <FormControl sx={{ m: 1, minWidth: 250 }}>
+          <Select
+            inputProps={{ "aria-label": "Without label" }}
+            sx={{
+              backgroundColor: "#9E5C08",
+              color: "white",
+              "&:hover": {
                 backgroundColor: "#9E5C08",
+              },
+              "&:focus": {
+                backgroundColor: "#9E5C08",
+                borderColor: "blue",
+              },
+              "& .MuiSelect-icon": {
                 color: "white",
-                "&:hover": {
-                  backgroundColor: "#9E5C08",
-                },
-                "&:focus": {
-                  backgroundColor: "#9E5C08",
-                  borderColor: "blue", // Change border color on focus
-                },
-                "& .MuiSelect-icon": {
-                  color: "white",
-                },
-              }}
-              name="selectsaleorrent"
-              value={formValues.selectsaleorrent}
-              onChange={handleInputChange}
-            >
-              <MenuItem value="Sale" onClick={() => setSelectedOption("Sale")}>
-                Sale
-              </MenuItem>
-              <MenuItem
-                value="Tolet"
-                onClick={() => setSelectedOption("Tolet")}
-              >
-                Tolet
-              </MenuItem>
-            </Select>
-          </FormControl>
+              },
+            }}
+            name="selectsaleorrent"
+            value={selectedOption}
+            onChange={handleInputChange}
+          >
+            <MenuItem value="Forsale" onClick={() => setSelectedOption("sale")}>
+              Forsale
+            </MenuItem>
+            <MenuItem value="To-let" onClick={() => setSelectedOption("rent")}>
+              To-let
+            </MenuItem>
+          </Select>
+        </FormControl>
         </div>
       </div>
       {/* filter section */}
-      <div className="filter-section">
-        <div className="for-sale-filter">
-          {selectedOption === "Sale" && (
-            <div className="commercial-residential">
-              <div className="custom-radio">
+      <div className="filter-section-user">
+        <div className="for-sale-filter-user">
+          {selectedOption === "Forsale" && (
+            <div className="commercial-residential-user">
+              <div className="custom-radio-user">
                 <input
                   type="radio"
                   id="Commercial"
@@ -688,7 +441,7 @@ const Listaproperty = () => {
                 />
                 <label htmlFor="Commercial">Commercial</label>
               </div>
-              <div className="custom-radio">
+              <div className="custom-radio-user">
                 <input
                   type="radio"
                   id="Residential"
@@ -702,13 +455,13 @@ const Listaproperty = () => {
             </div>
           )}
         </div>
-        <div className="to-let-filter">
-          {selectedOption === "Tolet" && (
-            <div className="to-let-filter-sub">
+        <div className="to-let-filter-user">
+          {selectedOption === "To-let" && (
+            <div className="to-let-filter-sub-user">
               {/* Commercial / residential */}
 
-              <div class="commercial-residential-rental">
-                <div className="custom-radio">
+              <div class="commercial-residential-rental-user">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="Commercial"
@@ -718,7 +471,7 @@ const Listaproperty = () => {
                   />
                   <label for="Commercial">Commercial</label>
                 </div>
-                <div className="custom-radio">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="Residential"
@@ -731,8 +484,8 @@ const Listaproperty = () => {
 
               {/* let only / management only / introduce only  */}
 
-              <div class="onlytype">
-                <div className="custom-radio">
+              <div class="onlytype-user">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="letonly"
@@ -741,7 +494,7 @@ const Listaproperty = () => {
                   />
                   <label for="letonly">Let only</label>
                 </div>
-                <div className="custom-radio">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="Managementonly"
@@ -750,7 +503,7 @@ const Listaproperty = () => {
                   />
                   <label for="Managementonly">Management only </label>
                 </div>
-                <div className="custom-radio">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="Introduceonly"
@@ -762,8 +515,8 @@ const Listaproperty = () => {
               </div>
 
               {/* including bills / excluding bills */}
-              <div className="billsonly">
-                <div className="custom-radio">
+              <div className="billsonly-user">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="includingbills"
@@ -772,7 +525,7 @@ const Listaproperty = () => {
                   />
                   <label for="includingbills">Including Bills</label>
                 </div>
-                <div className="custom-radio">
+                <div className="custom-radio-user">
                   <input
                     type="radio"
                     id="excludingbills"
@@ -791,7 +544,19 @@ const Listaproperty = () => {
       <div className="image-document">
         <div className="image-upload">
           <div className="image-upload-sub">
-            <Imageupload />
+            {/* <Imageupload /> */}
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="fileInput">Select up to 4 files (PNG or JPEG only):</label>
+              <input
+                type="file"
+                id="fileInput"
+                name="files"
+                multiple
+                accept=".png, .jpg, .jpeg"
+                onChange={handleimagechange}
+              />
+              
+            </form>
           </div>
         </div>
         {/* Hidden file input element */}
@@ -1001,8 +766,8 @@ const Listaproperty = () => {
           />
         </div>
         {/* property dimensions */}
-        <div className="property-dimensions">
-          <h1>Property Dimensions</h1>
+        <div className="property-dimensions-lw">
+          <h1>Property dimensions</h1>
           <div className="property-dimensions-main">
             <div className="property-dimensions-sub">
               Reception
@@ -1222,7 +987,7 @@ const Listaproperty = () => {
       <div className="contact-details">
         <h1>Contact details</h1>
         <div className="contact-sub-details">
-          <div>
+          <div className="contact-sub-details-mini">
             <p>Name</p>
             <TextField
               // label="With normal TextField"
@@ -1243,12 +1008,12 @@ const Listaproperty = () => {
                 },
               }}
               variant="filled"
-              name="name"
-              value={formValues.contactDetails.name}
+              name="fullname"
+              value={formValues.contactDetails.fullname}
               onChange={handleContactDetailsChange}
             />
           </div>
-          <div>
+          <div className="contact-sub-details-mini">
             <p>mail id:</p>
             <TextField
               // label="With normal TextField"
@@ -1275,7 +1040,7 @@ const Listaproperty = () => {
               onChange={handleContactDetailsChange}
             />
           </div>
-          <div>
+          <div className="contact-sub-details-mini">
             <p>Mobile No:</p>
             <TextField
               // label="With normal TextField"
@@ -1307,15 +1072,17 @@ const Listaproperty = () => {
               onChange={handleContactDetailsChange}
             />
           </div>
-          <div>
+          <div className="contact-sub-details-mini">
             <p>Subject :</p>
             <TextField
               // label="With normal TextField"
               id="filled-start-adornment"
-              required
+             required
+              
               sx={{
                 m: 0,
                 width: "20rem",
+                fontSize:'50px',
                 "& .MuiFilledInput-root": {
                   background: "#FFECDE", // Set background color
                   "&:hover": {
@@ -1336,9 +1103,228 @@ const Listaproperty = () => {
           </div>
         </div>
       </div>
+      {/* place & price */}
+      <div className="place-price">
+        <div className="place">
+          <p>Place </p>
+          <TextField
+              // label="With normal TextField"
+              id="filled-start-adornment"
+              required
+              sx={{
+                m: 0,
+                width: "20rem",
+                "& .MuiFilledInput-root": {
+                  background: "#FFECDE", // Set background color
+                  "&:hover": {
+                    background: "#FFECDE", // Maintain background color on hover
+                  },
+                  "&.Mui-focused": {
+                    border: "none", // Remove border on focus
+                    boxShadow: "none", // Remove box shadow on focus
+                  },
+                },
+              }}
+              variant="filled"
+              name="place"
+              value={formValues.place}
+              onChange={handleInputChange}
+            />
+
+        </div>
+        <div className="price">
+          <p>Price </p>
+          <TextField
+              id="outlined-multiline-flexible"
+              // label="Multiline"
+              multiline
+              maxRows={4}
+             
+              sx={{
+                m: 0,
+                width: "20rem",
+                display: 'flex', // Use flex display
+                alignItems: 'center', // Center vertically
+                fontSize: '50',
+                "& .MuiFilledInput-root": {
+                  background: "#FFECDE", // Set background color
+                  "&:hover": {
+                    background: "#FFECDE", // Maintain background color on hover
+                  },
+                  "&.Mui-focused": {
+                    border: "none", // Remove border on focus
+                    boxShadow: "none", // Remove box shadow on focus
+                    borderBlockStyle: "#FFECDE",
+                  },
+                },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start"><CurrencyPoundIcon/></InputAdornment>
+                ),
+              }}
+              variant="filled"
+              name="price"
+              value={formValues.price}
+              onChange={handleInputChange}
+            />  
+        </div>
+        <div className="pincode">
+          <p>Pincode </p>
+          <TextField
+              id="outlined-multiline-flexible"
+              multiline
+            
+             
+              sx={{
+                m: 0,
+                width: "20rem",
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+                fontSize: '50',
+                "& .MuiFilledInput-root": {
+                  background: "#FFECDE",
+                  "&:hover": {
+                    background: "#FFECDE", 
+                  },
+                  "&.Mui-focused": {
+                    border: "none", // Remove border on focus
+                    boxShadow: "none", // Remove box shadow on focus
+                    borderBlockStyle: "#FFECDE",
+                  },
+                },
+              }}
+              variant="filled"
+              name="pinCode"
+              value={formValues.pinCode}
+              onChange={handleInputChange}
+            />  
+        </div>
+
+                 
+      </div>
+      <div className="checkboxes">
+      <FormControlLabel
+        control={<Checkbox />}
+        label="Street Parking"
+        className="Street-Parking"
+        style={{ color: '#9E5C08', fontSize: '30px' }}
+        name="streetParking"
+        checked={formValues.streetParking}
+        onChange={handleInputChange}
+      />
+      <FormControlLabel
+        control={<Checkbox />}
+        label="Rear Garden"
+        className="Rear-Garden"
+        style={{ color: '#9E5C08' }}
+        name="rearGarden"
+        checked={formValues.rearGarden}
+        onChange={handleInputChange}
+      />
+      <FormControlLabel
+        control={<Checkbox />}
+        label="Gas Central Heating"
+        className="Gas-Central-Heating"
+        style={{ color: '#9E5C08' }}
+        name="gasCentralHeating"
+        checked={formValues.gasCentralHeating}
+        onChange={handleInputChange}
+      />
+      <FormControlLabel
+        control={<Checkbox />}
+        label="Double-Glazed-Windows"
+        className="Double-Glazed-Windows"
+        style={{ color: '#9E5C08' }}
+        name="doubleGlazedWindows"
+        checked={formValues.doubleGlazedWindows}
+        onChange={handleInputChange}
+      />
+         <div className="epcvalue-head">
+          <p>EPC Value:</p>
+          <FormControl sx={{ m: 1, minWidth: 20 }}>
+            <Select
+              inputProps={{ "aria-label": "Without label" }}
+              sx={{
+                
+                color: "#9E5C08",
+                "&:hover": {
+                  Color: "#9E5C08",
+                },
+                "&:focus": {
+                 Color: "#9E5C08",
+                  borderColor: "blue", 
+                },
+                "& .MuiSelect-icon": {
+                  color: "white",
+                },
+              }}
+              name="epcvalue"
+              value={selectedepcvalue}
+              onChange={handleInputChange}
+            >
+              <MenuItem
+                value="A"
+                onClick={() => setselectedepcvalue("A")}
+              >
+                A
+              </MenuItem>
+              <MenuItem
+                value="B"
+                onClick={() => setselectedepcvalue("B")}
+              >
+                B
+              </MenuItem>
+              <MenuItem
+                value="C"
+                onClick={() => setselectedepcvalue("C")}
+              >
+                C
+              </MenuItem>
+              <MenuItem
+                value="D"
+                onClick={() => setselectedepcvalue("D")}
+              >
+                D
+              </MenuItem>
+              <MenuItem
+                value="E"
+                onClick={() => setselectedepcvalue("E")}
+              >
+                E
+              </MenuItem>
+              <MenuItem
+                value="F"
+                onClick={() => setselectedepcvalue("F")}
+              >
+                F
+              </MenuItem>
+              <MenuItem
+                value="G"
+                onClick={() => setselectedepcvalue("G")}
+              >
+                G
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+       
+      </div>
       <div className="buttons">
         <button onClick={handleSkip}>Skip</button>
         <button onClick={handleSubmit}>Submit</button>
+      </div>
+      <div>
+      {/* <p>
+        {Object.entries(formValues).map(([key, value]) => (
+          <span key={key}>
+            <strong>{key}:</strong> {JSON.stringify(value)} <br />
+          </span>
+        ))}
+      </p> */}
+
+      {/* <img src={selectedimage} alt=" selected image"/> */}
       </div>
     </div>
   );

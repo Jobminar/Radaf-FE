@@ -13,11 +13,12 @@ const Tolethome = () => {
     const navigate = useNavigate()
     const fetchListings = async () => {
         try {
-            const url = `https://raddaf-be.onrender.com/listing-property/get-listings?purpose=Tolet`;
+            const url = 'https://raddaf-be.onrender.com/listing-property/get-listings';
             const response = await axios.get(url);
             const { data } = response;
-            setSaleListings(data);
-            console.log(data)
+            const filteredToletListings = data.filter(data => data.purpose === 'Tolet');
+            console.log(filteredToletListings);
+            setSaleListings(filteredToletListings); 
         } catch (error) {
             console.error('Error:', error);
         }
@@ -29,7 +30,14 @@ const Tolethome = () => {
       
      
      
-    const price = 100;
+    // send data
+  const [property,setproperty]=useState('')
+
+  const handleProperty = (item) => {
+    setproperty(item);
+    navigate('/propertydetails', { state: { property: item } });
+    console.log(item,'data')
+  };
 
     return (
         <>
@@ -37,18 +45,18 @@ const Tolethome = () => {
             <div className="forsalehome-con">
                 {saleListings.slice(0, 3).map((listing, index) => (
                     <div key={index} className='forsalesub-con'>
-                        <div className='sale-image'>
-                            <img src={listing.images[0].Value} alt={`main-img-${index}`} />
+                        <div className='sale-image' onClick={() => handleProperty(listing)} >
+                            <img src={listing.images[0]?.Value} alt={`main-img-${index}`} />
                         </div>
                         <div className='sale-details'>
                             <div className='home-sale-price'>
-                                <span>&#163; {price}</span>
+                                <span>&#163; {listing.price}</span>
                             </div>
                             <div className='home-sale-bedroom'>
                                 <span>{listing.noOfBedrooms} bedroom flat for sale</span>
                             </div>
                             <div className='home-sale-address'>
-                                <span>Address</span>
+                                <span>{listing.place}</span>
                             </div>
                         </div>
                         <div className='forsale-home-rooms'>

@@ -1,5 +1,7 @@
 .maincont{
-    margin: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 7px;
     font-family: "Roboto";
 }
 .imag{
@@ -21,7 +23,6 @@
 .simage{
     height: 30vh;
     width: 50%;
-    /* margin-top: 10px; */
     border-radius: 15px;
     margin-right: 20px;
 }

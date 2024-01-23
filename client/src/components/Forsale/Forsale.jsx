@@ -1,33 +1,45 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import './Forsale.css';
-
-import Forsaledata from './forsaledata';
 import bedroomlogo from './images/bedsymbol.png';
 import toilet from './images/toilet.png';
 import washroom from './images/washroom.png';
 import parking from './images/car.png';
+import { useNavigate } from 'react-router-dom';
 // mui images
 import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
+import CircularProgress from '@mui/material/CircularProgress';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Forsale = () => {
+  const navigate = useNavigate()
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
   };
   
   const [saleListings, setSaleListings] = useState([]);
+  const [loading, setLoading] = useState(true);
   const fetchListings = async () => {
     try {
-      const url = `https://raddaf-be.onrender.com/listing-property/get-listings?purpose=Sale`;
+      const url = 'https://raddaf-be.onrender.com/listing-property/get-listings';
       const response = await axios.get(url);
       const { data } = response;
-      setSaleListings(data);
-      console.log(saleListings);
+      const filteredToletListings = data.filter(data => data.purpose === 'Sale');
+      console.log(filteredToletListings);
+      setSaleListings(filteredToletListings); 
     } catch (error) {
       console.error('Error:', error);
     }
-  };
+    finally {
+      // Set loading to false after fetching data, with a delay of 3 seconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+  }
+}
+  
 
   useEffect(() => {
     fetchListings();
@@ -38,8 +50,39 @@ const Forsale = () => {
   const clicktop = (imageSrc) => {
     setMainImage(imageSrc);
   };
+  const [property,setproperty]=useState('')
+
+  const handleProperty = (item) => {
+    setproperty(item);
+    navigate('/propertydetails', { state: { property: item } });
+    console.log(item,'data')
+  };
+
+  // favourite
+  const [favoriteProperties, setFavoriteProperties] = useState([]);
+
+  const toggleFavorite = (itemId) => {
+    setFavoriteProperties((prevFavorites) => {
+      if (prevFavorites.includes(itemId)) {
+        return prevFavorites.filter((id) => id !== itemId);
+      } else {
+        return [...prevFavorites, itemId];
+      }
+    });
+  };
 
   return (
+
+    <>
+
+      {loading ? (
+        // Render loading spinner while data is being fetched
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <CircularProgress />
+          
+        </div>
+      ) : (
+
     <div className='Forsale-con'>
       <div className='filter-section'>
         <div className='pincode-filter'>
@@ -92,7 +135,7 @@ const Forsale = () => {
       {saleListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>
           <div className='forsale-img-sub-con'>
-          <div className='main-img-con'>
+          <div className='main-img-con' onClick={() => handleProperty(data)} >
           {mainImage ? (
             <img src={mainImage} alt="Main" />
           ) : (
@@ -109,7 +152,7 @@ const Forsale = () => {
          </div>
           <div className='forsale-details-sub-con'>
             <div className='forsale-details-sub'>
-              <div className='price'><span>&#163; </span><span>299 PCM</span></div>
+              <div className='pricehouse'><span>&#163; </span><span>299 PCM</span></div>
               <div className='apartment'>{data.noOfBedrooms} bedroom apartment to rent</div>
               <div className='address'>address</div>
               <div className='rooms-details'>
@@ -120,6 +163,9 @@ const Forsale = () => {
               </div>
             </div>
             <div className='buttonagenthandle'>
+            <div style={{ fontSize: '80px', color: favoriteProperties.includes(data.id) ? 'red' : 'black' }} onClick={() => toggleFavorite(data.id)}>
+                  {favoriteProperties.includes(data.id) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            </div>
               <button className='button-connect' onClick={handleCallAgent}>
                 Contact with agent
               </button>
@@ -128,6 +174,9 @@ const Forsale = () => {
         </div>
       ))}
     </div>
+     )}
+    </>
+    
   );
 };
 

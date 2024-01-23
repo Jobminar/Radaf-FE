@@ -19,28 +19,7 @@
     border-radius: 10px;
     border-color: rgb(215, 200, 200);
 }
-/* .inp2{
-    width: 70%;
-    height:50px;
-    margin-top: 20px;
-    border: 2px;
-    border-style: solid;
-    /* border-radius: 10px; */
-    /* border-top-left-radius: 10px; */
-    /* border-bottom-left-radius: 10px; */
-    /* border-color: rgb(215, 200, 200); */
-/* } */ */
-/* .inp2b{
-    width: 10%;
-    height: 55px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: orange;
-}
-.inp2d{
-    display: flex;
-    flex-direction: row;
-} */
+
 .bun{
     padding: 10px;
     cursor: pointer;
@@ -101,4 +80,10 @@
     .maincoos{
         margin: 2px;
     }
+}
+.lo{
+    display: 'flex';
+    justify-content: 'center';
+     align-items: 'center';
+     height:100vh;
 }

@@ -1,0 +1,199 @@
+
+.chatbot-container {
+    background: linear-gradient(45deg, #8B4513, #ffdd1c) rgba(255, 255, 255, 0.5);
+    border-radius: 10px; /* You can adjust the value for the border-radius */
+    padding: 20px; /* Add padding for a more spaced look */
+    transition: opacity 0.3s ease-in; /* Add a transition for opacity on hover */
+  }
+  
+  /* Apply the transition effect on hover */
+  .chatbot-container:hover {
+    opacity: 0.8; /* Adjust the opacity value on hover as needed */
+  }
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    max-width: 70%;
+  }
+  
+  .bot {
+    background-color: #f0f0f0;
+  }
+  
+  .user {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .message:not(.read) {
+    font-weight: bold;
+  }
+  
+  /* Message animations */
+  .message-enter-active,
+  .message-exit-active {
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  
+  .message-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  
+  .message-exit {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  
+  /* Message styles */
+  .message {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  /* Gradient Styles */
+  .message.bot {
+    background: linear-gradient(45deg, #f36a0e, #f39800);
+    align-self: flex-start;
+  }
+  
+  .message.user {
+    background: linear-gradient(45deg, #4caf50, #45a049);
+    color: #fff;
+    align-self: flex-end;
+  }
+  
+  /* Chatbot button animations and styles */
+  .button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .button-container.chatbot-open,
+  .button-container.wiggle-stop {
+    animation: none;
+  }
+  
+  /* Text field animation prevention */
+  .text-field-container {
+    animation: none !important;
+  }
+  
+  @keyframes wiggle {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-15px) rotate(-15deg);
+    }
+    50% {
+      transform: translateX(15px) rotate(15deg);
+    }
+    75% {
+      transform: translateX(-15px) rotate(-15deg);
+    }
+  }
+  
+
+  .message.bot:hover {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1; 
+  }
+
+  /* Add gold gradient to the chat container */
+.react-chatbot-kit-chat-container {
+  background: linear-gradient(to bottom, #584b00, #ffd700); /* Gold gradient */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Add gold gradient to the inner chat container */
+.react-chatbot-kit-chat-inner-container {
+  background: linear-gradient(to bottom, #927c00, #ffd700); /* Gold gradient */
+}
+
+/* Add gold gradient to the chat header */
+.react-chatbot-kit-chat-header {
+  background: linear-gradient(to bottom, #fff3b0, #ffd700); /* Gold gradient */
+  color: #ffffff;
+}
+
+/* Add gold gradient to the chat input container */
+.react-chatbot-kit-chat-input-container {
+  background: linear-gradient(to bottom, #fffffc, #fffcec); /* Gold gradient */
+}
+
+/* Add gold gradient to the message container */
+.react-chatbot-kit-chat-message-container {
+  background: linear-gradient(to bottom, #fff8d3, #fffbe3); /* Gold gradient */
+  overflow-y: auto;
+}
+
+/* Add gold gradient to the chat input */
+.react-chatbot-kit-chat-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Add gold gradient to the send button */
+.react-chatbot-kit-chat-btn-send {
+  background: linear-gradient(to bottom, #ffd700, #66e200); /* Gold gradient */
+  color: #ffffff;
+}
+
+/* Add gold gradient to the bot message container */
+.react-chatbot-kit-chat-bot-message-container {
+  background: none;/* Gold gradient */
+  color: #000000;
+  border-radius: 50%;
+}
+
+/* Add gold gradient to the loading icon container */
+.react-chatbot-kit-chat-bot-loading-icon-container {
+  color: #ffd700; /* Gold color */
+}
+
+/* Add gold gradient to the error container */
+.react-chatbot-kit-error-container {
+  background: linear-gradient(to bottom, #ffd700, #ffd700); /* Gold gradient */
+  color: #cc0000;
+  border: 1px solid #cc0000;
+}
+
+/* Add gold gradient to the error header */
+.react-chatbot-kit-error-header {
+  background: linear-gradient(to bottom, #ffd700, #ffd700); /* Gold gradient */
+  color: #ffffff;
+}
+
+/* Add gold gradient to the error docs */
+.react-chatbot-kit-error-docs {
+  background: linear-gradient(to bottom, #ffd700, #ffd700); /* Gold gradient */
+}
+
+/* Add gold gradient to the chat bot avatar */
+.react-chatbot-kit-chat-bot-avatar {
+  border-radius: 50%; /* Make it round */
+}
+
+/* Add gold gradient to the chat bot avatar icon */
+.react-chatbot-kit-chat-bot-avatar-icon {
+  border-radius: 50%; /* Make it round */
+}
+
+/* Add gold gradient to the chat bot avatar letter */
+.react-chatbot-kit-chat-bot-avatar-letter {
+  border-radius: 50%; /* Make it round */
+}
+
+
+

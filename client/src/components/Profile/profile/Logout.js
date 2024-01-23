@@ -1,7 +1,12 @@
+// import { Cookie } from "@mui/icons-material";
+import Cookies from 'universal-cookie';
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+
 
 function Logout() {
+  // const history = useHistory();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -12,8 +17,10 @@ function Logout() {
 
         if (!token) {
           // No token available, navigate to login page
-          alert("first login details")
-          navigate("/");
+          // alert("first login details")
+          // history.replace("/login");
+          window.location.replace("/");
+          // navigate("/login");
           return;
         }
 
@@ -41,8 +48,16 @@ function Logout() {
   // Logout logic
   const handleLogout = () => {
     // Clear sessionStorage and navigate to login page
+    // navigate("/login",{ replace: true });
+    
     sessionStorage.clear();
-    navigate("/");
+    const cookies = new Cookies();
+    window.location.replace("/");
+
+
+  // Remove the token and user cookies
+  // cookies.remove('token', { path: '/' });
+    // navigate("/login");
   };
 
   return (
