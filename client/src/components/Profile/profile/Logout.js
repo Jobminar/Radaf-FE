@@ -13,7 +13,7 @@ function Logout() {
         if (!token) {
           // No token available, navigate to login page
           alert("first login details")
-          navigate("/login");
+          navigate("/");
           return;
         }
 
@@ -28,7 +28,7 @@ function Logout() {
 
         if (!response.ok) {
           // Session expired, navigate to login page
-          navigate("/login");
+          navigate("/");
         }
       } catch (error) {
         console.error("Error checking session:", error);

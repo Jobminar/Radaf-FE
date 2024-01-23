@@ -46,7 +46,7 @@ const Navbar = ({children}) => {
         navigate('/myaccount');
         break;
         case 'Logout':
-          navigate('/login');
+          navigate('/');
           break;
        
       default:
