@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, {useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import {
@@ -17,9 +17,13 @@ import '../profile/login.css';
 import SocialAuth from "../SocialAuth";
 import Facebook from "./Facebook";
 import Swal from "sweetalert2";
+import { Data } from "../../../Provider";
+
+
 const Login = () => {
   const navigate = useNavigate();
-  
+  const { setShow } = useContext(Data); 
+
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -36,7 +40,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       const response = await fetch("https://raddaf-be.onrender.com/auth/login", {
@@ -59,7 +63,8 @@ const Login = () => {
             title: 'Login Successful!',
             text: 'User login has been successful',
           });
-          navigate("/home");
+          setShow(true);
+          navigate("/");
         } else {
           console.error("User data not available in the response:", data);
           Swal.fire({
@@ -79,10 +84,9 @@ const Login = () => {
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
-
   return (
     <div className="main-div">
       <div className="first-div">

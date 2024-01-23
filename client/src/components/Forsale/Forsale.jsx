@@ -14,6 +14,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Forsale = () => {
+  
   const navigate = useNavigate()
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
@@ -62,6 +63,21 @@ const Forsale = () => {
   const [favoriteProperties, setFavoriteProperties] = useState([]);
 
   const toggleFavorite = (itemId) => {
+
+    const user = sessionStorage.getItem("user");
+  
+    if (!user) {
+     
+      alert("Please login to unlock the website features.");
+      navigate("/login")
+    } 
+     
+    else {
+
+      console.log("Unlocking website features...");
+    }
+  
+
     setFavoriteProperties((prevFavorites) => {
       if (prevFavorites.includes(itemId)) {
         return prevFavorites.filter((id) => id !== itemId);
@@ -69,6 +85,7 @@ const Forsale = () => {
         return [...prevFavorites, itemId];
       }
     });
+ 
   };
 
   return (

@@ -1,11 +1,15 @@
 // import { Cookie } from "@mui/icons-material";
 import Cookies from 'universal-cookie';
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Data } from '../../../Provider';
+
 // import { useHistory } from "react-router-dom";
 
 
 function Logout() {
+
+ 
   // const history = useHistory();
   const navigate = useNavigate();
 
@@ -35,7 +39,7 @@ function Logout() {
 
         if (!response.ok) {
           // Session expired, navigate to login page
-          navigate("/");
+          navigate("/login");
         }
       } catch (error) {
         console.error("Error checking session:", error);
@@ -52,7 +56,7 @@ function Logout() {
     
     sessionStorage.clear();
     const cookies = new Cookies();
-    window.location.replace("/");
+    window.location.replace("/login");
 
 
   // Remove the token and user cookies
@@ -63,8 +67,8 @@ function Logout() {
   return (
     <div style={{width:"100%",height:"100%"}}>
       {/* <h1>Hii welcome to Raddaf homes</h1> */}
-      <button style={{marginBottom:"10px",background:"#9E5C08",border:"none",width:"30%",color:"white",height:"40px",borderRadius:"10px"}} onClick={handleLogout}>Logout</button>
-    </div>
+      <button style={{border:"none",background:'none',cursor:'pointer',fontSize:'18px'}} onClick={handleLogout}>Logout</button>
+      </div>
   );
 }
 

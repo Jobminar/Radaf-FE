@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { TextField, Button, CircularProgress } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import '../signup/signup.css';
 import Swal from 'sweetalert2';
+import { Data } from '../../../Provider';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const {setShow}=useContext(Data)
 
   const [formData, setFormData] = useState({
     username: '',
