@@ -74,6 +74,20 @@ const Tolet = () => {
   const [favoriteProperties, setFavoriteProperties] = useState([]);
 
   const toggleFavorite = (itemId) => {
+
+    const user = sessionStorage.getItem("user");
+  
+    if (!user) {
+     
+      alert("Please login to unlock the website features.");
+      navigate("/login")
+    } 
+     
+    else {
+
+      console.log("Unlocking website features...");
+    }
+
     setFavoriteProperties((prevFavorites) => {
       if (prevFavorites.includes(itemId)) {
         return prevFavorites.filter((id) => id !== itemId);
