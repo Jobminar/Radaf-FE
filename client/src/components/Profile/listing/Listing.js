@@ -5,9 +5,16 @@ import bedroomlogo from '../listing/images/bedsymbol.png'
 import toilet from '../listing/images/toilet.png'
 import washroom from '../listing/images/washroom.png'
 import parking from '../listing/images/car.png'
+import { useNavigate } from 'react-router-dom';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const Listing = () => {
+  const navigate=useNavigate()
+  const handleProperty = (item) => {
+    // setproperty(item);
+    navigate('/underconstruction', { state: { property: item } });
+    console.log(item,'data')
+  };
 const [age,setAge]=useState("")
 
   const handleCallAgent = () => {
@@ -92,7 +99,7 @@ const [age,setAge]=useState("")
       {saleListings.map((data, index) => (
         <div className='forsale-sub-con1' key={index}>
           <div className='forsale-img-sub-con1'>
-          <div className='main-img-con1'>
+          <div className='main-img-con1' onClick={() => handleProperty(data)}>
           {mainImage ? (
             <img src={mainImage} alt="Main" />
           ) : (

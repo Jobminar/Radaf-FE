@@ -80,7 +80,7 @@ const Tolethome = () => {
                     </div>
                 ))}
             </div>
-            <h1 style={{ display: 'flex', justifyContent:'right',alignItems: 'center' }} className='showmoreproperty' onClick={()=>{navigate('./tolet')}}>
+            <h1 style={{ display: 'flex', justifyContent:'right',alignItems: 'center' }} className='showmoreproperty' onClick={()=>{navigate('/tolet')}}>
                     Show More Tolet Properties
                     <ArrowCircleRightRoundedIcon style={{ fontSize: '30px', marginLeft: '5px' }} />
             </h1> 

@@ -66,11 +66,11 @@ const Myproperty = () => {
         <h3>Filter :</h3>
         <select
           value={selectedOption}
-          onChange={(e) => handleSelect(e.target.value)} style={{ background: "#BE6B2E",textAlign:"center",color:"white", border: "none", width: "182px",height:"50px", fontSize: "18px",borderRadius:"10px",marginLeft:"10px" }}
+          onChange={(e) => handleSelect(e.target.value)} style={{ background: "#BE6B2E",textAlign:"start",color:"white", border: "none", width: "182px",height:"50px", fontSize: "18px",borderRadius:"10px",marginLeft:"10px" }}
         >
           <option value="">My Properties</option>
           {options.map((option, index) => (
-            <option key={index} value={option}>
+            <option style={{textAlign:"start"}} key={index} value={option}>
               {option}
             </option>
           ))}

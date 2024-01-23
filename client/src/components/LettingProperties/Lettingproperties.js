@@ -22,6 +22,9 @@ const Letting = () => {
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
   };
+  const under = () => {
+    navigate("/underconstruction")
+  };
 
   const [selectedBedroom, setSelectedBedroom] = useState('');
 
@@ -75,7 +78,7 @@ const Letting = () => {
         </div>
       ) : (
     <div className='Forsale-con' style={{width:"100%"}}>
-      <div className='filter-section'>
+      {/* <div className='filter-section'>
         <div className='pincode-filter'>
           <AddLocationAltOutlinedIcon />
           <input type='text' placeholder='Manchester' />
@@ -115,7 +118,7 @@ const Letting = () => {
               <option className='option' value="option2">Commercial</option>
             </select>
         </div>
-      </div>
+      </div> */}
 
       {toletListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>
@@ -151,7 +154,7 @@ const Letting = () => {
               <button className='button-connect' style={{marginRight:"10px",fontSize:"20px"}} onClick={handleCallAgent}>
                 Contact with agent
               </button>
-              <button className='button-connect' style={{marginRight:"10px",fontSize:"20px"}} onClick={handleCallAgent}>
+              <button className='button-connect' style={{marginRight:"10px",fontSize:"20px"}} onClick={under}>
                 Raise an Inspection Report
               </button>
             </div>

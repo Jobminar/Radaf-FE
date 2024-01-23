@@ -1,7 +1,7 @@
 import React from "react";
 
-export default function DisplayImage(props) {
-  const { imageUrl, link } = props.state.userData.propertyDetails;
+export default function DipslayImage(props) {
+  const { imageUrl, link } = props.state.userData.product;
   console.log(props.state.userData);
 
   return (
@@ -10,7 +10,7 @@ export default function DisplayImage(props) {
         <img src={imageUrl} alt="" />
       </div>
       <a href={link} target="_blank" rel="noreferrer">
-        Property Details
+        Link
       </a>
     </div>
   );

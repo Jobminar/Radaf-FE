@@ -78,7 +78,7 @@ const Forsalehome = () => {
                     </div>
                 ))}
             </div>
-            <h1 style={{ display: 'flex', justifyContent:'right',alignItems: 'center' }} className='showmoreproperty' onClick={()=>{navigate('./forsale')}}>
+            <h1 style={{ display: 'flex', justifyContent:'right',alignItems: 'center' }} className='showmoreproperty' onClick={()=>{navigate('/forsale')}}>
                     Show More Sale Properties
                     <ArrowCircleRightRoundedIcon style={{ fontSize: '30px', marginLeft: '5px' }} />
             </h1> 

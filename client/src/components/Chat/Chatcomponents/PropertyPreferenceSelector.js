@@ -13,13 +13,13 @@ export default function PropertyPreferenceSelector(props) {
     <div>
       <button
         className="preference-btn"
-        onClick={() => selectPreference("fast")}
+        onClick={() => selectPreference("sale")}
       >
         Sale
       </button>
       <button
         className="preference-btn slow-btn"
-        onClick={() => selectPreference("slow")}
+        onClick={() => selectPreference("tolet")}
       >
         Tolet
       </button>

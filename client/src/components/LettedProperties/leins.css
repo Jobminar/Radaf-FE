@@ -45,3 +45,9 @@
     padding: 8px;
     text-align: center;
   }
+
+  .custom-datepicker {
+    border: none;
+    width: 120%;
+  }
+  

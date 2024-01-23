@@ -83,22 +83,22 @@ const Undersalepropertydetails = () => {
           <div className="gallery-container">
             <div className="main-image" style={{width:"80%"}}>
                         <div className='imagmain' style={{backgroundSize:"cover",backgroundImage:`url(${selectedProperty.images[0].Value})`,width:"100%",height:"500px"}}>
-                            <div className='contaier' style={{ margin: '0 40px' }}>
+                            {/* <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container' onClick={lettedagreemetns}>
                                     Agreements</button>
-                            </div>
+                            </div> */}
                             <div className='contaier' style={{ margin: '0 40px' }}>
-                                <button className='container' onClick={lettedbill}>
-                                    Bills & Documents</button>
+                                <button className='container' onClick={makeoffer}>
+                                    Make an Offer</button>
                             </div >
-                            <div className='conta' style={{ margin: '0 40px' }}>
+                            {/* <div className='conta' style={{ margin: '0 40px' }}>
                                 <button className='container' onClick={lettedinspection}>
                                     Inspections</button>
-                            </div>
-                            <div className='contaier' style={{ margin: '0 40px' }}>
+                            </div> */}
+                            {/* <div className='contaier' style={{ margin: '0 40px' }}>
                                 <button className='container' onClick={lettedrepair}>
                                     Repair Request</button>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='iconsadd'>
                             <div>
@@ -204,9 +204,9 @@ const Undersalepropertydetails = () => {
                         <button onClick={agent} style={{marginTop:"10px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
                             Contact Agent
                         </button>
-                        <button onClick={makeoffer} style={{marginTop:"20px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
+                        {/* <button onClick={makeoffer} style={{marginTop:"20px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
                             Make an Offer
-                        </button>
+                        </button> */}
                     </div>
           </div>
         </div>

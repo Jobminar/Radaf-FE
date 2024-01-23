@@ -19,7 +19,8 @@
 
 .main-serch {
     position: absolute;
-    top: 95%;
+    bottom: 40px;
+    top: 80%;
     left: 15%;
     transform: translateY(-50%);
     width: 70%;
@@ -36,6 +37,7 @@
     justify-content: left;
       /* border: 1px solid black; */
       padding: 0.5rem 4rem;
+      
 }
 .serch-routes h1{
     background-color: white;

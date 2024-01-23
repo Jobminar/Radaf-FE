@@ -38,29 +38,29 @@ const Listaproperty = () => {
     propertyDescription: "",
     propertytype: "",
     selectsaleorrent: "",
-    receptionlength: "",
-    receptionwidth: "",
-    kitchenlength: "",
-    kitchenwidth: "",
-    masterBedroomlength: "",
-    masterBedroomwidth: "",
-    bedroomlength: "",
-    bedroomwidth: "",
-    numberOfRooms: "",
-    numberOfBathrooms: "",
-    numberOfToilets: "",
-    numberOfParkingSpaces: "",
-    hospitalDistance: "",
+    receptionlength: 0,
+    receptionwidth: 0,
+    kitchenlength: 0,
+    kitchenwidth: 0,
+    masterBedroomlength: 0,
+    masterBedroomwidth: 0,
+    bedroomlength: 0,
+    bedroomwidth: 0,
+    numberOfRooms: 0,
+    numberOfBathrooms: 0,
+    numberOfToilets: 0,
+    numberOfParkingSpaces: 0,
+    hospitalDistance: 0,
     hospitalName: "",
-    schoolDistance: "",
+    schoolDistance: 0,
     schoolName: "",
-    busStationDistance: "",
+    busStationDistance: 0,
     busStationName: "",
     propertyscheduling: null,
     contactDetails: {
       fullname: "",
       email: "",
-      mobileNumber: "",
+      mobileNumber: 0,
       subject: "",
     },
     propertyTitleDeals: null,
@@ -72,8 +72,8 @@ const Listaproperty = () => {
     PropertyValuationReport: null,
     FloorPlan: null,
     place:'',
-    price:'',
-    pinCode:'',
+    price:0,
+    pinCode:0,
     epcvalue:'',
     streetParking: false,
     rearGarden: false,
@@ -90,6 +90,19 @@ const Listaproperty = () => {
       [name]: value,
       [name]: type === "checkbox" ? checked : value,
     }));
+    console.log(name,value,checked,type,"inputchange")
+    if (name === "selectsaleorrent") {
+      setSelectedOption(value);
+    }
+  };
+  const handleInputChang = (e) => {
+    const { name, value , type} = e.target;
+    setFormValues((prevState) => ({
+      ...prevState,
+      [name]: value,
+      // [name]: type === "checkbox" ? checked : value,
+    }));
+    console.log(name,value,type,"inputchange")
     if (name === "selectsaleorrent") {
       setSelectedOption(value);
     }
@@ -106,6 +119,7 @@ const Listaproperty = () => {
         [name]: value,
       },
     }));
+    console.log(name,value,"contact")
   };
 
   const handleDateChange = (newValue) => {
@@ -113,6 +127,7 @@ const Listaproperty = () => {
       ...prevState,
       propertyscheduling: newValue,
     }));
+    console.log(newValue,"datecha")
   };
 
   const handleInputFilter = (e) => {
@@ -125,174 +140,271 @@ const Listaproperty = () => {
       ...prevState,
       [name]: inputValue,
     }));
+    console.log(name,value,type,checked,"inputfilter")
   };
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+//   const handleSubmit = async (e) => {
+//     // console.log(s)
+//     e.preventDefault();
+//     let b=[]
+//     b.append(formValues)
+//     console.log(b)
 
-    const formData = new FormData();
+//     const formData = new FormData();
+//     console.log(formValues.price)
 
-    // Basic form fields
-    formData.append("purpose", formValues.selectsaleorrent);
-    formData.append("propertyType", formValues.propertytype);
+//     // Basic form fields
+//     formData.append("purpose", formValues.selectsaleorrent);
+//     formData.append("propertyType", formValues.propertytype);
+//     console.log(formData,"Form Daata")
 
-    // Images
-    // formData.append("images", imageURL); // Assuming you have an input for image URL
-    for (let i = 0; i < formValues.images.length; i++) {
-      formData.append("images", formValues.images[i]);
-    }
-    // Property documents
-    formData.append(
-      "propertyDocuments",
-      JSON.stringify(formValues.propertyTitleDeals)
-    );
+//     // Images
+//     // formData.append("images", imageURL); // Assuming you have an input for image URL
+//     for (let i = 0; i < formValues.images.length; i++) {
+//       formData.append("images", formValues.images[i]);
+//     }
+//     // Property documents
+//     formData.append(
+//       "propertyDocuments",
+//       JSON.stringify(formValues.propertyTitleDeals)
+//     );
 
-    // Other document types (if needed)
-    formData.append("fittingAndContentsForm", formValues.fittingsContentForm);
-    formData.append("energyPerformanceCertificate", formValues.EPC);
-    formData.append(
-      "leaseholdInformation",
-      JSON.stringify(formValues.Leasehold)
-    );
-    formData.append("propertyInfoForm", formValues.TA6);
-    formData.append("localAuthoritySearch", formValues.LocalAuthoritySearch);
-    formData.append(
-      "propertyValuationReport",
-      JSON.stringify(formValues.PropertyValuationReport)
-    );
-    formData.append("floorplan", formValues.FloorPlan);
+//     // Other document types (if needed)
+//     formData.append("fittingAndContentsForm", formValues.fittingsContentForm);
+//     formData.append("energyPerformanceCertificate", formValues.EPC);
+//     formData.append(
+//       "leaseholdInformation",
+//       JSON.stringify(formValues.Leasehold)
+//     );
+//     formData.append("propertyInfoForm", formValues.TA6);
+//     formData.append("localAuthoritySearch", formValues.LocalAuthoritySearch);
+//     formData.append(
+//       "propertyValuationReport",
+//       JSON.stringify(formValues.PropertyValuationReport)
+//     );
+//     formData.append("floorplan", formValues.FloorPlan);
 
-    // Property description
-    formData.append("propertyDescription", formValues.propertyDescription);
+//     // Property description
+//     formData.append("propertyDescription", formValues.propertyDescription);
 
-    // Numeric fields (convert to number)
-    formData.append("receptionlength", parseFloat(formValues.receptionlength));
-    formData.append("receptionwidth", parseFloat(formValues.receptionwidth));
-    formData.append("kitchenlength", parseFloat(formValues.kitchenlength));
-    formData.append("kitchenwidth", parseFloat(formValues.kitchenwidth));
-    formData.append(
-      "masterBedroomlength",
-      parseFloat(formValues.masterBedroomlength)
-    );
-    formData.append(
-      "masterBedroomwidth",
-      parseFloat(formValues.masterBedroomwidth)
-    );
-    formData.append(
-      "bedroomlength",
-       parseFloat(formValues.bedroomlength)
-       );
-    formData.append(
-      "bedroomwidth", 
-      parseFloat(formValues.bedroomwidth)
-      );
-    formData.append(
-      "noOfBedrooms", 
-      parseInt(formValues.numberOfRooms, 10)
-      );
-    formData.append(
-      "noOfBathrooms",
-      parseInt(formValues.numberOfBathrooms, 10)
-    );
-    formData.append(
-      "noOfToilets", 
-      parseInt(formValues.numberOfToilets, 10)
-      );
-    formData.append(
-      "parkingCapacity",
-      parseInt(formValues.numberOfParkingSpaces, 10)
-    );
+//     // Numeric fields (convert to number)
+//     formData.append("receptionlength", parseFloat(formValues.receptionlength));
+//     formData.append("receptionwidth", parseFloat(formValues.receptionwidth));
+//     formData.append("kitchenlength", parseFloat(formValues.kitchenlength));
+//     formData.append("kitchenwidth", parseFloat(formValues.kitchenwidth));
+//     formData.append(
+//       "masterBedroomlength",
+//       parseFloat(formValues.masterBedroomlength)
+//     );
+//     formData.append(
+//       "masterBedroomwidth",
+//       parseFloat(formValues.masterBedroomwidth)
+//     );
+//     formData.append(
+//       "bedroomlength",
+//        parseFloat(formValues.bedroomlength)
+//        );
+//     formData.append(
+//       "bedroomwidth", 
+//       parseFloat(formValues.bedroomwidth)
+//       );
+//     formData.append(
+//       "noOfBedrooms", 
+//       parseInt(formValues.numberOfRooms, 10)
+//       );
+//     formData.append(
+//       "noOfBathrooms",
+//       parseInt(formValues.numberOfBathrooms, 10)
+//     );
+//     formData.append(
+//       "noOfToilets", 
+//       parseInt(formValues.numberOfToilets, 10)
+//       );
+//     formData.append(
+//       "parkingCapacity",
+//       parseInt(formValues.numberOfParkingSpaces, 10)
+//     );
 
-    // Contact details
-    formData.append(
-      "contactDetails.name", 
-      formValues.contactDetails.fullname
-      );
-    formData.append(
-      "contactDetails.email",
-       formValues.contactDetails.email
-       );
-    formData.append(
-      "contactDetails.mobileNumber",
-      formValues.contactDetails.mobileNumber
-    );
-    formData.append(
-      "contactDetails.subject",
-      formValues.contactDetails.subject
-    );
-    // place & price & pincode & epc value
-    formData.append(
-      "place",
-      formValues.place
-    );
-    formData.append(
-      "price",
-      formValues.price
-    );
-    formData.append(
-      "pinCode",
-      formValues.pinCode
-    );
-    formData.append(
-      "epcvalue",
-      formValues.epcvalue
-    );
+//     // Contact details
+//     formData.append(
+//       "contactDetails.name", 
+//       formValues.contactDetails.fullname
+//       );
+//     formData.append(
+//       "contactDetails.email",
+//        formValues.contactDetails.email
+//        );
+//     formData.append(
+//       "contactDetails.mobileNumber",
+//       formValues.contactDetails.mobileNumber
+//     );
+//     formData.append(
+//       "contactDetails.subject",
+//       formValues.contactDetails.subject
+//     );
+//     // place & price & pincode & epc value
+//     formData.append(
+//       "place",
+//       formValues.place
+//     );
+//     formData.append(
+//       "price",
+//       formValues.price
+//     );
+//     formData.append(
+//       "pinCode",
+//       formValues.pinCode
+//     );
+//     formData.append(
+//       "epcvalue",
+//       formValues.epcvalue
+//     );
 
-    // Nearby details
-    formData.append(
-      "nearby.hospital.distance",
-      parseFloat(formValues.hospitalDistance)
-    );
-    formData.append(
-      "nearby.hospital.name", 
-      formValues.hospitalName
-      );
-    formData.append(
-      "nearby.school.distance",
-      parseFloat(formValues.schoolDistance)
-    );
-    formData.append(
-      "nearby.school.name", 
-      formValues.schoolName
-      );
-    formData.append(
-      "nearby.busStation.distance",
-      parseFloat(formValues.busStationDistance)
-    );
-    formData.append(
-      "nearby.busStation.name",
-       formValues.busStationName
-       );
+//     // Nearby details
+//     formData.append(
+//       "nearby.hospital.distance",
+//       parseFloat(formValues.hospitalDistance)
+//     );
+//     formData.append(
+//       "nearby.hospital.name", 
+//       formValues.hospitalName
+//       );
+//     formData.append(
+//       "nearby.school.distance",
+//       parseFloat(formValues.schoolDistance)
+//     );
+//     formData.append(
+//       "nearby.school.name", 
+//       formValues.schoolName
+//       );
+//     formData.append(
+//       "nearby.busStation.distance",
+//       parseFloat(formValues.busStationDistance)
+//     );
+//     formData.append(
+//       "nearby.busStation.name",
+//        formValues.busStationName
+//        );
 
-// Schedule date time
+// // Schedule date time
 
-    formData.append(
-      "scheduleDateTime", 
-      formValues.propertyscheduling
-      );
+//     formData.append(
+//       "scheduleDateTime", 
+//       formValues.propertyscheduling
+//       );
 
-    try {
-      const response = await fetch(
-        "https://raddaf-be.onrender.com/listing-property/create",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+//     try {
+//       const response = await fetch(
+//         "https://raddaf-be.onrender.com/listing-property/create",
+//         {
+//           method: "POST",
+//           body: formData,
+//         }
+//       );
 
-      if (response.ok) {
-        const data = await response.json();
-        alert('your details submitted successfully')
-        console.log("Property created successfully:", data);
-      } else {
-        const errorData = await response.json();
-        console.error("Error creating property:", errorData);
+//       if (response.ok) {
+//         const data = await response.json();
+//         alert('your details submitted successfully')
+//         console.log("Property created successfully:", data);
+//       } else {
+//         const errorData = await response.json();
+//         console.error("Error creating property:", errorData);
+//       }
+//     } catch (error) {
+//       console.error("Fetch error:", error);
+//     }
+//   };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData();
+
+  // Basic form fields
+  formData.append("purpose", formValues.selectsaleorrent);
+  formData.append("propertyType", formValues.propertytype);
+
+  // Images
+  for (let i = 0; i < formValues.images.length; i++) {
+    formData.append("images", formValues.images[i]);
+  }
+
+  // Property documents
+  formData.append("propertyDocuments", JSON.stringify(formValues.propertyTitleDeals));
+
+  // Other document types (if needed)
+  formData.append("fittingAndContentsForm", formValues.fittingsContentForm);
+  formData.append("energyPerformanceCertificate", formValues.EPC);
+  formData.append("leaseholdInformation", JSON.stringify(formValues.Leasehold));
+  formData.append("propertyInfoForm", formValues.TA6);
+  formData.append("localAuthoritySearch", formValues.LocalAuthoritySearch);
+  formData.append("propertyValuationReport", JSON.stringify(formValues.PropertyValuationReport));
+  formData.append("floorplan", formValues.FloorPlan);
+
+  // Property description
+  formData.append("propertyDescription", formValues.propertyDescription);
+
+  // Numeric fields (convert to number)
+  formData.append("receptionlength", parseFloat(formValues.receptionlength));
+  formData.append("receptionwidth", parseFloat(formValues.receptionwidth));
+  formData.append("kitchenlength", parseFloat(formValues.kitchenlength));
+  formData.append("kitchenwidth", parseFloat(formValues.kitchenwidth));
+  formData.append("masterBedroomlength", parseFloat(formValues.masterBedroomlength));
+  formData.append("masterBedroomwidth", parseFloat(formValues.masterBedroomwidth));
+  formData.append("bedroomlength", parseFloat(formValues.bedroomlength));
+  formData.append("bedroomwidth", parseFloat(formValues.bedroomwidth));
+  formData.append("noOfBedrooms", parseInt(formValues.numberOfRooms, 10));
+  formData.append("noOfBathrooms", parseInt(formValues.numberOfBathrooms, 10));
+  formData.append("noOfToilets", parseInt(formValues.numberOfToilets, 10));
+  formData.append("parkingCapacity", parseInt(formValues.numberOfParkingSpaces, 10));
+
+  // Contact details
+  formData.append("contactDetails.name", formValues.contactDetails.fullname);
+  formData.append("contactDetails.email", formValues.contactDetails.email);
+  formData.append("contactDetails.mobileNumber", formValues.contactDetails.mobileNumber);
+  formData.append("contactDetails.subject", formValues.contactDetails.subject);
+
+  // Place & price & pincode & epc value
+  formData.append("place", formValues.place);
+  formData.append("price", formValues.price);
+  formData.append("pinCode", formValues.pinCode);
+  formData.append("epcvalue", formValues.epcvalue);
+
+  // Nearby details
+  formData.append("nearby.hospital.distance", parseFloat(formValues.hospitalDistance));
+  formData.append("nearby.hospital.name", formValues.hospitalName);
+  formData.append("nearby.school.distance", parseFloat(formValues.schoolDistance));
+  formData.append("nearby.school.name", formValues.schoolName);
+  formData.append("nearby.busStation.distance", parseFloat(formValues.busStationDistance));
+  formData.append("nearby.busStation.name", formValues.busStationName);
+
+  // Schedule date time
+  formData.append("scheduleDateTime", formValues.propertyscheduling);
+
+  try {
+    // console.log(formValues,"From values")
+    const response = await fetch(
+      "https://raddaf-be.onrender.com/listing-property/create",
+      {
+        method: "POST",
+        body: formValues,
       }
-    } catch (error) {
-      console.error("Fetch error:", error);
+    );
+    console.log(formValues,"From values")
+    if (response.ok) {
+      const data = await response.json();
+      alert('your details submitted successfully');
+      console.log("Property created successfully:", data);
+    } else {
+      const errorData = await response.json();
+      console.error("Error creating property:", errorData);
     }
-  };
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+};
+
 
   // handle skip function
 
@@ -749,7 +861,7 @@ const Listaproperty = () => {
           <textarea
             name="propertyDescription"
             value={formValues.propertyDescription}
-            onChange={handleInputChange}
+            onChange={handleInputChang}
             placeholder="Type something about property..."
             rows={6}
             cols={37}
@@ -1316,15 +1428,6 @@ const Listaproperty = () => {
         <button onClick={handleSubmit}>Submit</button>
       </div>
       <div>
-      {/* <p>
-        {Object.entries(formValues).map(([key, value]) => (
-          <span key={key}>
-            <strong>{key}:</strong> {JSON.stringify(value)} <br />
-          </span>
-        ))}
-      </p> */}
-
-      {/* <img src={selectedimage} alt=" selected image"/> */}
       </div>
     </div>
   );

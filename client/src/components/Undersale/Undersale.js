@@ -210,7 +210,7 @@ const Tolet = () => {
         </div>
       ) : (
     <div style={{width:"100%"}} className='Forsale-con'>
-      <div className='filter-section'>
+      {/* <div className='filter-section'>
         <div className='pincode-filter'>
           <AddLocationAltOutlinedIcon />
           <input type='text' placeholder='Manchester' />
@@ -251,7 +251,7 @@ const Tolet = () => {
             </select>
         </div>
         
-      </div>
+      </div> */}
 
       {toletListings.map((data, index) => (
         <div className='forsale-sub-con' key={index}>

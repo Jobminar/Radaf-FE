@@ -35,6 +35,7 @@ import Undersaleinspection from "./components/Undersale/Undersalepropertiesinspe
 import Undersalebill from "./components/Undersale/Undersalebill.js"
 import Undersaleagreements from "./components/Undersale/Undersaleagreements.js"
 import Undersalerepair from "./components/Undersale/Undersalerepair.js"
+import Pageundercuntruction from './components/LettedProperties/Pageundercuntruction.js';
 // import Login from './components/Profile/profile/Login.jsx';
 
 
@@ -79,6 +80,7 @@ function Routing() {
           <Route path='/undersalebill' element={<Navbar><Undersalebill /></Navbar>} />
           <Route path='/undersaleagreements' element={<Navbar><Undersaleagreements /></Navbar>} />
           <Route path='/undersalerepair' element={<Navbar><Undersalerepair /></Navbar>} />
+          <Route path='/underconstruction' element={<Navbar><Pageundercuntruction /></Navbar>} />
           <Route path='/logout' element={<Logout />} />
         </Routes>
         <FloatingChatIcon />

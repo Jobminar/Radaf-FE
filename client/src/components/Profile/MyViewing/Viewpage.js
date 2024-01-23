@@ -5,11 +5,19 @@ import bedroomlogo from '../MyViewing/images/bedsymbol.png'
 import toilet from '../MyViewing/images/toilet.png'
 import washroom from '../MyViewing/images/washroom.png'
 import parking from '../MyViewing/images/car.png'
+import { useNavigate } from 'react-router-dom';
 
 const Viewpage = () => {
+  const navigate=useNavigate()
 
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
+  };
+
+  const handleProperty = (item) => {
+    // setproperty(item);
+    navigate('/underconstruction', { state: { property: item } });
+    console.log(item,'data')
   };
   
   const [saleListings, setSaleListings] = useState([]);
@@ -51,7 +59,7 @@ const Viewpage = () => {
       {saleListings.map((data, index) => (
         <div className='forsale-sub-con2' key={index}>
           <div className='forsale-img-sub-con2'>
-          <div className='main-img-con2'>
+          <div className='main-img-con2' onClick={() => handleProperty(data)}>
           {mainImage ? (
             <img src={mainImage} alt="Main" />
           ) : (

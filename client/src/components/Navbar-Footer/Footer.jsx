@@ -1,21 +1,26 @@
 import './Footer.css'
 import { useNavigate } from 'react-router-dom'
 import logo from '../Home/Images/logo.png'
+import logo1 from "../Forsale/images/Raddafnew1.png"
 import insta from './Images/instagram.png'
 import linkedin from './Images/linkedin.png'
 import facebook from './Images/facebook.png'
 
 const Footer =(()=>{
+    
     const navigate = useNavigate()
+    const book=()=>{
+        navigate("/underconstruction")
+    }
     return(
         <>
            <div className='footer-con'>
                 <div className='logo-footer'>
-                    <img src={logo} alt='logo'/>
+                    <img style={{backgroundColor:"white",borderRadius:"80px",width:"10rem"}} src={logo1} alt='logo'/>
                 </div>
                 <div className='joinus'>
                     <h1>Join us</h1>
-                    <p>Become an Agent</p>
+                    <p onClick={book}>Become an Agent</p>
                     {/* <p>Get referrals</p>
                     <p>Careers</p> */}
                 </div>

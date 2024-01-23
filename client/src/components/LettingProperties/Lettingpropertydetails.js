@@ -17,12 +17,15 @@ const Propertydetails = () => {
     const location = useLocation();
     const selectedProperty = location.state ? location.state.property : null;
     console.log(selectedProperty)
+    const agent = () => {
+        navigate('/bookafreevaluation');
+      };
 
     const lettedinspection = () => {
         navigate('/lettinginspection');
     };
     const lettedagreemetns = () => {
-        navigate('/lettedagreements',{ state: { property: selectedProperty } });
+        navigate('/underconstruction',{ state: { property: selectedProperty } });
     };
 return(
     <>
@@ -147,7 +150,7 @@ return(
 
                         
                         
-                        <button style={{marginTop:"0px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
+                        <button onClick={agent} style={{marginTop:"0px",backgroundColor:"#9E4D00",borderRadius:"4px",paddingTop:"15px",color:"white",fontSize:"20px",paddingBottom:"15px"}}>
                             Contact Agent
                         </button>
                     </div>

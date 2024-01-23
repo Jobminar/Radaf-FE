@@ -2,7 +2,7 @@ import React from "react";
 
 const PropertyFeaturesSelector = (props) => {
   const selectPropertyFeatures = (features) => {
-    props.parse(features); // Call the parse function with the selected property features
+    props.parse(features);
   };
 
   return (

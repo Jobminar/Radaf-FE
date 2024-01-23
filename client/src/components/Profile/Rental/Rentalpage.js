@@ -8,7 +8,16 @@ import washroom from '../Rental/images/washroom.png'
 import parking from '../Rental/images/car.png'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Icon } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+
 const Viewpage = () => {
+  const navigate=useNavigate()
+  const handleProperty = (item) => {
+    // setproperty(item);
+    navigate('/underconstruction', { state: { property: item } });
+    console.log(item,'data')
+  };
   const [color,setColor]=useState('white')
   const handleCallAgent = () => {
     window.location.href = 'tel:6303364305';
@@ -54,7 +63,7 @@ const Viewpage = () => {
       {saleListings.map((data, index) => (
         <div className='forsale-sub-con3' key={index}>
           <div className='forsale-img-sub-con3'>
-          <div className='main-img-con3'>
+          <div className='main-img-con3' onClick={() => handleProperty(data)}>
           {mainImage ? (
             <img src={mainImage} alt="Main" />
             

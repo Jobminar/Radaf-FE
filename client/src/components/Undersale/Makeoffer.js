@@ -43,7 +43,7 @@ const MakeOffer = ({ open, handleClose, loading, formData, handleChange, handleS
         <Button  style={{width:"88%",backgroundColor:"#E9A361",marginBottom:"10px",fontSize:"20px",color:"white"}} onClick={handleSubmit} disabled={loading}>
           {loading ? 'Submitting...' : 'Submit'}
         </Button>
-        <p style={{padding:"30px 0px 15px 0px",fontSize:"16px"}}>Powered by Estates IT @2023</p>
+        {/* <p style={{padding:"30px 0px 15px 0px",fontSize:"16px"}}>Powered by Estates IT @2023</p> */}
         </center>
       
       </div>

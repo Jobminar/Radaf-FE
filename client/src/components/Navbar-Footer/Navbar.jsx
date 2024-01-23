@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import logo from "../Home/Images/logo.png";
+import logo1 from "../Forsale/images/Raddaficon1.png"
 import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
@@ -58,8 +59,8 @@ const Navbar = ({ children }) => {
   return (
     <div>
       <div className="navbar-con">
-        <div className="logo">
-          <img src={logo} alt="logo" />
+        <div className="logo newlogo">
+          <img style={{height:"80px"}} src={logo1} alt="logo" />
         </div>
 
         <div className="route" onClick={() => navigate("/home")}>

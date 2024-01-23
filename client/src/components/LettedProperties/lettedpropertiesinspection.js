@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import "./leins.css";
 import sada from "./sampletabdata.js";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import Pageundercuntruction from './Pageundercuntruction.js';
+import Underconstruction from "./Pageundercuntruction.js"
+import { useNavigate } from 'react-router-dom';
 
 const Lettedinspection = () => {
+  const navigate=useNavigate()
   const [activeTab, setActiveTab] = useState('Future Inspection');
+  const [rescheduleDates, setRescheduleDates] = useState(sada.map(() => null));
+
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
+  };
+
+  const under=()=>{
+    navigate("/underconstruction")
+      }
+  const handleDateChange = (date, index) => {
+    const updatedDates = [...rescheduleDates];
+    updatedDates[index] = date;
+    setRescheduleDates(updatedDates);
   };
 
   return (
@@ -43,19 +60,27 @@ const Lettedinspection = () => {
                   <th>Time</th>
                   {activeTab === 'Future Inspection' && <th>Reschedule</th>}
                   <th>Agent Details</th>
-                  {activeTab === 'Future Inspection' && <th>Download</th>}
                 </tr>
               </thead>
               <tbody>
-                {sada.map((item) => (
+                {sada.map((item,index) => (
                   <tr key={item.SNo}>
                     <td>{item.SNo}</td>
                     <td>{item.Scheduledetails}</td>
                     <td>{item.Date}</td>
                     <td>{item.time}</td>
-                    {activeTab === 'Future Inspection' && <td>{item.reschedule}</td>}
+                    <td>{activeTab === 'Future Inspection' ? (
+                        <DatePicker 
+                          selected={rescheduleDates[index]}
+                          onChange={(date) => handleDateChange(date, index)}
+                          showTimeSelect
+                          placeholderText="Click and reschedule"
+                          dateFormat="MMMM d, yyyy h:mm aa"
+                          className="custom-datepicker"
+                        />
+                      ) : null}</td>
+                    {/* {activeTab === 'Future Inspection' && <td>{item.reschedule}</td>} */}
                     <td>{item.agentdetails}</td>
-                    {activeTab === 'Future Inspection' && <td><FileDownloadIcon/></td>}
                   </tr>
                 ))}
               </tbody>
@@ -85,7 +110,7 @@ const Lettedinspection = () => {
                     <td>{item.Date}</td>
                     <td>{item.time}</td>
                     <td>{item.agentdetails}</td>
-                    {activeTab === 'Past Inspection' && <td><FileDownloadIcon/></td>}
+                    {activeTab === 'Past Inspection' && <td ><FileDownloadIcon onClick={(under)} /></td>}
                   </tr>
                 ))}
               </tbody>

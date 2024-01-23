@@ -2,41 +2,32 @@ import React from "react";
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const initialAction = () => {
-    const message = createChatBotMessage(
-      "Hello! Welcome to our Raddaf Property Management Chatbot. Please provide your name to get started."
-    );
-    updateState(message, "query");
+    const message = createChatBotMessage("Just type in your email to begin.");
+    updateState(message, "place");
   };
 
   const afterNameMessage = () => {
     const message = createChatBotMessage(
-      "Great! Now, let me know what you are looking for: Properties for Sale, Rental Listings, or Property Management Services?"
-    );
-    updateState(message, "purpose");
-  };
-
-  const afterPurposeMessage = () => {
-    const message = createChatBotMessage(
-      "Awesome choice! Now, could you tell me more about your preferences? Are you looking for a residential or commercial property?"
+      "Let me know your place so I can suggest the best property for you."
     );
     updateState(message, "preference");
   };
 
-  const afterPreferenceMessage = () => {
+  const afterAgeMessage = () => {
     const message = createChatBotMessage(
-      "What features are important to you? For example, number of bedrooms, location, amenities, etc.",
+      "Are you inclined towards a property that offers excitement and thrills, or do you lean more towards a home that exudes beauty and comfort?",
       {
-        widget: "propertyFeatures",
+        widget: "startSlow",
       }
     );
     updateState(message);
   };
 
-  const finalResult = (name, purpose, preference, propertyFeatures) => {
+  const finalResult = (name, place, preference, property) => {
     const message = createChatBotMessage(
-      `Thank you, ${name}! Based on your interest in ${purpose} and preferences for a ${preference} property with the following features: ${propertyFeatures}, we recommend some suitable options for you.And Our Agent will Contact you soon`,
+      `Got it, ${name}! Based on your place ${place} and preference for a ${preference} property, I recommend the '${property}.' Happy Home!and our agent will Contact you soon.`,
       {
-        widget: "propertyListings",
+        widget: "finalImage",
       }
     );
     updateState(message);
@@ -57,8 +48,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
           actions: {
             initialAction,
             afterNameMessage,
-            afterPurposeMessage,
-            afterPreferenceMessage,
+            afterAgeMessage,
             finalResult,
           },
         });
